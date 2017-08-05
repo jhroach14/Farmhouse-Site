@@ -1,0 +1,115 @@
+html{
+    height: 100%;
+    width:100%;
+    font-family: Arial;
+    background-color: white;
+}
+hr{
+    position: relative;
+}
+hr.bottom{
+    margin: 10px 0;
+    color: lightgrey;
+}
+
+/*Navbar stuff*/
+nav.navbar{
+    margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+
+}
+footer{
+    margin-top: 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+ul{
+    position: relative;
+    width: 100%;
+}
+ul.page-nav{
+    display: table;
+    height:3%;
+    align-items: center;
+
+}
+ul.page-nav > li{
+    display: table-cell;
+    width: 13%;
+    text-align: center;
+
+}
+ul.logo-nav > li{
+    width: 30%;
+    margin-top: 1%;
+}
+
+li{
+    margin: 0 auto;
+    position: inherit;
+}
+a.page-nav, a.logo-nav{
+    position: inherit;
+    height: 100%;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: grey;
+    background-color: transparent !important;
+}
+object{
+    pointer-events: none;
+}
+.navbar-fixed-top{
+    border-bottom-width: 1px;
+    border-color: lightgrey;
+}
+
+/*dropdown stuff*/
+div.w3-sidebar, button.w3-button{
+    z-index: 5000;
+    background-color: whitesmoke;
+
+}
+object.logo-mobile{
+    display: none;
+}
+@media (max-width: 480px){
+    nav ul.logo-nav, nav ul.page-nav {
+        display: none;
+    }
+    button.w3-button{
+        display: inline-block;
+
+    }
+    object.logo-mobile{
+        display: inline-block;
+        float: left;
+        width: 33%;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-bottom: 2%;
+    }
+    #sidebar-btn{
+        background-color: white;
+    }
+    #sidebar-btn:hover{
+        background-color: white !important;
+    }
+}
+@media (min-width: 481px){
+    div.w3-sidebar{
+        display:none;
+    }
+    button.w3-button{
+        display: none;
+
+    }
+    object.logo-mobile{
+        display: none;
+    }
+
+}

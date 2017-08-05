@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--This page is the main html index for the site. it is the wrapper around all content pages.
+Html templates are inserted via thymeleaf/angularJS-->
+<html ng-app="indexApp" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title th:text="${page.title}"></title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="/js/index.js"></script>
+        <script th:src="@{|/js${page.template}.js|}"></script>
+
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{|/css${page.template}.css|}"/>
+
+    </head>
+    <body >
+    <nav class="navbar navbar-fixed-top">
+        <ul class="nav logo-nav">
+            <li>
+                <a class="active home-btn" href="">
+                    <object class="logo-link" data="/img/logoHDRemaster.svg" type="image/svg+xml">
+                        <img src="logo.png" /><!--for browsers with no svg support-->
+                    </object>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav page-nav">
+            <li>
+                <a class="services-btn" href="#">SERVICES</a>
+            </li>
+            <li>
+                <a class="about-btn" href="#">ABOUT</a>
+            </li>
+            <li>
+                <a class="registry-btn" href="#">REGISTRY</a>
+            </li>
+            <li>
+                <a class="gallery-btn" href="#">GALLERY</a>
+            </li>
+            <li>
+                <a class="inspiration-btn" href="#">INSPIRE</a>
+            </li>
+        </ul>
+        <object class="logo-mobile" data="logoHDRemaster.svg" type="image/svg+xml">
+            <img src="logo.png" /><!--for browsers with no svg support-->
+        </object>
+        <button id="sidebar-btn" class="w3-button w3-xlarge w3-right" onclick="w3_open()">☰</button>
+    </nav>
+        <!--thymleaf inserts correct html template based on spring data model in controller-->
+        <div th:replace="${page.template}"></div>
+    </body>
+</html>

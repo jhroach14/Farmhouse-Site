@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--this file configures our logging service log4j2-->
+<Configuration monitorInterval="30">
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%style{[%d{HH:mm:ss.SSS}]}{BLUE} %style{:}{red} %highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue} %style{%-22class{1}}{CYAN} %style{-}{BRIGHT,YELLOW} %msg%n"/>
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
