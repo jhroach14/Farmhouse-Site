@@ -13,16 +13,14 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("sidebar-btn").style.display = "inline-block";
 }
-document.onload(
-    $(function () {
-        $(window).on("resize", function () {
-            if (window.matchMedia("(min-width: 481px)").matches) {
-                document.getElementById("sidebar-btn").style.display = "none";
-                document.getElementById("mySidebar").style.display = "none";
-            }
-            else {
-                document.getElementById("sidebar-btn").style.display = "inline-block";
-            }
+$(function () {
+    $(window).on("resize", function () {
+        if (window.matchMedia("(min-width: 481px)").matches) {
+            document.getElementById("sidebar-btn").style.display = "none";
+            document.getElementById("mySidebar").style.display = "none";
         }
-    )})
-);
+        else {
+            document.getElementById("sidebar-btn").style.display = "inline-block";
+        }
+    })
+});

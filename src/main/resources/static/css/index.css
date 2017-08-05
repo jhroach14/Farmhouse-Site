@@ -1,23 +1,23 @@
-html{
+html,body{
     height: 100%;
     width:100%;
     font-family: Arial;
-    background-color: white;
-}
-hr{
-    position: relative;
-}
-hr.bottom{
-    margin: 10px 0;
-    color: lightgrey;
+    background-color: white;;
 }
 
 /*Navbar stuff*/
+#home-button{
+    margin-top: 5px!important; /*okay to use important when overridng outside libraries*/
+}
 nav.navbar{
     margin-bottom: 0;
-    position: fixed;
-    width: 100%;
-
+}
+#nav-line{
+    width: 90%;
+    height: 1px;
+    background-color: darkgray;
+    margin-top: -1px;
+    margin-left: 5%;
 }
 footer{
     margin-top: 0;
@@ -37,13 +37,13 @@ ul.page-nav{
 }
 ul.page-nav > li{
     display: table-cell;
-    width: 13%;
+    width: 15%;
     text-align: center;
 
 }
 ul.logo-nav > li{
     width: 30%;
-    margin-top: 1%;
+    margin-top: .5%;
 }
 
 li{
@@ -64,8 +64,7 @@ object{
     pointer-events: none;
 }
 .navbar-fixed-top{
-    border-bottom-width: 1px;
-    border-color: lightgrey;
+
 }
 
 /*dropdown stuff*/
