@@ -16,6 +16,10 @@ public class AboutPage extends Page {
     private Photo primary_photo;
     private Photo secondary_photo;
 
+    public AboutPage(){
+        super("About", "/about");
+    }
+
     public AboutPage(String title, String store_hours, String company_bio, Photo primary_photo, Photo secondary_photo) {
         super(title, "/about");
         this.store_hours = store_hours;

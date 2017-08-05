@@ -15,6 +15,10 @@ public class HomePage extends Page {
     private Iterable<Photo> photos;
     private Iterable<BlogPost> posts;
 
+    public HomePage(){
+        super("Home", "/home");
+    }
+
     public HomePage(String title, Iterable<Photo> photos, Iterable<BlogPost> posts) {
         super(title, "/home");
         this.photos = photos;

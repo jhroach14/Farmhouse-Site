@@ -13,6 +13,10 @@ public class GalleryPage extends Page {
 
     private Iterable<GallerySection> sections;
 
+    public GalleryPage(){
+        super("Gallery", "/gallery");
+    }
+
     public GalleryPage(String title,  Iterable<GallerySection> sections) {
         super(title, "/gallery");
         this.sections = sections;

@@ -42,7 +42,7 @@ ul.page-nav > li{
 
 }
 ul.logo-nav > li{
-    width: 30%;
+    width: 22%;
     margin-top: .5%;
 }
 
@@ -64,7 +64,7 @@ object{
     pointer-events: none;
 }
 .navbar-fixed-top{
-
+    position: static;
 }
 
 /*dropdown stuff*/

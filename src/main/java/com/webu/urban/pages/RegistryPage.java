@@ -14,6 +14,10 @@ public class RegistryPage extends Page {
     private String intro_text;
     private Photo main_photo;
 
+    public RegistryPage(){
+        super("Registry", "/registry");
+    }
+
     public RegistryPage(String title, String intro_text, Photo main_photo) {
         super(title, "/registry");
         this.intro_text = intro_text;

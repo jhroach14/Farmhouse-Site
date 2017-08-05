@@ -63,9 +63,15 @@ public class PageController {
     }
     @RequestMapping("/about")
     public String about(Model model, @RequestParam(value = "flag", required = false) String flag) {
-
+        AboutPage aboutPage;
         AboutInfo aboutInfo = aboutPageRepository.findOne(0);
-        AboutPage aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
+        if(aboutInfo != null){
+            aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
+        }
+        else{
+            aboutPage = new AboutPage();
+
+        }
 
         model.addAttribute("page", aboutPage);
         log.debug("Serving about page...");
@@ -98,9 +104,15 @@ public class PageController {
     @RequestMapping("/registry")
     public String registry(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
+        RegistryPage registryPage;
         RegistryInfo registryInfo = registryPageRepository.findOne(0);
-        RegistryPage registryPage = new RegistryPage("Registry",registryInfo.getIntro_text(),registryInfo.getMain_photo());
+        if(registryInfo != null){
+            registryPage = new RegistryPage("Registry",registryInfo.getIntro_text(),registryInfo.getMain_photo());
+        }
+        else{
+            registryPage = new RegistryPage();
 
+        }
         model.addAttribute("page", registryPage);
         log.debug("Serving registry page...");
 
@@ -130,6 +142,21 @@ public class PageController {
         }
     }
 
+    @RequestMapping("/inspire")
+    public String inspire(Model model, @RequestParam(value = "flag", required = false) String flag) {
+
+        InspirePage inspirePage = new InspirePage();
+
+        model.addAttribute("page", inspirePage);
+        log.debug("Serving services page...");
+
+        if(flag != null && flag.equals("js")){
+            return "inspire";
+        }else{
+            return "index";
+
+        }
+    }
     /*
     //more use of spring's context objects
     protected User getUser(){

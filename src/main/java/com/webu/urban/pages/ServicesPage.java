@@ -15,6 +15,10 @@ public class ServicesPage extends Page {
     private Iterable<Service> services;
     private Iterable<Interior> interiors;
 
+    public ServicesPage(){
+        super("Services", "/services");
+    }
+
     public ServicesPage(String title, Iterable<Service> services, Iterable<Interior> interiors) {
         super(title, "/services");
         this.services = services;

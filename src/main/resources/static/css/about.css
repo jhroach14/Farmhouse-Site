@@ -1,0 +1,44 @@
+img{
+    width: 100%;
+    position: relative;
+}
+.about-main{
+    width: 70%;
+    position: relative;
+    margin: 2% auto;
+
+}
+.store-hours{
+    width: 65%;
+    position: relative;
+    margin: 1% auto;
+}
+
+.social-tags{
+    width: 40%;
+    margin: 1% 30%;
+    position: relative;
+    display: table;
+}
+.social{
+    display: table-cell;
+    text-align: center;
+
+}
+
+.about-minor{
+    width:50%;
+    position: relative;
+    margin-left: 20%;
+    margin-bottom: 3%;
+}
+.description{
+    border-width: 1px ;
+    border-color: grey;
+}
+
+hr{
+    width: 80%;
+    margin: 2% auto;
+    position: relative;
+}
