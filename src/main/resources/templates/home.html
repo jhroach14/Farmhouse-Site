@@ -6,23 +6,13 @@
 
                 <!--index controls-->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
+                    <li data-target="#carousel" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''" th:attr="data-slide=${photoStat.index}"></li>
                 </ol>
 
                 <!--slide wrapper-->
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="la.jpg" alt="Los Angeles">
-                    </div>
-
-                    <div class="item">
-                        <img src="chicago.jpg" alt="Chicago">
-                    </div>
-
-                    <div class="item">
-                        <img src="ny.jpg" alt="New York">
+                    <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">
+                        <img th:src="${photo.photo_path}" th:attr="">
                     </div>
                 </div>
 
