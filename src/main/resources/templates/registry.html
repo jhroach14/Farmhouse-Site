@@ -1,41 +1,51 @@
 <div class="content-container" ng-controller="registryCtrl">
-    <div class="row">
-        <div class="col-md-3 registry-svg-left">
-            <img src="/img/swirl.png"/>
-        </div>
-        <div class="col-md-6 registry-code">
-            <form class="form-horizontal">
-                <div class="form-group">
+    <div class="row code">
+        <div class="row swirl-placement">
+            <div class="col-md-4 swirl-left">
+                <img class="swirl" src="/img/swirl-flip.png"/>
+            </div>
+            <div class="col-md-4">
+                <div class="have-code">Have a code?</div>
+                <div class="code-input" id="custom-search-input">
+                    <input type="text" class="form-control input-lg zero-border-radius" placeholder="Enter Registry Code Here" />
+                    <button class="code-button" type="button">Submit</button>
                 </div>
-            </form>
-        </div>
-        <div class="col-md-3r egistry-svg-right">
-            <img src="/img/swirl 2.png"/>
-
+            </div>
+            <div class="col-md-4 swirl-right">
+                <img class="swirl" src="/img/swirl.png"/>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row registry-pic">
+        <img class="get-started" src="/img/registry-get-started.jpg"/>
+    </div>
+    <div class="row sign-up">
         <div class="col-md-6 registry-signup1">
-            <form class="form-horizontal">
+            <form>
                 <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email"/>
+
                 </div>
                 <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd"/>
                 </div>
-                <div class="form-group">
-                </div>
-                <div class="form-group">
-                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
         <div class="col-md-6 registry-signup2">
-            <form class="form-horizontal">
+            <form>
                 <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email"/>
                 </div>
                 <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd"/>
                 </div>
-                <div class="form-group">
-                </div>
-                <div class="form-group">
+                <div class="checkbox">
+                    <label><input type="checkbox"/> Remember me</label>
                 </div>
             </form>
         </div>

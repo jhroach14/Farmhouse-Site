@@ -52,9 +52,19 @@ Html templates are inserted via thymeleaf/angularJS-->
             <object class="logo-mobile" data="/img/logoHDRemaster.svg" type="image/svg+xml">
                 <img src="/img/logo.png" /><!--for browsers with no svg support-->
             </object>
+
             <button id="sidebar-btn" class="w3-button w3-xlarge w3-right" onclick="w3_open()">☰</button>
             <div id="nav-line"></div>
         </nav>
+        <div class="w3-sidebar w3-bar-block w3-animate-right" style="display:none;right:0" id="mySidebar">
+            <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+            <a href="/" class="w3-bar-item w3-button">HOME</a>
+            <a href="/services" class="w3-bar-item w3-button">SERVICES</a>
+            <a href="/about" class="w3-bar-item w3-button">ABOUT</a>
+            <a href="/registry" class="w3-bar-item w3-button">REGISTRY</a>
+            <a href="/gallery" class="w3-bar-item w3-button">GALLERY</a>
+            <a href="/inspire" class="w3-bar-item w3-button">INSPIRE</a>
+        </div>
         <!--thymleaf inserts correct html template based on spring data model in controller-->
         <div th:replace="${page.template}"></div>
     </body>

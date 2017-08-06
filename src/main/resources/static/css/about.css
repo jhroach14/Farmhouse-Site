@@ -1,12 +1,14 @@
-img{
+img.about{
     width: 100%;
     position: relative;
+    margin-bottom: 0;
 }
-.about-main{
-    width: 70%;
+.row.top{
     position: relative;
     margin: 2% auto;
 
+}
+.about-main{
 }
 .store-hours{
     width: 65%;
@@ -25,16 +27,19 @@ img{
     text-align: center;
 
 }
-
 .about-minor{
-    width:50%;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.row.bottom{
     position: relative;
-    margin-left: 20%;
     margin-bottom: 3%;
 }
 .description{
-    border-width: 1px ;
+    border-right-width: 2px ;
     border-color: grey;
+    padding-left: 2%;
 }
 
 hr{
