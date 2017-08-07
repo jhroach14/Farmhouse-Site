@@ -12,7 +12,7 @@
                 <!--slide wrapper-->
                 <div class="carousel-inner">
                     <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">
-                        <img th:src="${photo.photo_path}" th:attr="">
+                        <img th:src="${photo.photo_path}" th:attr=""/>
                     </div>
                 </div>
 

@@ -1,7 +1,6 @@
 .row.code{
     background-color: #d5d5d5;
-    margin: 0 auto;
-    margin-bottom: 2%;
+    margin: 2% auto;
     vertical-align: middle;
     height: 25%;
     display: block;
@@ -11,6 +10,9 @@
     width: 80%;
     margin:  2% 10%;
 
+}
+.row.registry-pic{
+    position: relative;
 }
 
 .swirl{
@@ -54,4 +56,11 @@ img.get-started{
     position: relative;
     display: block;
     margin: 0;
+}
+.get-started-text{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: xx-large;
+    color: white;
 }
