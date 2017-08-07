@@ -13,6 +13,9 @@ public class AboutPage extends Page {
 
     private String store_hours;
     private String company_bio;
+    private String phone_number;
+    private String address;
+    private String email;
     private Photo primary_photo;
     private Photo secondary_photo;
 
@@ -20,13 +23,40 @@ public class AboutPage extends Page {
         super("About", "/about");
     }
 
-    public AboutPage(String title, String store_hours, String company_bio, Photo primary_photo, Photo secondary_photo) {
+    public AboutPage(String title, String store_hours, String company_bio,String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo) {
         super(title, "/about");
         this.store_hours = store_hours;
         this.company_bio = company_bio;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.email = email;
         this.primary_photo = primary_photo;
         this.secondary_photo = secondary_photo;
         log.debug("creating about page data model...");
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getStore_hours() {

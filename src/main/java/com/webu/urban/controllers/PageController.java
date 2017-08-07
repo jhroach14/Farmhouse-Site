@@ -65,7 +65,7 @@ public class PageController {
         AboutPage aboutPage;
         AboutInfo aboutInfo = aboutPageRepository.findOne(0);
         if(aboutInfo != null){
-            aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
+            aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
         }
         else{
             aboutPage = new AboutPage();
