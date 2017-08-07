@@ -25,7 +25,7 @@ footer{
     width: 100%;
     bottom: 0;
 }
-ul{
+.nav{
     position: relative;
     width: 100%;
 }
@@ -46,7 +46,7 @@ ul.logo-nav > li{
     margin-top: .5%;
 }
 
-li{
+ul.nav > li{
     margin: 0 auto;
     position: inherit;
 }

@@ -42,7 +42,6 @@ public class PageController {
                                                                                                 // flag used to indicate angularJS made request
         Iterable<HomePhoto> photoLinks = homePhotoRepository.findAll();
         Iterable<BlogPost> blogPosts = blogPostRepository.findAll(); //pull data from db
-
         ArrayList<Photo> photos = new ArrayList<Photo>();
         for( HomePhoto hp : photoLinks){
             photos.add(hp.getPhoto());

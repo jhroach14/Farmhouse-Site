@@ -1,34 +1,49 @@
 <div class="container-fluid" ng-controller="homeCtrl">
-    <div class="row">
-        <div class="col-md-12">
+    <div id="gallery-row" class="row">
+        <div id="gallery-col" class="col-md-12">
             <!--Carousel-->
-            <div id="carousel" class="carousel slide" data-ride="carousel">
+            <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
 
-                <!--index controls-->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''" th:attr="data-slide=${photoStat.index}"></li>
-                </ol>
+
 
                 <!--slide wrapper-->
                 <div class="carousel-inner">
                     <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">
-                        <img th:src="${photo.photo_path}" th:attr=""/>
+                        <img th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
                     </div>
                 </div>
+                <!-- controls-->
 
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#carousel" data-slide="prev">
+                <a href="#carousel" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel" data-slide="next">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''" th:attr="data-slide-to=${photoStat.index}"></li>
+                </ol>
+                <a href="#carousel" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
                 </a>
+            </div>
+            <div id="post-line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <!--Blogposts-->
+            <h2 id="blog-title">Blog Posts</h2>
+            <div id="post-container" class="panel-group">
+                <div class="panel panel-default" th:each="post : ${page.posts}">
+                    <div class="panel-heading" th:text="|${post.post_title} - ${post.post_date}|"></div>
+                    <div class="panel-body" th:text="${post.post_text}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <!--SideBar-->
+            <div id="sidebar">
+
             </div>
         </div>
     </div>
-
-    <!--TODO:BlogPosts here-->
 
 </div>
