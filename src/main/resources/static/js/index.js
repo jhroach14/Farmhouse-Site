@@ -23,4 +23,7 @@ $(function () {
             document.getElementById("sidebar-btn").style.display = "inline-block";
         }
     })
+    $(document).ready(function(){
+        $(".main").hide().fadeIn(750, "swing");
+    })
 });

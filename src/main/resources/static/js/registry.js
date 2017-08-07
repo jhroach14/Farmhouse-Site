@@ -6,3 +6,14 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
 
     }
 ]);
+$(function(){
+    $(document).ready(function(){
+        $(".subpage").hide();
+        $(".main").hide().fadeIn(750, "swing");
+    })
+
+});
+function redirectSubpage() {
+    $(".main").hide();
+    $(".subpage").hide().fadeIn(750, "swing");
+}
