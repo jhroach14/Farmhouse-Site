@@ -24,13 +24,6 @@
 }
 
 
-.title{
-    position: relative;
-    height: 10%;
-    font-size: xx-large ;
-    display: block;
-
-}
 .title.head{
     text-align: center;
     margin-top:7%;
@@ -93,10 +86,14 @@ img.get-started{
 .title.subpage{
     color: grey;
 }
-hr{
-    position: relative;
-}
+.post-line{
+    margin-top: 7px;
+    width:90%;
+    height: 1px;
+    background-color: lightgray;
+    position: relative;}
 
 .cart{
     width: 80%;
+    margin-bottom: 2%;
 }

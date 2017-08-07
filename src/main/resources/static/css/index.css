@@ -122,3 +122,19 @@ object.logo-mobile{
 .zero-padding{
     padding: 0;
 }
+.title{
+    position: relative;
+    height: 10%;
+    font-size: xx-large ;
+    display: block;
+
+}
+footer{
+    height: 8%;
+    background-color: lightgray;
+    width: 90%;
+    margin: 0 5%;
+    text-align: center;
+    position: relative;
+    padding-top: 1%;
+}
