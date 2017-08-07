@@ -9,6 +9,9 @@ public class AboutInfo extends AbstractEntity{
 
     private String store_hours;
     private String company_bio;
+    private String phone_number;
+    private String address;
+    private String email;
     @OneToOne
     @JoinColumn(name = "primary_photo")
     private Photo primary_photo;
@@ -27,11 +30,38 @@ public class AboutInfo extends AbstractEntity{
     public AboutInfo() {
     }
 
-    public AboutInfo(String store_hours, String company_bio, Photo primary_photo, Photo secondary_photo) {
+    public AboutInfo(String store_hours, String company_bio, String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo) {
         this.store_hours = store_hours;
         this.company_bio = company_bio;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.email = email;
         this.primary_photo = primary_photo;
         this.secondary_photo = secondary_photo;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setStore_hours(String store_hours) {

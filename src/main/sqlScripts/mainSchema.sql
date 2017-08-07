@@ -58,6 +58,9 @@ create table about_pages(
     id int auto_increment not null,
     store_hours varchar(1028) not null,
     company_bio varchar(16384) not null,
+    phone_number varchar(32) not null,
+    address varchar(256) not null,
+    email varchar(64) not null,
     primary_photo int not null,
     secondary_photo int not null,
 

@@ -1,13 +1,18 @@
 <div class="content-container" ng-controller="aboutCtrl">
     <div class="row top main">
         <div class="col-md-12 zero-padding">
-            <img class="about about-main" src="/img/about-main.jpg"/>
+            <img class="about about-main" th:src="${page.primary_photo}"/>
         </div>
     </div>
     <hr/>
     <div class="row store-hours">
-        <div class="col-md-12">
-            <div>Store Hours</div>
+        <div class="col-md-5">
+            <div th:text="${page.store_hours}"></div>
+        </div>
+        <div class="col-md-7">
+            <div th:text="${page.phone_number}"></div>
+            <div th:text="${page.address}"></div>
+            <div th:text="${page.email}"></div>
         </div>
     </div>
     <div class="row">
@@ -20,7 +25,7 @@
     <div class="post-line"></div>
     <div class="row bottom main">
         <div class="col-md-5 zero-padding">
-            <img class="about about-minor" src="/img/about-minor.jpg"/>
+            <img class="about about-minor" src=""/>
         </div>
         <div class="col-md-7 description zero-padding">
             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
