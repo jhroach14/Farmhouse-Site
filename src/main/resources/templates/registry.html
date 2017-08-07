@@ -1,26 +1,26 @@
 <div class="content-container" ng-controller="registryCtrl">
-    <div class="row code">
+    <div class="row code main">
         <div class="row swirl-placement">
             <div class="col-md-4 swirl-left">
                 <img class="swirl" src="/img/swirl-flip.png"/>
             </div>
             <div class="col-md-4">
-                <div class="have-code">Have a code?</div>
-                <div class="code-input" id="custom-search-input">
+                <div class="title head">Have a code?</div>
+                <form onsubmit="redirectSubpage()" class="code-input" id="custom-search-input">
                     <input type="text" class="form-control input-lg zero-border-radius" placeholder="Enter Registry Code Here" />
-                    <button class="code-button" type="button">Submit</button>
-                </div>
+                    <button  class="code-button" type="submit">Submit</button>
+                </form>
             </div>
             <div class="col-md-4 swirl-right">
                 <img class="swirl" src="/img/swirl.png"/>
             </div>
         </div>
     </div>
-    <div class="row registry-pic">
+    <div class="row registry-pic main">
         <img class="get-started" src="/img/registry-get-started.jpg"/>
         <div class="get-started-text">GET STARTED</div>
     </div>
-    <div class="row sign-up">
+    <div class="row sign-up main">
         <div class="col-md-6 registry-signup1">
             <form>
                 <div class="form-group">
@@ -38,11 +38,11 @@
         <div class="col-md-6 registry-signup2">
             <form>
                 <div class="form-group">
-                    <label for="email">Email address:</label>
+                    <label for="email">Phone Number:</label>
                     <input type="email" class="form-control" id="email"/>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Password:</label>
+                    <label for="pwd">Event:</label>
                     <input type="password" class="form-control" id="pwd"/>
                 </div>
                 <div class="checkbox">
@@ -50,6 +50,33 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="row registry-gallery subpage">
+        <div class="title section">Event</div>
+        <hr class="small-rule subpage"/>
+        <div class="title section">Item</div>
+        <div class="item-info">
+            <span class="item-info">
+                <div class="price">Price</div>
+                <div class="item-description">Description</div>
+            </span>
+            <span class="item-image">
+                <img src="" />
+            </span>
+            <hr class="small-rule subpage"/>
+        </div>
+        <div>
+        </div>
+        <hr class="small-rule subpage"/>
+    </div>
+    <div class="row cart subpage">
+        <div class="title section">Cart</div>
+        <div class="item-info smaller">
+            <span class="item">Item</span>
+            <span class="price right">Price</span>
+        </div>
+        <hr class="small-rule subpage"/>
+
     </div>
 </div>
 

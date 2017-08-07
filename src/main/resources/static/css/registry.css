@@ -24,18 +24,31 @@
 }
 
 
-.have-code{
-    text-align: center;
-    margin-top:7%;
-    margin-bottom:10%;
+.title{
     position: relative;
     height: 10%;
     font-size: xx-large ;
-    color: white;
     display: block;
 
 }
+.title.head{
+    text-align: center;
+    margin-top:7%;
+    margin-bottom:10%;
+    color: white;
 
+}
+.title.section{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: gray;
+}
+.price, .item, .item-description{
+    color: gray;
+}
+.price.right{
+    float: right;
+}
 .code-button{
     background-color: silver;
     display: block;
@@ -63,4 +76,27 @@ img.get-started{
     right: 0;
     font-size: xx-large;
     color: white;
+}
+.sign-up{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.item-info{
+    margin: 3% 5%;
+}
+.item-info.smaller{
+    margin-right: 40%;
+}
+.item-image{
+    margin-right: 5%;
+}
+.title.subpage{
+    color: grey;
+}
+hr{
+    position: relative;
+}
+
+.cart{
+    width: 80%;
 }
