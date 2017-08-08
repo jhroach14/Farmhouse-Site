@@ -8,7 +8,6 @@ public class Service extends AbstractEntity{
 
     private String service_title;
     private String service_text;
-    private Integer sequence_num;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "service_photos", joinColumns = @JoinColumn(name = "service_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id"))
     private List<Photo> photos;
@@ -24,7 +23,6 @@ public class Service extends AbstractEntity{
     public Service(String service_title, String service_text, Integer sequence_num,List<Photo> photos) {
         this.service_title = service_title;
         this.service_text = service_text;
-        this.sequence_num = sequence_num;
         this.photos = photos;
     }
 
@@ -52,11 +50,4 @@ public class Service extends AbstractEntity{
         this.service_text = service_text;
     }
 
-    public Integer getSequence_num() {
-        return sequence_num;
-    }
-
-    public void setSequence_num(Integer sequence_num) {
-        this.sequence_num = sequence_num;
-    }
 }

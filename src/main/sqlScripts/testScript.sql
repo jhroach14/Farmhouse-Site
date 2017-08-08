@@ -43,3 +43,9 @@ insert into gallery_sections (section_title, section_text) values ("Section 3", 
 insert into gallery_section_photos (section_id, photo_id) values (1,6);
 insert into gallery_section_photos (section_id, photo_id) values (2,7);
 insert into gallery_section_photos (section_id, photo_id) values (3,8);
+
+insert into services (service_title, service_text) values ("Event 1", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
+insert into services (service_title, service_text) values ("Event 2", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
+insert into services (service_title, service_text) values ("Event 3", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
+insert into services (service_title, service_text) values ("Event 4", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
+insert into services (service_title, service_text) values ("Event 5", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");

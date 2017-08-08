@@ -75,7 +75,6 @@ create table services(
     id int auto_increment not null,
     service_title varchar(128) not null,
     service_text varchar(4096) not null,
-    sequence_num int not null,/*service ordering*/
 
     primary key (id)
 );
