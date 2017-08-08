@@ -1,0 +1,25 @@
+<div class="container-fluid gallery-container" ng-controller="galleryCtrl">
+
+    <div id="left-container">
+
+        <div class="left-img-holder" th:style="|background-image: url(${page.sections[0].photos[0].photo_path})|">
+            <div class="title-shader"></div>
+            <h1 class="cover-title" th:text="${page.sections[0].section_title}"></h1>
+        </div>
+        <div id="second-left" class="left-img-holder" th:style="|background-image: url(${page.sections[1].photos[0].photo_path})|">
+            <div class="title-shader"></div>
+            <h1 class="cover-title" th:text="${page.sections[1].section_title}"></h1>
+        </div>
+    </div>
+
+    <div id="right-container">
+        <div class="right-img-holder" th:style="|background-image: url(${page.sections[2].photos[0].photo_path})|">
+            <div class="title-shader"></div>
+            <h1 class="cover-title" th:text="${page.sections[2].section_title}"></h1>
+        </div>
+<!--
+        <img class="gallery-header header-right" th:src="${page.sections[2].photos[0].photo_path}"/>
+-->
+    </div>
+
+</div>
