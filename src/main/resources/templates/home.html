@@ -3,9 +3,6 @@
         <div id="gallery-col" class="col-md-12">
             <!--Carousel-->
             <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-
-
-
                 <!--slide wrapper-->
                 <div class="carousel-inner">
                     <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">
@@ -13,16 +10,17 @@
                     </div>
                 </div>
                 <!-- controls-->
-
-                <a href="#carousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''" th:attr="data-slide-to=${photoStat.index}"></li>
-                </ol>
-                <a href="#carousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
+                <div id="control-container">
+                    <a href="#carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''" th:attr="data-slide-to=${photoStat.index}"></li>
+                    </ol>
+                    <a href="#carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
             </div>
             <div id="post-line"></div>
         </div>

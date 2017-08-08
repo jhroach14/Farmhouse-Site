@@ -5,8 +5,8 @@
 
 }
 .carousel{
-    padding-left: 22%;
-    padding-right: 22%;
+    padding-left: 18%;
+    padding-right: 18%;
 }
 #controls-container{
     text-align: center;
@@ -45,4 +45,13 @@
 }
 #blog-title{
     margin-top: -5px;
+}
+.panel-heading{
+    background-color: darkgray!important;
+}
+.panel-body{
+    background-color: lightgray;
+}
+#control-container{
+    padding-top: 5px;
 }
