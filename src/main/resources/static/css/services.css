@@ -1,23 +1,27 @@
 
-.carousel{
+.carousel {
     padding-left: 22%;
     padding-right: 22%;
     text-align: center;
     margin-top: 5%;
 
 }
-#controls-container{
+
+#controls-container {
     text-align: center;
     color: darkgray;
 }
-.post-line{
+
+.post-line {
     margin: 7px auto;
-    width:90%;
+    width: 100%;
     height: 1px;
     background-color: lightgray;
     position: relative;
+    margin-top: 2%;
 }
-.carousel-indicators{
+
+.carousel-indicators {
     position: relative;
     display: inline;
     bottom: 0 !important;
@@ -25,17 +29,21 @@
     margin-left: 0 !important;
 
 }
-.carousel-indicators li{
+
+.carousel-indicators li {
     background-color: lightgray;
 }
-.carousel-indicators .active{
+
+.carousel-indicators .active {
     background-color: #000000;
 }
-.row.main{
+
+.row.main {
     margin: 2% auto;
 
 }
-.carousel-title{
+
+.carousel-title {
     float: left;
     color: gray;
     margin-left: 3%;

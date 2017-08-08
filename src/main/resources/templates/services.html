@@ -4,48 +4,96 @@
             <div class="title carousel-title">Events</div>
 
             <!--Carousel-->
-            <div class="carousel slide" data-ride="carousel" data-interval="false">
+            <div id="carousel-events" class="carousel slide" data-ride="carousel" data-interval="false">
                 <!--slide wrapper-->
                 <div class="carousel-inner">
 
                 </div>
                 <!-- controls-->
 
-                <a href="#carousel" data-slide="prev">
+                <a href="#carousel-events" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
                 <ol class="carousel-indicators">
                 </ol>
-                <a href="#carousel" data-slide="next">
+                <a href="#carousel-events" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </div>
+            <div class="post-line"></div>
+
         </div>
     </div>
-    <div class="post-line"></div>
     <div class="row main interiors">
         <div class="col-md-12">
-            <div class="title carousel-title">Interiors</div>
+            <div class="title carousel-title">Events</div>
 
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                </ol>
+            <!--Carousel-->
+            <div id="carousel-interior" class="carousel slide" data-ride="carousel" data-interval="false">
+                <!--slide wrapper-->
+                <div class="carousel-inner">
+                    <div class="nested-carousel item first-child">
+                    <div id="nested-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!--slide wrapper-->
+                        <div class="carousel-inner">
+                            <div class="picture item first-child">
+                                <img src="/img/about-main.jpg"/>
+                            </div>
+                            <div class="picture item">
+                                <img src="/img/registry-get-started.jpg"/>
+                            </div>
+                            <div class="picture item">
+                                <img src="/img/about-main.jpg"/>
+                            </div>
+                        </div>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <!--place nested carousel-->
                     </div>
-                    <div class="item">
+                    <a href="#nested-carousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <ol class="carousel-indicators">
+                    </ol>
+                    <a href="#nested-carousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    </div>
+                    <div class="nested-carousel item">
+                    <div id="nested-carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!--slide wrapper-->
+                        <div class="carousel-inner">
+                            <div class="picture item first-child">
+                                <img src="/img/registry-get-started.jpg"/>
+                            </div>
+                            <div class="picture item">
+                                <img src="/img/about-main.jpg"/>
+                            </div>
+                            <div class="picture item">
+                                <img src="/img/registry-get-started.jpg"/>
+                            </div>
+                        </div>
 
+                    </div>
+                    <a href="#nested-carousel2" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <ol class="carousel-indicators">
+                    </ol>
+                    <a href="#nested-carousel2" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
                     </div>
                 </div>
+                <!-- controls-->
 
+                <a href="#carousel-interior" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <ol class="carousel-indicators">
+                </ol>
+                <a href="#carousel-interior" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
-            <div id="post-line"></div>
         </div>
     </div>
 
