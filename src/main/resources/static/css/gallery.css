@@ -1,0 +1,21 @@
+.gallery-header{
+    width: 100%;
+}
+#left-container{
+    width:66.66%;
+    height:100%;
+    display: inline-block;
+}
+#right-container{
+    width: 33.33%;
+    height: 100%;
+}
+#section-left-bottom{
+    padding-top: 2%;
+}
+#section-left-top{
+    padding-bottom: 2%;
+}
+.header-left{
+    height: 50%;
+}

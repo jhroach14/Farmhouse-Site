@@ -1,0 +1,13 @@
+<div class="container-fluid" ng-controller="galleryCtrl">
+
+    <div id="left-container">
+        <img id="section-left-top" class="gallery-header header-left" th:src="${page.sections[0].photos[0].photo_path}"/>
+
+        <img id="section-left-bottom" class="gallery-header header-left"  th:src="${page.sections[1].photos[0].photo_path}"/>
+    </div>
+
+    <div id="right-container">
+        <img class="gallery-header" th:src="${page.sections[2].photos[0].photo_path}"/>
+    </div>
+
+</div>

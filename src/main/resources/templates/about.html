@@ -4,7 +4,11 @@
             <img class="about about-main" th:src="${page.primary_photo.photo_path}"/>
         </div>
     </div>
-    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="about-line"></div>
+        </div>
+    </div>
     <div class="row store-hours">
         <div class="col-md-5">
             <div th:text="${page.store_hours}"></div>
@@ -22,12 +26,16 @@
             <span class="social mail">a</span>
         </div>
     </div>
-    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="about-line"></div>
+        </div>
+    </div>
     <div id="bottom-row" class="row bottom main">
-        <div class="col-md-6 zero-padding">
+        <div class="col-md-4 zero-padding">
             <img class="about about-minor" th:src="${page.secondary_photo.photo_path}"/>
         </div>
-        <div class="col-md-6 description zero-padding">
+        <div class="col-md-8 description zero-padding">
             <div id="bio" th:text="${page.company_bio}">
             </div>
         </div>
