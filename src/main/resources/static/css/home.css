@@ -1,7 +1,7 @@
 .curl{
     width: 5%;
     position: relative;
-    float: none;
+    display: none;
     margin: auto 0;
 
 }
@@ -10,7 +10,7 @@
 
 }
 .curl-left{
-    
+
 
 }
 #gallery-row{
