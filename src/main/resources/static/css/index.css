@@ -130,8 +130,9 @@ object.logo-mobile{
 
 }
 footer{
+    font-family: cursive;
     height: 8%;
-    background-color: lightgray;
+    background-color: whitesmoke;
     width: 90%;
     margin: 0 5%;
     text-align: center;
