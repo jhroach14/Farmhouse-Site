@@ -1,7 +1,23 @@
+.curl{
+    width: 5%;
+    position: relative;
+    float: none;
+    margin: auto 0;
+
+}
+.curl-right{
+
+
+}
+.curl-left{
+    
+
+}
 #gallery-row{
     margin: 2% auto;
 }
 #gallery-col{
+
 
 }
 .carousel{
