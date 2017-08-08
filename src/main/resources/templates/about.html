@@ -1,7 +1,7 @@
-<div class="content-container" ng-controller="aboutCtrl">
+<div class="content-container" ng-controller="aboutCtrl" >
     <div class="row top main">
         <div class="col-md-12 zero-padding">
-            <img class="about about-main" th:src="${page.primary_photo}"/>
+            <img class="about about-main" th:src="${page.primary_photo.photo_path}"/>
         </div>
     </div>
     <hr/>
@@ -23,25 +23,12 @@
         </div>
     </div>
     <hr/>
-    <div class="row bottom main">
-        <div class="col-md-5 zero-padding">
-            <img class="about about-minor" src=""/>
+    <div id="bottom-row" class="row bottom main">
+        <div class="col-md-6 zero-padding">
+            <img class="about about-minor" th:src="${page.secondary_photo.photo_path}"/>
         </div>
-        <div class="col-md-7 description zero-padding">
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Hoc est non modo cor non habere, sed ne palatum quidem.
-                Quid ergo aliud intellegetur nisi uti ne quae pars naturae neglegatur?
-                Neque enim disputari sine reprehensione nec cum iracundia aut pertinacia recte disputari potest.
-                A mene tu? Videsne quam sit magna dissensio?
-                Ita enim vivunt quidam, ut eorum vita refellatur oratio.
-                Obsecro, inquit, Torquate, haec dicit Epicurus?
-                Duo Reges: constructio interrete. Omnia contraria, quos etiam insanos esse vultis.
-                Satis est ad hoc responsum.
-
-                Qui autem de summo bono dissentit de tota philosophiae ratione dissentit.
-                Memini me adesse P. Quod non faceret, si in voluptate summum bonum poneret.
-                Ita ne hoc quidem modo paria peccata sunt. Quae hic rei publicae
-                vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem.
+        <div class="col-md-6 description zero-padding">
+            <div id="bio" th:text="${page.company_bio}">
             </div>
         </div>
     </div>

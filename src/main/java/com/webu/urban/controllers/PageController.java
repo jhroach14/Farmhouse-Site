@@ -63,7 +63,7 @@ public class PageController {
     @RequestMapping("/about")
     public String about(Model model, @RequestParam(value = "flag", required = false) String flag) {
         AboutPage aboutPage;
-        AboutInfo aboutInfo = aboutPageRepository.findOne(0);
+        AboutInfo aboutInfo = aboutPageRepository.findOne(1);
         if(aboutInfo != null){
             aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
         }

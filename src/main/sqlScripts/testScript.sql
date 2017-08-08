@@ -6,6 +6,9 @@ insert into authorities (username, authority) values ('user', 'ROLE_ADMIN');
 insert into photos (photo_path, photo_text) values ("/img/main-gallery1.jpg", "mouseover text 1");
 insert into photos (photo_path, photo_text) values ("/img/main-gallery2.jpg", "mouseover text 2");
 insert into photos (photo_path, photo_text) values ("/img/main-gallery3.jpg", "mouseover text 3");
+insert into photos (photo_path, photo_text) values ("/img/about-main.jpg", "mouseover text 4");
+insert into photos (photo_path, photo_text) values ("/img/about-minor.jpg", "mouseover text 5");
+
 
 insert into home_page_photos (photo) value (1);
 insert into home_page_photos (photo) value (2);
@@ -28,4 +31,4 @@ insert into about_pages (store_hours, company_bio, phone_number, address, email,
                 Qui autem de summo bono dissentit de tota philosophiae ratione dissentit.
                 Memini me adesse P. Quod non faceret, si in voluptate summum bonum poneret.
                 Ita ne hoc quidem modo paria peccata sunt. Quae hic rei publicae
-                vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem.","770-410-112","12680 Crabapple Road, Milton GA 30004","Urbanfarmhousedesigns@yahoo.com", "/img/about-main.jpg","/img/about-minor.jpg")
+                vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem.","770-410-112","12680 Crabapple Road, Milton GA 30004","Urbanfarmhousedesigns@yahoo.com", 4, 5)
