@@ -24,6 +24,7 @@ $(function () {
         }
     })
     $(document).ready(function(){
-        $(".main").hide().fadeIn(750, "swing");
+        $(".main", "footer").hide().fadeIn(750, "swing");
+
     })
 });

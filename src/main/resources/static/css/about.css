@@ -43,10 +43,13 @@ img.about{
     padding-left: 3%;
 }
 
-hr{
+.post-line{
     width: 80%;
     margin: 2% auto;
     position: relative;
+    margin-top: 7px;
+    height: 1px;
+    background-color: lightgray;
 }
 
 #bottom-row{

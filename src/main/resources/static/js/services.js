@@ -6,3 +6,6 @@ app.controller('servicesCtrl', ['$scope', '$http', //scope = model for angular, 
 
     }
 ]);
+$('#carousel-example-generic').carousel();
+$('#carousel-example-generic2').carousel();
+$('#carousel-example-generic3').carousel();
