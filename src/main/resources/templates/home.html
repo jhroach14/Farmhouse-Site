@@ -37,23 +37,6 @@
 
         </div>
     </div>
-    <div class="row main">
-        <div class="col-md-9">
-            <!--Blogposts-->
-            <h2 id="blog-title">Blog Posts</h2>
-            <div id="post-container" class="panel-group">
-                <div class="panel panel-default" th:each="post : ${page.posts}">
-                    <div class="panel-heading" th:text="|${post.post_title} - ${post.post_date}|"></div>
-                    <div class="panel-body" th:text="${post.post_text}"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <!--SideBar-->
-            <div id="sidebar">
 
-            </div>
-        </div>
-    </div>
 
 </div>
