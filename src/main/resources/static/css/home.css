@@ -15,21 +15,21 @@
 }
 #gallery-row{
     margin: 2% auto;
-}
-#gallery-col{
-
 
 }
-.carousel{
-    padding-left: 18%;
-    padding-right: 18%;
-}
-#controls-container{
+
+#control-container{
     text-align: center;
     color: darkgray;
+    margin-top: -2.5%;
 }
 #carousel{
     text-align: center;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 .carousel-indicators{
     position: relative;
@@ -37,7 +37,6 @@
     bottom: 0 !important;
     left: 0 !important;
     margin-left: 0 !important;
-
 }
 .carousel-indicators li{
     background-color: lightgray;
@@ -53,21 +52,3 @@
     background-color: lightgray;
 }
 
-#sidebar{
-    width:100%;
-    height: 500px;
-    background-color: #bfbfbf;
-    border-radius: 2px;
-}
-#blog-title{
-    margin-top: -5px;
-}
-.panel-heading{
-    background-color: darkgray!important;
-}
-.panel-body{
-    background-color: lightgray;
-}
-#control-container{
-    padding-top: 5px;
-}
