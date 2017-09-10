@@ -10,6 +10,7 @@ html,body{
     margin-top: 5px!important; /*okay to use important when overridng outside libraries*/
 }
 nav.navbar{
+    font-weight: bold;
     margin-bottom: 0;
 }
 #nav-line{

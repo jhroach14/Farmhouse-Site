@@ -5,31 +5,23 @@
     margin: auto 0;
 
 }
-.curl-right{
-
-
-}
-.curl-left{
-
-
-}
-#gallery-row{
-    margin: 2% auto;
-
-}
-
 #control-container{
     text-align: center;
     color: darkgray;
     margin-top: -2.5%;
 }
-#carousel{
-    text-align: center;
+.container-fluid{
     height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
+    padding: 0;
+}
+#carousel{
+    text-align: center;
+    height: 100%;
+
 }
 .carousel-indicators{
     position: relative;
