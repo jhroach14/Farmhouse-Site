@@ -9,8 +9,9 @@ html,body{
 #home-button{
     margin-top: 5px!important; /*okay to use important when overridng outside libraries*/
 }
+
 nav.navbar{
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 0;
 }
 #nav-line{
@@ -120,6 +121,7 @@ object.logo-mobile{
     }
 
 }
+
 .row{
     width: 90%;
     margin-left: 5%;
@@ -137,4 +139,18 @@ object.logo-mobile{
     display: block;
 
 }
+.glyphicon.glyphicon-one-fine-full-dot {
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-full-dot:before {
+    content:"\25cf";
+}
+#company-descriptors{
+    display: table;
+    margin: 0 auto;
+    font-family: "Goudy Old Style";
+    font-weight: bold;
+    font-size: large ;
+    margin-top: -1%;
 
+}

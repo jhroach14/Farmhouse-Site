@@ -19,6 +19,8 @@ Html templates are inserted via thymeleaf/angularJS-->
 
         <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{|/css${page.template}.css|}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
 
     </head>
     <body >
@@ -32,6 +34,13 @@ Html templates are inserted via thymeleaf/angularJS-->
                     </a>
                 </li>
             </ul>
+            <span id="company-descriptors">
+                home furnishing
+                <span class="glyphicon glyphicon-one-fine-full-dot"></span>
+                design
+                <span class="glyphicon glyphicon-one-fine-full-dot"></span>
+                events
+            </span>
             <ul class="nav page-nav">
                 <li>
                     <a class="about-btn" href="/about">ABOUT</a>
