@@ -11,7 +11,7 @@
         <!-- controls-->
         <div id="control-container">
             <a href="#carousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="glyphicon glyphicon-chevron-left arrow"></span>
             </a>
             <ol class="carousel-indicators">
                 <li data-target="#carousel" th:each="photo : ${page.photos}"
@@ -19,7 +19,7 @@
                     th:attr="data-slide-to=${photoStat.index}"></li>
             </ol>
             <a href="#carousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="glyphicon glyphicon-chevron-right arrow"></span>
             </a>
         </div>
     </div>

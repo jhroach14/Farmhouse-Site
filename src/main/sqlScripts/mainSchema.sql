@@ -56,7 +56,9 @@ create table blog_posts(
 /*about page entities*/
 create table about_pages(
     id int auto_increment not null,
-    store_hours varchar(1028) not null,
+    store_season varchar(64) not null,
+    store_days varchar(64) not null,
+    store_hours varchar(64) not null,
     company_bio varchar(16384) not null,
     phone_number varchar(32) not null,
     address varchar(256) not null,
@@ -118,6 +120,39 @@ create table registry_pages(
     primary key (id),
 
     constraint reg_photo_fk foreign key (main_photo) references photos(id)
+);
+/*each wedding registered gets an entry with a code*/
+create table registry_entry(
+    id int auto_increment not null,
+    recipient varchar (128) not null,
+    description varchar (4096),
+    code varchar (32) not null,
+    email varchar(256) not null,
+    phone varchar(256) not null,
+
+    primary key (id)
+);
+/*each item availiable in the registry gets an item entry*/
+create table registry_item(
+    id int auto_increment not null,
+    price double not null,
+    title varchar(128) not null,
+    description varchar(4096),
+    photo int not null,
+
+    primary key (id),
+
+    constraint reg_it_pht_fk foreign key (photo) references photos(id)
+);
+/*entries are linked to items via link table*/
+create table entry_items(
+    entry_id int not null,
+    item_id int not null,
+
+    primary key (entry_id, item_id),
+
+    constraint entry_it_fk foreign key (entry_id) references registry_entry(id),
+    constraint it_entry_fk foreign key (item_id) references registry_item(id)
 );
 
 /*gallery page entities*/

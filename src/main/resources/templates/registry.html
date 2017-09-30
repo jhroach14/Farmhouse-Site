@@ -6,10 +6,10 @@
             </div>
             <div class="col-md-4">
                 <div class="title head">Have a code?</div>
-                <form onsubmit="redirectSubpage()" class="code-input" id="custom-search-input">
-                    <input type="text" class="form-control input-lg zero-border-radius"
-                           placeholder="Enter Registry Code Here"/>
-                    <button class="code-button" type="submit">Submit</button>
+                <form class="code-input" id="custom-search-input">
+                    <input ng-model="regCode" type="text" class="form-control input-lg zero-border-radius"
+                           placeholder="Enter Registry Code Here" required="required"/>
+                    <button class="code-button" type="submit" ng-click="submitRegCode()">Submit</button>
                 </form>
             </div>
             <div class="col-md-4 swirl-right">
@@ -18,8 +18,8 @@
         </div>
     </div>
     <div class="row registry-pic main">
-        <img class="get-started" src="/img/registry-get-started.jpg"/>
-        <div class="get-started-text">GET STARTED</div>
+        <img class="get-started" th:src="${page.main_photo.photo_path}"/>
+        <div class="get-started-text" th:text="${page.intro_text}"></div>
     </div>
     <div class="row sign-up main">
         <form>
@@ -37,6 +37,10 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <label for="recipient">Registry Recipient:</label>
+                    <input type="text" placeholder="Who will your registry be for?" class="form-control" id="recipient"/>
+                </div>
+                <div class="form-group">
                     <label for="event">Event Decription/Comments:</label>
                     <textarea rows="6" cols="50" type="text" placeholder="What will your registry be for?" class="form-control" id="event"></textarea>
                 </div>
@@ -45,20 +49,25 @@
 
     </div>
     <div class="row registry-gallery subpage">
-        <div class="title section">Event</div>
+        <div class="title section">
+            <h2 >Recipient: {{entry.recipient}}</h2>
+            <div>Description: {{entry.description}}"</div>
+        </div>
         <div class="post-line small-rule subpage"></div>
-        <div class="title section">Item</div>
-        <div class="item-info">
-            <span class="item-info">
-                <div class="price">Price</div>
-                <div class="item-description">Description</div>
-            </span>
+        <div class="title section">Registered Items</div>
+        <div ng-repeat="item in entry.items" class="item-info">
             <span class="item-image">
-                <img src=""/>
+                <img class="image-for-item" ng-src="{{item.photo.photo_path}}"/>
+
+                <div class="item-text">
+                    <h3 class = "text-child"> {{item.title}}
+                        <button ng-click="addItem(item)"  class="btn btn-primary cart-btn">Add To Cart</button>
+                    </h3> <br/>
+                    <div class="price text-child"> ${{item.price}}</div><br/>
+                    <div class="item-description text-child" >{{item.description}}</div>
+                </div>
             </span>
             <div class="post-line small-rule subpage"></div>
-        </div>
-        <div>
         </div>
         <div class="post-line small-rule subpage"></div>
     </div>
@@ -69,6 +78,14 @@
             <span class="price right">Price</span>
         </div>
         <div class="post-line small-rule subpage"></div>
+        <div ng-repeat="item in cartItems" class="item-info smaller">
+            <span ng-click="deleteItem(item)" title="delete" class="glyphicon glyphicon-remove"></span>
+            <span class="item">{{item.title}}</span>
+            <span class="price right">{{item.price}}</span>
+            <div class="post-line small-rule subpage"></div>
+        </div>
+        <button ng-click="submitCart()" id="cart-btn"  class="btn btn-primary">Checkout</button>
+
 
     </div>
 </div>

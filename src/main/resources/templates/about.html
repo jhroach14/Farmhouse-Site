@@ -10,7 +10,9 @@
         </div>
     </div>
     <div class="row store-hours">
-        <div class="col-md-5">
+        <div id="left-hours" class="col-md-5">
+            <div th:text="${page.store_season}"></div>
+            <div th:text="${page.store_days}"></div>
             <div th:text="${page.store_hours}"></div>
         </div>
         <div class="col-md-7">

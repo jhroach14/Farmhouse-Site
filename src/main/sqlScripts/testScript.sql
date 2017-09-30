@@ -11,6 +11,8 @@ insert into photos (photo_path, photo_text) values ("/img/about-minor.jpg", "mou
 insert into photos (photo_path, photo_text) values ("/img/section0-pic0.jpg","mouseover text 6");
 insert into photos (photo_path, photo_text) values ("/img/section1-pic0.jpg", "mouseover text 7");
 insert into photos (photo_path, photo_text) values ("/img/section2-pic0.jpg", "mouseover text 8");
+insert into photos (photo_path, photo_text) values ("/img/registry-get-started.jpg", "Get Started");
+insert into photos (photo_path, photo_text) values ("/img/chair.jpg", "chair");
 
 
 insert into home_page_photos (photo) value (1);
@@ -21,7 +23,7 @@ insert into blog_posts (post_title, post_date, post_type, post_text) values ("Ti
 insert into blog_posts (post_title, post_date, post_type, post_text) values ("Title 2", NOW(), 0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit. Vivamus pulvinar tellus sed mi aliquet, et molestie dolor blandit. Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod.");
 insert into blog_posts (post_title, post_date, post_type, post_text) values ("Title 3", NOW(), 0, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit. Vivamus pulvinar tellus sed mi aliquet, et molestie dolor blandit. Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod.");
 
-insert into about_pages (store_hours, company_bio, phone_number, address, email, primary_photo, secondary_photo) values ("SUMMER<br/>Monday-Saturday<br/>11:00am - 5:00pm","Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+insert into about_pages (store_season, store_days, store_hours, company_bio, phone_number, address, email, primary_photo, secondary_photo) values ("SUMMER","Monday-Saturday", "11:00am - 5:00pm","Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Hoc est non modo cor non habere, sed ne palatum quidem.
                 Quid ergo aliud intellegetur nisi uti ne quae pars naturae neglegatur?
                 Neque enim disputari sine reprehensione nec cum iracundia aut pertinacia recte disputari potest.
@@ -49,3 +51,23 @@ insert into services (service_title, service_text) values ("Event 2", "Quisque v
 insert into services (service_title, service_text) values ("Event 3", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
 insert into services (service_title, service_text) values ("Event 4", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
 insert into services (service_title, service_text) values ("Event 5", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
+
+insert into registry_pages (intro_text, main_photo) values ("GETTING STARTED", 9);
+
+insert into registry_entry (recipient, description, code, email, phone) values ("John & Jane Smith", "It will be a fun wedding please bring a gift below", "1234", "jhroach14@gmail.com", "770-846-8529");
+insert into registry_entry (recipient, description, code, email, phone) values ("Jake & Jill Smith", "It will not be a fun wedding please dont bring a gift below", "4321", "jhroach14@gmail.com", "770-846-8529");
+
+insert into registry_item (price, title, description, photo) values (1.99, "chair 1", "a lovely chair", 10);
+insert into registry_item (price, title, description, photo) values (2.99, "chair 2",  "a lovely chair", 10);
+insert into registry_item (price, title, description, photo) values (3.99, "chair 3",  "a lovely chair", 10);
+insert into registry_item (price, title, description, photo) values (400.99, "chair 4",  "an expensive lovely chair", 10);
+insert into registry_item (price, title, description, photo) values (500.99, "chair 5",  "an expensive lovely chair", 10);
+
+insert into entry_items (entry_id, item_id) values (1, 1);
+insert into entry_items (entry_id, item_id) values (1, 2);
+insert into entry_items (entry_id, item_id) values (1, 3);
+insert into entry_items (entry_id, item_id) values (1, 4);
+insert into entry_items (entry_id, item_id) values (2, 5);
+insert into entry_items (entry_id, item_id) values (2, 2);
+insert into entry_items (entry_id, item_id) values (2, 3);
+insert into entry_items (entry_id, item_id) values (2, 4);

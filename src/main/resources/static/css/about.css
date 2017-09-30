@@ -73,7 +73,7 @@ img.about{
 }
 
 .fa:hover {
-    opacity: 0.3;
+    opacity: 0.7;
 }
 
 .fa-facebook {
@@ -83,4 +83,7 @@ img.about{
 .fa-instagram {
     background: #125688;
     color: white;
+}
+#left-hours{
+    text-align: right;
 }

@@ -26,8 +26,12 @@
 }
 .carousel-indicators li{
     background-color: lightgray;
+    width: 16px;
+    height: 16px;
 }
 .carousel-indicators .active{
+    width: 17px;
+    height: 17px;
     background-color: #000000;
 }
 
@@ -40,6 +44,9 @@
 }
 #nav-line{
     display: none;
+}
+.arrow{
+    color: #000000;
 }
 body{
     background: gray; /* For browsers that do not support gradients */

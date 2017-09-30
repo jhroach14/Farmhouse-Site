@@ -65,7 +65,7 @@ public class PageController {
         AboutPage aboutPage;
         AboutInfo aboutInfo = aboutPageRepository.findOne(1);
         if(aboutInfo != null){
-            aboutPage = new AboutPage("About",aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
+            aboutPage = new AboutPage("About", aboutInfo.getStore_season(), aboutInfo.getStore_days(), aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
         }
         else{
             aboutPage = new AboutPage();
@@ -104,12 +104,14 @@ public class PageController {
     public String registry(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         RegistryPage registryPage;
-        RegistryInfo registryInfo = registryPageRepository.findOne(0);
+        RegistryInfo registryInfo = registryPageRepository.findOne(1);
         if(registryInfo != null){
             registryPage = new RegistryPage("Registry",registryInfo.getIntro_text(),registryInfo.getMain_photo());
+            log.debug("generating registry page");
         }
         else{
             registryPage = new RegistryPage();
+            log.debug("No registry page found");
 
         }
         model.addAttribute("page", registryPage);
@@ -117,24 +119,6 @@ public class PageController {
 
         if(flag != null && flag.equals("js")){
             return "registry";
-        }else{
-            return "index";
-
-        }
-    }
-
-    @RequestMapping("/services")
-    public String services(Model model, @RequestParam(value = "flag", required = false) String flag) {
-
-        Iterable<Service> services = serviceRepository.findAll();
-        Iterable<Interior> interiors = interiorRepository.findAll();
-        ServicesPage servicesPage = new ServicesPage("Services", services, interiors);
-
-        model.addAttribute("page", servicesPage);
-        log.debug("Serving services page...");
-
-        if(flag != null && flag.equals("js")){
-            return "services";
         }else{
             return "index";
 

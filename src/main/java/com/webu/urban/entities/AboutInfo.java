@@ -7,6 +7,8 @@ import javax.persistence.OneToOne;
 @Entity(name="about_pages")
 public class AboutInfo extends AbstractEntity{
 
+    private String store_season;
+    private String store_days;
     private String store_hours;
     private String company_bio;
     private String phone_number;
@@ -30,14 +32,32 @@ public class AboutInfo extends AbstractEntity{
     public AboutInfo() {
     }
 
-    public AboutInfo(String store_hours, String company_bio, String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo) {
+    public AboutInfo(String store_season,String store_days,String store_hours, String company_bio, String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo) {
         this.store_hours = store_hours;
+        this.store_days = store_days;
+        this.store_season = store_season;
         this.company_bio = company_bio;
         this.phone_number = phone_number;
         this.address = address;
         this.email = email;
         this.primary_photo = primary_photo;
         this.secondary_photo = secondary_photo;
+    }
+
+    public String getStore_season() {
+        return store_season;
+    }
+
+    public void setStore_season(String store_season) {
+        this.store_season = store_season;
+    }
+
+    public String getStore_days() {
+        return store_days;
+    }
+
+    public void setStore_days(String store_days) {
+        this.store_days = store_days;
     }
 
     public String getPhone_number() {

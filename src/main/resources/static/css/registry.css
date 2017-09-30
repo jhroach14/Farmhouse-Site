@@ -83,6 +83,10 @@ img.get-started{
 .item-image{
     margin-right: 5%;
 }
+.image-for-item{
+    width:15%;
+    display: inline-block;
+}
 .title.subpage{
     color: grey;
 }
@@ -96,4 +100,14 @@ img.get-started{
 .cart{
     width: 80%;
     margin-bottom: 2%;
+}
+.item-text{
+    display: inline-block;
+}
+.text-child{
+    display: inline;
+}
+#cart-btn{
+    margin-left: 40px;
+    margin-top: 25px;
 }
