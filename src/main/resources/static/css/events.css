@@ -1,4 +1,36 @@
-.v-centered {
+.lightSlider {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+.ls-li {
+    display: block;
+    float: left;
+    cursor:pointer;
+    background-color: lavender;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    min-height: 300px;
+    border-radius: 3px;
+}
+.ls-img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+#content-col{
+    padding-left: 11%;
+    padding-right: 11%;
+    padding-top: 15px;
+}
+
+.lsAction > a{
+    opacity: 1 !important;
+}
+
+
+/*.v-centered {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,4 +131,4 @@
         overflow: hidden;
         width: 310px;
     }
-}
+}*/

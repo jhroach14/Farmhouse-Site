@@ -183,7 +183,16 @@ create table gallery_section_photos(
     constraint pht_sect_fk foreign key (photo_id) references photos(id)
 );
 
+create table events(
+    id int auto_increment not null,
+    name varchar(256) not null,
+    description varchar(4096) not null,
+    photo int,
 
+    primary key (id),
+
+    constraint evnt_pht_fk foreign key (photo) references photos(id)
+);
 
 
 

@@ -1,42 +1,12 @@
 <div class="content-container" ng-controller="eventsCtrl">
     <div class="row main events">
-        <div class="col-md-12">
-            <div class="v-centered">
-                <div class="carousel">
-                    <div class="roll">
-                        <div th:each="service : ${page.services}" class="project">
-                            <h2 th:text="${service.service_title}"></h2>
-                            <div th:text="${service.service_text}"></div>
-                        </div>
-                    </div>
-                    <div class="sections">
-                    </div>
-                    <button class="navigation" id="nav-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
-                    <button class="navigation" id="nav-right"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                </div>
-            </div>
-
-            <!--<div class="title carousel-title">Events</div>
-
-            &lt;!&ndash;Carousel&ndash;&gt;
-            <div id="carousel-events" class="carousel slide" data-ride="carousel" data-interval="false">
-                &lt;!&ndash;slide wrapper&ndash;&gt;
-                <div class="carousel-inner">
-
-                </div>
-                &lt;!&ndash; controls&ndash;&gt;
-
-                <a href="#carousel-events" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <ol class="carousel-indicators">
-                </ol>
-                <a href="#carousel-events" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
-            <div class="post-line"></div>-->
-
+        <div id="content-col" class="col-md-12">
+            <ul class="lightSlider">
+                <li class="ls-li" th:each="event : ${page.events}">
+                    <h3 th:text="${event.name}"></h3>
+                    <div th:text="${event.description}"></div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

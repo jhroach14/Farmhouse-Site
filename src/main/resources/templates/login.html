@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--This file is the login page served by the spring security module when admins attempt to login-->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
     <head>
@@ -10,6 +9,34 @@
     </head>
 
     <body class="container-fluid">
-        <!--TODO:login html goes here-->
+        <div id="login-container" align="center">
+            <object id="logo" class="logo-link" data="/img/logoHDRemaster.svg" type="image/svg+xml">
+                <img src="/img/logo.png" /><!--for browsers with no svg support-->
+            </object>
+
+
+            <h3 id="login-title">Urban Farmhouse Admin Login</h3>
+
+            <div th:if="${param.error}" class="message">
+                Invalid Credentials
+            </div>
+            <div th:if="${param.logout}" class="message">
+                You have been logged out
+            </div>
+            <form th:action="@{/login}" method="post" class="loginForm">
+                <div class="form-group">
+                    <label> User Name : <input class="input-field form-control" type="text" name="username"/> </label>
+                </div>
+                <div class="form-group">
+                    <label> Password: <input class="input-field form-control" type="password" name="password"/> </label>
+                </div>
+                <div class="form-actions">
+                    <input class="btn btn-primary" type="submit" value="Sign In"/>
+                </div>
+            </form>
+        </div>
+
+
+
     </body>
 </html>

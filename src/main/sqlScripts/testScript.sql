@@ -94,3 +94,9 @@ insert into interior_photos (interior_id, photo_id) values (2,4);
 insert into interior_photos (interior_id, photo_id) values (2,5);
 insert into interior_photos (interior_id, photo_id) values (2,6);
 insert into interior_photos (interior_id, photo_id) values (2,7);
+
+insert into events (name, description, photo) values ("Event1", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem", 2);
+insert into events (name, description, photo) values ("Event2", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem ks kakakjdd  ddasdadsda ", 5);
+insert into events (name, description, photo) values ("Event3", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem", 3);
+insert into events (name, description) values ("Event4", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem");
+insert into events (name, description) values ("Event5", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem");

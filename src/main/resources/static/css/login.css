@@ -1,3 +1,12 @@
+body{
+    background-color: lightblue;
+}
 #content-col{
     padding: 25px;
+}
+#logo{
+    width: 20%;
+}
+#login-container{
+    margin-top: 5%;
 }

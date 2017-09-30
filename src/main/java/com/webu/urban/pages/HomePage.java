@@ -18,8 +18,8 @@ public class HomePage extends Page {
         super("Home", "/home");
     }
 
-    public HomePage(String title, Iterable<Photo> photos) {
-        super(title, "/home");
+    public HomePage(String title, String template, Iterable<Photo> photos) {
+        super(title, template);
         this.photos = photos;
         log.debug("creating home page data model...");
     }

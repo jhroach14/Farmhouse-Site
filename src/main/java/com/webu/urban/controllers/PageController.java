@@ -7,12 +7,15 @@ import com.webu.urban.pages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 //This class handles all page/page fragment url requests
 @Controller
@@ -38,6 +41,8 @@ public class PageController {
     private ServiceRepository serviceRepository;
     @Autowired
     private InspireRepository inspireRepository;
+    @Autowired
+    private EventRepository eventRepository;
 
     @RequestMapping(value ={"/","/home"})//root handled by this controller
     public String index(Model model, @RequestParam(value = "flag", required = false) String flag){ //model is spring data object accessible from thymeleaf
@@ -48,7 +53,17 @@ public class PageController {
             photos.add(hp.getPhoto());
         }
 
-        HomePage homePage = new HomePage( "Home", photos);//add data to model
+        HomePage homePage = null;
+        Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        for(GrantedAuthority authority : authorities){
+            if(authority.getAuthority().equals("ROLE_ADMIN")){
+                homePage = new HomePage("Home", "/admin/home",photos);
+            }
+        }
+        if(homePage == null){
+            homePage = new HomePage( "Home","/home", photos);//add data to model
+        }
+
 
         model.addAttribute("page", homePage); //allows home page fields to be accessed from templates
         log.debug("Serving home page...");
@@ -157,6 +172,30 @@ public class PageController {
             return "index";
         }
     }
+
+    @RequestMapping("/events")
+    public String events(Model model, @RequestParam(value = "flag", required = false) String flag) {
+
+        Iterable<Event> events = eventRepository.findAll();
+        EventsPage eventsPage = new EventsPage("Events",events);
+        model.addAttribute("page", eventsPage);
+        log.debug("Serving events page...");
+
+        if(flag != null && flag.equals("js")){
+            return "interior";
+        }else{
+            return "index";
+        }
+    }
+
+
+    @RequestMapping("/login")
+    public String login(){
+
+        log.debug("--- Request for Login page");
+        return "login"; //thymleaf matches strings to html page names in resources/templates
+    }
+
     /*
     //more use of spring's context objects
     protected User getUser(){
