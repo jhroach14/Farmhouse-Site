@@ -1,3 +1,42 @@
+
+.lightSlider {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+.ls-li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+.ls-img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+#content-col{
+    padding-top: 10px;
+    padding-left: 22%;
+    padding-right: 22%;
+}
+.arrow{
+    font-size: 60px;
+    position:absolute;
+}
+#left-arrow{
+    left:15%;
+    top:37%;
+}
+#right-arrow{
+    right:15%;
+    top:37%;
+}
+.int-title{
+    text-align: center;
+}
+
+
 /*.carousel{
     padding-left: 22%;
     padding-right: 22%;

@@ -11,12 +11,18 @@ Html templates are inserted via thymeleaf/angularJS-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+        <script src="/js/lightslider.js"></script>
+
+
         <script src="/js/index.js"></script>
         <script th:src="@{|/js${page.template}.js|}"></script>
+
+
 
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
 
+        <link type="text/css" rel="stylesheet" href="/css/lightslider.css" />
         <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{|/css${page.template}.css|}"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -83,4 +89,5 @@ Html templates are inserted via thymeleaf/angularJS-->
         Urban Farmhouse - Crabapple, GA
     </footer>
     </body>
+
 </html>

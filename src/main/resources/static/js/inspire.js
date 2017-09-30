@@ -1,3 +1,5 @@
-/**
- * Created by jo809 on 8/5/2017.
- */
+app.controller('inspireCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
+    function($scope, $http) {
+
+    }
+]);

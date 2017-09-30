@@ -36,18 +36,19 @@ public class PageController {
     private RegistryPageRepository registryPageRepository;
     @Autowired
     private ServiceRepository serviceRepository;
+    @Autowired
+    private InspireRepository inspireRepository;
 
     @RequestMapping(value ={"/","/home"})//root handled by this controller
     public String index(Model model, @RequestParam(value = "flag", required = false) String flag){ //model is spring data object accessible from thymeleaf
                                                                                                 // flag used to indicate angularJS made request
         Iterable<HomePhoto> photoLinks = homePhotoRepository.findAll();
-        Iterable<BlogPost> blogPosts = blogPostRepository.findAll(); //pull data from db
         ArrayList<Photo> photos = new ArrayList<Photo>();
         for( HomePhoto hp : photoLinks){
             photos.add(hp.getPhoto());
         }
 
-        HomePage homePage = new HomePage( "Home", photos, blogPosts);//add data to model
+        HomePage homePage = new HomePage( "Home", photos);//add data to model
 
         model.addAttribute("page", homePage); //allows home page fields to be accessed from templates
         log.debug("Serving home page...");
@@ -128,16 +129,32 @@ public class PageController {
     @RequestMapping("/inspire")
     public String inspire(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
-        InspirePage inspirePage = new InspirePage();
+        Iterable<BlogPost> blogPosts = blogPostRepository.findAll();
+        InspireInfo inspireInfo = inspireRepository.findOne(1);
+        InspirePage inspirePage = new InspirePage("Inspire", blogPosts,inspireInfo.getSide_title(),inspireInfo.getSide_text());
 
         model.addAttribute("page", inspirePage);
-        log.debug("Serving services page...");
+        log.debug("Serving inspire page...");
 
         if(flag != null && flag.equals("js")){
             return "inspire";
         }else{
             return "index";
+        }
+    }
 
+    @RequestMapping("/interiors")
+    public String interiors(Model model, @RequestParam(value = "flag", required = false) String flag) {
+
+        Iterable<Interior> interiors = interiorRepository.findAll();
+        InteriorPage interiorPage = new InteriorPage("Interiors",interiors);
+        model.addAttribute("page", interiorPage);
+        log.debug("Serving interior page...");
+
+        if(flag != null && flag.equals("js")){
+            return "interior";
+        }else{
+            return "index";
         }
     }
     /*

@@ -3,6 +3,10 @@
     height: 500px;
     background-color: #bfbfbf;
     border-radius: 2px;
+    padding: 7px;
+}
+#sidebar-text{
+    padding: 3px;
 }
 #blog-title{
     margin-top: -5px;
@@ -15,4 +19,7 @@
 }
 #control-container{
     padding-top: 5px;
+}
+.main{
+    padding-top: 25px;
 }

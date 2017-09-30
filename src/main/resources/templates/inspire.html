@@ -1,5 +1,5 @@
 <div class="container-fluid" ng-controller="inspireCtrl">
-<div class="row main">
+    <div class="row main">
         <div class="col-md-9">
             <!--Blogposts-->
             <h2 id="blog-title">Blog Posts</h2>
@@ -13,7 +13,8 @@
         <div class="col-md-3">
             <!--SideBar-->
             <div id="sidebar">
-
+                <h3 th:text="${page.side_title}"></h3>
+                <div id="sidebar-text" th:text="${page.side_text}"></div>
             </div>
         </div>
     </div>

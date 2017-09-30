@@ -26,6 +26,7 @@ create table authorities (
 create table photos(
     id int auto_increment not null,
     photo_path varchar(1028) not null,
+    thumb_path varchar(1028) not null,
     photo_text varchar(256),/*mouse over text*/
 
     primary key (id)
@@ -51,6 +52,15 @@ create table blog_posts(
     data_path varchar(1028), /*Photo or video data path*/
 
     primary key (id)
+);
+
+create table inspire_pages(
+    id int auto_increment not null,
+    side_title varchar(64) not null,
+    side_text varchar(4096) not null,
+
+    primary key (id)
+
 );
 
 /*about page entities*/
@@ -94,7 +104,6 @@ create table service_photos(
 
 create table interiors (
     id int auto_increment not null,
-    sequence_num int not null,/*interior ordering*/
     address varchar(256) not null,
 
     primary key (id)

@@ -5,7 +5,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
     function($scope, $http) {
 
     }
-]);1
+]);
 
 /*
 this needs to hide the background image of a gallery, expand horizontally, expand vertically
