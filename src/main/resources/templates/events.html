@@ -2,11 +2,33 @@
     <div class="row main events">
         <div id="content-col" class="col-md-12">
             <ul class="lightSlider">
-                <li class="ls-li" th:each="event : ${page.events}">
+                <button type="button" data-toggle="modal" data-target="#myModal" class="ls-li" th:each="event : ${page.events}">
                     <h3 th:text="${event.name}"></h3>
                     <div th:text="${event.description}"></div>
-                </li>
+                </button>
             </ul>
         </div>
+    </div>
+    <div class="internal-carousel container">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>

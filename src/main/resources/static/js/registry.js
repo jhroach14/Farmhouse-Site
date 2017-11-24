@@ -1,6 +1,7 @@
 /**
  * Created by User on 8/3/2017.
  */
+
 app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
     function($scope, $http) {
 
@@ -8,9 +9,32 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
         $scope.entry = null;
         $scope.cartItems = [];
 
+        $(function () {
+            $('.registry-request').submit(function(e) {
+                e.preventDefault();
+                var nameInput = document.getElementById('recipient').value;
+                var phoneInput = document.getElementById('phnumber').value;
+                var eventDate = document.getElementById('event-date').value;
+                var email = document.getElementById('email').value;
+                var event = document.getElementById('event').value;
+                var formattedInput = "";
+                var mailto = "mailto:example@farmhouse.com";
+                formattedInput += "Email contact: %20" + email + "%0D%0A";
+                if (phoneInput.length != 0) {
+                    formattedInput += "Phone contact: %20" + phoneInput + "%0D%0A";
+                }
+                formattedInput += "Event date: %20" + eventDate + "%0D%0A%0D%0A";
+                if (event.length != 0) {
+                    formattedInput += "Event Details: %0D%0A" + event + "%0D%0A%0D%0A";
+                }
+                window.location.href = (mailto + "?subject=" + nameInput + "'s registry request" + "&body=" + formattedInput);
+            });
+        });
+
         $(document).ready(function(){
             $(".subpage").hide();
             $(".main").hide().fadeIn(750, "swing");
+
         });
 
         function redirectSubpage() {
@@ -31,7 +55,6 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
                 }
             );
         }
-
         $scope.addItem = function (item){
             $scope.cartItems.push(item);
         }
@@ -40,7 +63,6 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
             if(index > -1){
                 $scope.cartItems.splice(index,1);
             }
-        };
+        }
     }
-
 ]);

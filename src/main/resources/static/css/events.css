@@ -12,7 +12,8 @@
     padding-right: 5px;
     padding-bottom: 10px;
     min-height: 300px;
-    border-radius: 3px;
+    border-radius: 5px;
+    border: solid lightgrey;
 }
 .ls-img {
     display: block;
@@ -29,6 +30,18 @@
     opacity: 1 !important;
 }
 
+.internal-carousel{
+    position: absolute;
+}
+
+.lSPrev{
+    background: grey;
+    border-radius: 5px;
+}
+.lSNext{
+    background: grey;
+    border-radius: 5px;
+}
 
 /*.v-centered {
     display: flex;

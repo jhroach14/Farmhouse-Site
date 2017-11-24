@@ -22,11 +22,11 @@
         <div class="get-started-text" th:text="${page.intro_text}"></div>
     </div>
     <div class="row sign-up main">
-        <form>
+        <form class="registry-request" id="registry-form">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" placeholder="johnDoe@unknown.com" class="form-control" id="email"/>
+                    <input type="email" placeholder="johnDoe@unknown.com" class="form-control" id="email" />
                 </div>
                 <div class="form-group">
                     <label for="phnumber">Phone Number:</label>
@@ -34,9 +34,9 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient">Registry Recipient:</label>
-                    <input type="text" placeholder="Who will your registry be for?" class="form-control" id="recipient"/>
+                    <input type="text" placeholder="Who will your registry be for?" class="form-control" id="recipient" />
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" value="Submit" form="registry-form" class="btn btn-default">Submit</button>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -88,8 +88,6 @@
             <div class="post-line small-rule subpage"></div>
         </div>
         <button ng-click="submitCart()" id="cart-btn"  class="btn btn-primary">Checkout</button>
-
-
     </div>
 </div>
 
