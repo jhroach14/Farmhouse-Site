@@ -42,5 +42,5 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
             }
         };
     }
-]);
 
+]);
