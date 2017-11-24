@@ -1,7 +1,7 @@
 <div class="container-fluid" ng-controller="homeCtrl">
 
     <!--Carousel-->
-    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
         <!--slide wrapper-->
         <div class="carousel-inner">
             <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">
@@ -20,6 +20,12 @@
             </ol>
             <a href="#carousel" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right arrow"></span>
+            </a>
+            <a id="playButton" type="button" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+            <a id="pauseButton" type="button" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-pause"></span>
             </a>
         </div>
     </div>
