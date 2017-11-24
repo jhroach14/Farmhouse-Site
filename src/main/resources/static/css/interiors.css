@@ -27,58 +27,13 @@
 #left-arrow{
     left:15%;
     top:37%;
+    z-index: 100;
 }
 #right-arrow{
     right:15%;
     top:37%;
+    z-index: 100;
 }
 .int-title{
     text-align: center;
 }
-
-
-/*.carousel{
-    padding-left: 22%;
-    padding-right: 22%;
-    text-align: center;
-    margin-top: 5%;
-
-}
-#controls-container{
-    text-align: center;
-    color: darkgray;
-}
-.post-line{
-    margin: 7px auto;
-    width:90%;
-    height: 1px;
-    background-color: lightgray;
-    position: relative;
-}
-.carousel-indicators{
-    position: relative;
-    display: inline;
-    bottom: 0 !important;
-    left: 0 !important;
-    margin-left: 0 !important;
-
-}
-.carousel-indicators li{
-    background-color: lightgray;
-}
-.carousel-indicators .active{
-    background-color: #000000;
-}
-.row.main{
-    margin: 2% auto;
-
-}
-.carousel-title{
-    float: left;
-    color: gray;
-    margin-left: 3%;
-}
-
-.get-started{
-    height: 10%;
-}*/

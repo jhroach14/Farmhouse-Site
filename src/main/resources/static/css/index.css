@@ -85,7 +85,24 @@ div.w3-sidebar, button.w3-button{
 object.logo-mobile{
     display: none;
 }
-@media (max-width: 480px){
+#company-descriptors{
+    display: table;
+    margin: 0 auto;
+    font-family: "Goudy Old Style";
+    font-weight: bold;
+    margin-top: -1%;
+
+}
+
+@media (max-width: 500px){
+    #company-descriptors-mobile{
+        display: inline-block;
+        position: static;
+        font-size: small;
+        margin: 5%;
+        font-family: "Goudy Old Style";
+        font-weight: bold;
+    }
     nav ul.logo-nav, nav ul.page-nav {
         display: none;
     }
@@ -102,13 +119,17 @@ object.logo-mobile{
         margin-bottom: 2%;
     }
     #sidebar-btn{
-        background-color: white;
+        background-color: transparent;
     }
-    #sidebar-btn:hover{
-        background-color: white !important;
-    }
+
 }
-@media (min-width: 481px){
+@media (min-width: 501px){
+    #company-descriptors-mobile{
+        display: none;
+    }
+    #company-descriptors{
+        font-size: large ;
+    }
     div.w3-sidebar{
         display:none;
     }
@@ -145,15 +166,7 @@ object.logo-mobile{
 .glyphicon.glyphicon-one-fine-full-dot:before {
     content:"\25cf";
 }
-#company-descriptors{
-    display: table;
-    margin: 0 auto;
-    font-family: "Goudy Old Style";
-    font-weight: bold;
-    font-size: large ;
-    margin-top: -1%;
 
-}
 
 #admin-login{
     color: blue;

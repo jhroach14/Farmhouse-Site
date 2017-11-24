@@ -21,57 +21,6 @@
                 document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
                 document.querySelector('.next').addEventListener('click', () => mySiema.next());
             </script>
-
-            <!--<div id="meta-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <ul class="lightSlider">
-                            <li class="ls-li" th:each="photo : ${page.interiors[0].photos}" th:attr="data-thumb=${photo.thumb_path}">
-                                <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item">
-                        <ul class="lightSlider">
-                            <li class="ls-li" th:each="photo : ${page.interiors[1].photos}" th:attr="data-thumb=${photo.thumb_path}">
-                                <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#meta-carousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#meta-carousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>-->
-
-
-           <!-- <ul id="lightSlider">
-                <li class="ls-li" th:each="photo : ${page.interiors[0].photos}" th:attr="data-thumb=${photo.thumb_path}">
-                    <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
-                </li>
-
-            </ul>-->
-
-
-            <!--<div id="int-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                &lt;!&ndash;slide wrapper&ndash;&gt;
-                <div class="carousel-inner">
-                    <div class="item" th:each="photo : ${page.interiors[0].photos}" th:classappend="${photoStat.index == 0} ? active : ''">
-                        <img th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
-                    </div>
-                    <div>
-                        <ul class="carousel-indicators list-inline">
-                            <li class="list-inline-item" data-target="#int-carousel" th:each="photo : ${page.interiors[0].photos}"
-                                th:classappend="${photoStat.index == 0} ? active : ''"
-                                th:attr="data-slide-to=${photoStat.index}">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </div>
 </div>

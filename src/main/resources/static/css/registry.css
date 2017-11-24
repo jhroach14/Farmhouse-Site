@@ -22,6 +22,9 @@
     float: none;
     display: block;
 }
+.sign-up-submit{
+    margin-left: 15px;
+}
 
 
 .title.head{
@@ -110,4 +113,8 @@ img.get-started{
 #cart-btn{
     margin-left: 40px;
     margin-top: 25px;
+}
+
+.form-center{
+    text-align: center;
 }

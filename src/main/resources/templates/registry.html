@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 <div class="title head">Have a code?</div>
                 <form class="code-input" id="custom-search-input">
-                    <input ng-model="regCode" type="text" class="form-control input-lg zero-border-radius"
+                    <input ng-model="regCode" type="text" class="form-center form-control input-lg zero-border-radius"
                            placeholder="Enter Registry Code Here" required="required"/>
                     <button class="code-button" type="submit" ng-click="submitRegCode()">Submit</button>
                 </form>
@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" placeholder="johnDoe@unknown.com" class="form-control" id="email" />
+                    <input type="email" placeholder="johnDoe@unknown.com" class="form-control" id="email" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="phnumber">Phone Number:</label>
@@ -34,20 +34,20 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient">Registry Recipient:</label>
-                    <input type="text" placeholder="Who will your registry be for?" class="form-control" id="recipient" />
+                    <input type="text" placeholder="Who will your registry be for?" class="form-control" id="recipient" required="required"/>
                 </div>
-                <button type="submit" value="Submit" form="registry-form" class="btn btn-default">Submit</button>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Event Date:</label>
-                    <input id="event-date" type='text' placeholder="MM/DD/YYYY" class="form-control" />
+                    <input id="event-date" type='text' placeholder="MM/DD/YYYY" class="form-control" required="required"/>
                 </div>
                 <div class="form-group">
                     <label for="event">Event Decription/Comments:</label>
                     <textarea rows="6" cols="50" type="text" placeholder="What will your registry be for?" class="form-control" id="event"></textarea>
                 </div>
             </div>
+            <button type="submit" value="Submit" form="registry-form" class="sign-up-submit btn btn-default">Submit</button>
         </form>
 
     </div>

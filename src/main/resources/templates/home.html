@@ -1,7 +1,7 @@
 <div class="container-fluid" ng-controller="homeCtrl">
 
     <!--Carousel-->
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="5250">
         <!--slide wrapper-->
         <div class="carousel-inner">
             <div class="item" th:each="photo : ${page.photos}" th:classappend="${photoStat.index == 0} ? active : ''">

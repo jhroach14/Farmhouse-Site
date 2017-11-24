@@ -10,15 +10,9 @@ img.about{
 }
 .about-main{
 }
-.store-hours{
-    width: 65%;
-    position: relative;
-    margin: 1% auto;
-}
 
 .social-tags{
-    width: 40%;
-    margin: 1% 30%;
+    margin: 1% auto;
     position: relative;
     display: table;
 }
@@ -84,6 +78,26 @@ img.about{
     background: #125688;
     color: white;
 }
-#left-hours{
-    text-align: right;
+.store-hours{
+    width: 65%;
+    position: relative;
+    margin: 1% auto;
 }
+
+@media (min-width: 990px) {
+    #left-hours{
+        text-align: right;
+    }
+    .store-hours{
+        width: 65%;
+    }
+}
+@media (max-width: 989px){
+    .store-hours{
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+
