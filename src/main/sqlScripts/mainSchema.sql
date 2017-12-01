@@ -194,6 +194,16 @@ create table events(
     constraint evnt_pht_fk foreign key (photo) references photos(id)
 );
 
+/*many photos for many events requries link table*/
+create table event_photos(
+    event_id int not null,
+    photo_id int not null,
+
+    primary key (event_id, photo_id),
+
+    constraint evnt_phts_fk foreign key (event_id) references events(id),
+    constraint phts_evnt_fk foreign key (photo_id) references photos(id)
+);
 
 
 

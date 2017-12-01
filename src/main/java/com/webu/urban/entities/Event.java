@@ -8,9 +8,9 @@ public class Event extends AbstractEntity{
 
     private String name;
     private String description;
-    @OneToOne
-    @JoinColumn(name = "photo")
-    private Photo photo;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "event_photos", joinColumns = @JoinColumn(name = "interior_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id"))
+    private List<Photo> photos;
 
     @Override
     public boolean equals(Object o) {
@@ -20,10 +20,10 @@ public class Event extends AbstractEntity{
     public Event() {
     }
 
-    public Event(String name, String description, Photo photo) {
+    public Event(String name, String description, List<Photo> photos) {
         this.name = name;
         this.description = description;
-        this.photo = photo;
+        this.photos = photos;
     }
 
     public String getName() {
@@ -42,11 +42,11 @@ public class Event extends AbstractEntity{
         this.description = description;
     }
 
-    public Photo getPhoto() {
-        return photo;
+    public List<Photo> getPhoto() {
+        return photos;
     }
 
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
+    public void setPhoto(List<Photo> photos) {
+        this.photos = photos;
     }
 }

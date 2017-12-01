@@ -100,3 +100,26 @@ insert into events (name, description, photo) values ("Event2", "Quae hic rei pu
 insert into events (name, description, photo) values ("Event3", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem", 3);
 insert into events (name, description) values ("Event4", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem");
 insert into events (name, description) values ("Event5", "Quae hic rei publicae vulnera inponebat, eadem ille sanabat. Hoc est non modo cor non habere, sed ne palatum quidem");
+
+insert into event_photos (event_id, photo_id) values (1,1);
+insert into event_photos (event_id, photo_id) values (1,2);
+insert into event_photos (event_id, photo_id) values (1,3);
+insert into event_photos (event_id, photo_id) values (1,4);
+insert into event_photos (event_id, photo_id) values (1,5);
+insert into event_photos (event_id, photo_id) values (1,6);
+insert into event_photos (event_id, photo_id) values (1,7);
+insert into event_photos (event_id, photo_id) values (2,1);
+insert into event_photos (event_id, photo_id) values (2,2);
+insert into event_photos (event_id, photo_id) values (2,3);
+insert into event_photos (event_id, photo_id) values (2,4);
+insert into event_photos (event_id, photo_id) values (2,5);
+insert into event_photos (event_id, photo_id) values (2,6);
+insert into event_photos (event_id, photo_id) values (2,7);
+insert into event_photos (event_id, photo_id) values (3,1);
+insert into event_photos (event_id, photo_id) values (3,2);
+insert into event_photos (event_id, photo_id) values (3,3);
+insert into event_photos (event_id, photo_id) values (3,4);
+insert into event_photos (event_id, photo_id) values (3,5);
+insert into event_photos (event_id, photo_id) values (3,6);
+insert into event_photos (event_id, photo_id) values (3,7);
+
