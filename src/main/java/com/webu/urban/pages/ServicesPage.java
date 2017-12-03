@@ -16,11 +16,11 @@ public class ServicesPage extends Page {
     private Iterable<Interior> interiors;
 
     public ServicesPage(){
-        super("Services", "/services");
+        super("Services", "/services","");
     }
 
-    public ServicesPage(String title, Iterable<Service> services, Iterable<Interior> interiors) {
-        super(title, "/services");
+    public ServicesPage(String title, Iterable<Service> services, Iterable<Interior> interiors,String permissions) {
+        super(title, "/services",permissions);
         this.services = services;
         this.interiors = interiors;
         log.debug("creating services page data model...");

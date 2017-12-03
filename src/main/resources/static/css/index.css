@@ -166,8 +166,15 @@ object.logo-mobile{
 .glyphicon.glyphicon-one-fine-full-dot:before {
     content:"\25cf";
 }
-
+#modify-page{
+    position: absolute;
+    top:20px;
+    right:20px;
+    font-size: larger;
+    z-index: 10;
+}
 
 #admin-login{
     color: blue;
 }
+

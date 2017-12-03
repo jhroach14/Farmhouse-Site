@@ -22,11 +22,11 @@ public class AboutPage extends Page {
     private Photo secondary_photo;
 
     public AboutPage(){
-        super("About", "/about");
+        super("About", "/about","");
     }
 
-    public AboutPage(String title,String store_season,String store_days, String store_hours, String company_bio,String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo) {
-        super(title, "/about");
+    public AboutPage(String title,String store_season,String store_days, String store_hours, String company_bio,String phone_number, String address, String email, Photo primary_photo, Photo secondary_photo, String permissions) {
+        super(title, "/about", permissions);
         this.store_season = store_season;
         this.store_days = store_days;
         this.store_hours = store_hours;

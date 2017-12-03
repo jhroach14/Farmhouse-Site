@@ -23,8 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override// custom authentication config
     protected void configure(HttpSecurity http) throws Exception {
 
-        String[] whiteList = {"/img/**","/css/**","/fonts/**","/js/**","/about", "/gallery","/",
-                            "/home", "/registry", "/inspire", "/validateCode", "/interiors", "/events"};
+        String[] whiteList = {"/img/**","/css/**","/fonts/**","/js/**","/public/about", "/public/gallery","/public/",
+                            "/public/home", "/public/registry", "/public/inspire", "/validateCode", "/public/interiors", "/public/events"};
         http
             .authorizeRequests() //order important, match has access to any urls below it
                 .antMatchers("/admin/**").hasRole("ADMIN")     //must have proper authority for anything past these urls
@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
+                .defaultSuccessUrl("/admin/")
                 .loginPage("/login")  //custom login page
                 .permitAll()
                 .and()

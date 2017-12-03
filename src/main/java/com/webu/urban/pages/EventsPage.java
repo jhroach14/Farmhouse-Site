@@ -11,8 +11,8 @@ public class EventsPage extends Page{
 
     private Iterable<Event> events;
 
-    public EventsPage(String title, Iterable<Event> events) {
-        super(title, "/events");
+    public EventsPage(String title, Iterable<Event> events, String permissions) {
+        super(title, "/events",permissions);
         this.events = events;
     }
 

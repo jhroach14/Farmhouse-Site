@@ -33,7 +33,7 @@ Html templates are inserted via thymeleaf/angularJS-->
         <nav class="navbar navbar-fixed-top">
             <ul class="nav logo-nav">
                 <li>
-                    <a id="home-button" class="active home-btn" href="/">
+                    <a id="home-button" class="active home-btn" th:href="@{${page.permissions}+'/'}">
                         <object class="logo-link" data="/img/logoHDRemaster.svg" type="image/svg+xml">
                             <img src="/img/logo.png" /><!--for browsers with no svg support-->
                         </object>
@@ -50,22 +50,22 @@ Html templates are inserted via thymeleaf/angularJS-->
 
             <ul class="nav page-nav">
                 <li>
-                    <a class="about-btn" href="/about">ABOUT</a>
+                    <a class="about-btn" th:href="@{${page.permissions}+'/about'}">ABOUT</a>
                 </li>
                 <li>
-                    <a class="registry-btn" href="/registry">REGISTRY</a>
+                    <a class="registry-btn" th:href="@{${page.permissions}+'/registry'}">REGISTRY</a>
                 </li>
                 <li>
-                    <a class="gallery-btn" href="/gallery">GALLERY</a>
+                    <a class="gallery-btn" th:href="@{${page.permissions}+'/gallery'}">GALLERY</a>
                 </li>
                 <li>
-                    <a class="inspiration-btn" href="/inspire">INSPIRE</a>
+                    <a class="inspiration-btn" th:href="@{${page.permissions}+'/inspire'}">INSPIRE</a>
                 </li>
                 <li>
-                    <a class="services-btn" href="/interiors">INTERIORS</a>
+                    <a class="services-btn" th:href="@{${page.permissions}+'/interiors'}">INTERIORS</a>
                 </li>
                 <li>
-                    <a class="services-btn" href="/events">EVENTS</a>
+                    <a class="services-btn" th:href="@{${page.permissions}+'/events'}">EVENTS</a>
                 </li>
             </ul>
                 <object class="logo-mobile" data="/img/logoHDRemaster.svg" type="image/svg+xml">
@@ -80,16 +80,17 @@ Html templates are inserted via thymeleaf/angularJS-->
             </span>
             <button id="sidebar-btn" class="w3-button w3-xlarge w3-right" onclick="w3_open()">☰</button>
             <div id="nav-line"></div>
+
         </nav>
         <div class="w3-sidebar w3-bar-block w3-animate-right" style="display:none;right:0" id="mySidebar">
             <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-            <a href="/" class="w3-bar-item w3-button">HOME</a>
-            <a href="/about" class="w3-bar-item w3-button">ABOUT</a>
-            <a href="/registry" class="w3-bar-item w3-button">REGISTRY</a>
-            <a href="/gallery" class="w3-bar-item w3-button">GALLERY</a>
-            <a href="/inspire" class="w3-bar-item w3-button">INSPIRE</a>
-            <a href="/interiors" class="w3-bar-item w3-button">INTERIORS</a>
-            <a href="/events" class="w3-bar-item w3-button">EVENTS</a>
+            <a th:href="@{${page.permissions}+'/'}" class="w3-bar-item w3-button">HOME</a>
+            <a th:href="@{${page.permissions}+'/about'}" class="w3-bar-item w3-button">ABOUT</a>
+            <a th:href="@{${page.permissions}+'/registry'}" class="w3-bar-item w3-button">REGISTRY</a>
+            <a th:href="@{${page.permissions}+'/gallery'}" class="w3-bar-item w3-button">GALLERY</a>
+            <a th:href="@{${page.permissions}+'/inspire'}" class="w3-bar-item w3-button">INSPIRE</a>
+            <a th:href="@{${page.permissions}+'/interiors'}" class="w3-bar-item w3-button">INTERIORS</a>
+            <a th:href="@{${page.permissions}+'/events'}" class="w3-bar-item w3-button">EVENTS</a>
         </div>
         <!--thymleaf inserts correct html template based on spring data model in controller-->
         <div th:replace="${page.template}"></div>

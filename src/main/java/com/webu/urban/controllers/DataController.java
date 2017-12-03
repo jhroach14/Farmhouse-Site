@@ -1,5 +1,7 @@
 package com.webu.urban.controllers;
 
+import com.webu.urban.entities.AboutInfo;
+import com.webu.urban.entities.Photo;
 import com.webu.urban.entities.RegistryEntry;
 import com.webu.urban.entities.User;
 import com.webu.urban.entities.repositories.*;
@@ -7,7 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.groups.ConvertGroup;
+import java.util.List;
 
 @RestController
 //This spring controller class handles all data requests
@@ -34,6 +40,7 @@ public class DataController {
     @Autowired
     private RegistryEntryRepository entryRepository;
 
+
     //only users are admins
     @RequestMapping(value = "/admin/saveAdmin", method = RequestMethod.POST)
     public User saveAdmin(@RequestBody User user){
@@ -53,6 +60,33 @@ public class DataController {
         log.debug("Returning successful user entity delete");
 
         return null;
+    }
+
+    //angular will hit this endpoint for editdata for about page
+    @RequestMapping(value = "/admin/photoList", method = RequestMethod.GET)
+    public Iterable<Photo> photoList(){
+        log.debug("Received new photoList Request");
+        Iterable<Photo> photos = photoRepository.findAll();
+        log.debug("Returning photoList");
+        return photos;
+    }
+
+    @RequestMapping(value = "/admin/aboutInfo", method = RequestMethod.GET)
+    public AboutInfo aboutInfo(){
+
+        log.debug("Received new aboutInfo Request");
+        AboutInfo aboutInfo = aboutPageRepository.findOne(1);
+        log.debug("Returning aboutInfo");
+        return aboutInfo;
+    }
+
+    @RequestMapping(value = "/admin/aboutEdit", method = RequestMethod.POST)
+    public AboutInfo aboutEdit(@RequestBody AboutInfo aboutInfo){
+
+        log.debug("Received new aboutInfo to save");
+        aboutPageRepository.save(aboutInfo);
+        log.debug("Returning saved aboutInfo");
+        return aboutInfo;
     }
 
     @RequestMapping(value = "/validateCode", method = RequestMethod.GET)

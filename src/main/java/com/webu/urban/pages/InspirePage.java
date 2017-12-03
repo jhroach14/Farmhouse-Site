@@ -18,11 +18,11 @@ public class InspirePage extends Page {
 
     public InspirePage(){
 
-        super("Inspire", "/inspire");
+        super("Inspire", "/inspire","");
     }
 
-    public InspirePage(String title, Iterable<BlogPost> posts, String side_title, String side_text) {
-        super(title, "/inspire");
+    public InspirePage(String title, Iterable<BlogPost> posts, String side_title, String side_text,String permissions) {
+        super(title, "/inspire",permissions);
         this.posts = posts;
         this.side_title = side_title;
         this.side_text = side_text;

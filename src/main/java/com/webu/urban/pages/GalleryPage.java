@@ -14,11 +14,11 @@ public class GalleryPage extends Page {
     private Iterable<GallerySection> sections;
 
     public GalleryPage(){
-        super("Gallery", "/gallery");
+        super("Gallery", "/gallery", "");
     }
 
-    public GalleryPage(String title,  Iterable<GallerySection> sections) {
-        super(title, "/gallery");
+    public GalleryPage(String title,  Iterable<GallerySection> sections,String permissions) {
+        super(title, "/gallery",permissions);
         this.sections = sections;
         log.debug("creating gallery page data model...");
     }

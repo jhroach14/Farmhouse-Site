@@ -15,11 +15,11 @@ public class RegistryPage extends Page {
     private Photo main_photo;
 
     public RegistryPage(){
-        super("Registry", "/registry");
+        super("Registry", "/registry","");
     }
 
-    public RegistryPage(String title, String intro_text, Photo main_photo) {
-        super(title, "/registry");
+    public RegistryPage(String title, String intro_text, Photo main_photo,String permissions) {
+        super(title, "/registry",permissions);
         this.intro_text = intro_text;
         this.main_photo = main_photo;
         log.debug("creating registry page data model...");

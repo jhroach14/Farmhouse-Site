@@ -44,7 +44,7 @@ public class PageController {
     @Autowired
     private EventRepository eventRepository;
 
-    @RequestMapping(value ={"/","/home"})//root handled by this controller
+    @RequestMapping(value ={"/public/","/public/home"})//root handled by this controller
     public String index(Model model, @RequestParam(value = "flag", required = false) String flag){ //model is spring data object accessible from thymeleaf
                                                                                                 // flag used to indicate angularJS made request
         Iterable<HomePhoto> photoLinks = homePhotoRepository.findAll();
@@ -54,14 +54,14 @@ public class PageController {
         }
 
         HomePage homePage = null;
-        Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        /*Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         for(GrantedAuthority authority : authorities){
             if(authority.getAuthority().equals("ROLE_ADMIN")){
                 homePage = new HomePage("Home", "/admin/home",photos);
             }
-        }
+        }*/
         if(homePage == null){
-            homePage = new HomePage( "Home","/home", photos);//add data to model
+            homePage = new HomePage( "Home","/home", photos,"/public");//add data to model
         }
 
 
@@ -76,12 +76,12 @@ public class PageController {
         }
 
     }
-    @RequestMapping("/about")
+    @RequestMapping("/public/about")
     public String about(Model model, @RequestParam(value = "flag", required = false) String flag) {
         AboutPage aboutPage;
         AboutInfo aboutInfo = aboutPageRepository.findOne(1);
         if(aboutInfo != null){
-            aboutPage = new AboutPage("About", aboutInfo.getStore_season(), aboutInfo.getStore_days(), aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo());
+            aboutPage = new AboutPage("About", aboutInfo.getStore_season(), aboutInfo.getStore_days(), aboutInfo.getStore_hours(),aboutInfo.getCompany_bio(),aboutInfo.getPhone_number(),aboutInfo.getAddress(),aboutInfo.getEmail(),aboutInfo.getPrimary_photo(),aboutInfo.getSecondary_photo(),"/public");
         }
         else{
             aboutPage = new AboutPage();
@@ -99,11 +99,11 @@ public class PageController {
         }
     }
 
-    @RequestMapping("/gallery")
+    @RequestMapping("/public/gallery")
     public String gallery(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         Iterable<GallerySection> gallerySections = sectionRepository.findAll();
-        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySections);
+        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySections,"/public");
 
         model.addAttribute("page", galleryPage);
         log.debug("Serving gallery page...");
@@ -116,13 +116,13 @@ public class PageController {
         }
     }
 
-    @RequestMapping("/registry")
+    @RequestMapping("/public/registry")
     public String registry(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         RegistryPage registryPage;
         RegistryInfo registryInfo = registryPageRepository.findOne(1);
         if(registryInfo != null){
-            registryPage = new RegistryPage("Registry",registryInfo.getIntro_text(),registryInfo.getMain_photo());
+            registryPage = new RegistryPage("Registry",registryInfo.getIntro_text(),registryInfo.getMain_photo(),"/public");
             log.debug("generating registry page");
         }
         else{
@@ -141,12 +141,12 @@ public class PageController {
         }
     }
 
-    @RequestMapping("/inspire")
+    @RequestMapping("/public/inspire")
     public String inspire(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         Iterable<BlogPost> blogPosts = blogPostRepository.findAll();
         InspireInfo inspireInfo = inspireRepository.findOne(1);
-        InspirePage inspirePage = new InspirePage("Inspire", blogPosts,inspireInfo.getSide_title(),inspireInfo.getSide_text());
+        InspirePage inspirePage = new InspirePage("Inspire", blogPosts,inspireInfo.getSide_title(),inspireInfo.getSide_text(),"/public");
 
         model.addAttribute("page", inspirePage);
         log.debug("Serving inspire page...");
@@ -158,11 +158,11 @@ public class PageController {
         }
     }
 
-    @RequestMapping("/interiors")
+    @RequestMapping("/public/interiors")
     public String interiors(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         Iterable<Interior> interiors = interiorRepository.findAll();
-        InteriorPage interiorPage = new InteriorPage("Interiors",interiors);
+        InteriorPage interiorPage = new InteriorPage("Interiors",interiors,"/public");
         model.addAttribute("page", interiorPage);
         log.debug("Serving interior page...");
 
@@ -173,11 +173,11 @@ public class PageController {
         }
     }
 
-    @RequestMapping("/events")
+    @RequestMapping("/public/events")
     public String events(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
         Iterable<Event> events = eventRepository.findAll();
-        EventsPage eventsPage = new EventsPage("Events",events);
+        EventsPage eventsPage = new EventsPage("Events",events,"/public");
         model.addAttribute("page", eventsPage);
         log.debug("Serving events page...");
 

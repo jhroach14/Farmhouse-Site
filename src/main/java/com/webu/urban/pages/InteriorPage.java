@@ -11,8 +11,8 @@ public class InteriorPage extends Page{
 
     private Iterable<Interior> interiors;
 
-    public InteriorPage(String title, Iterable<Interior> interiors) {
-        super(title, "/interiors");
+    public InteriorPage(String title, Iterable<Interior> interiors,String permissions) {
+        super(title, "/interiors",permissions);
         this.interiors = interiors;
     }
 
