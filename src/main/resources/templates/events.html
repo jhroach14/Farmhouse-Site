@@ -23,7 +23,7 @@
                                 <div class="siema">
                                     <div th:each="event :  ${page.events}">
                                         <h3 class="int-title" th:text="${event.name}"></h3>
-                                        <ul class="lightSlider">
+                                        <ul class="lightSlider-interior">
                                             <li class="ls-li" th:each="photo : ${event.photos}" th:attr="data-thumb=${photo.thumb_path}">
                                                 <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
                                             </li>
