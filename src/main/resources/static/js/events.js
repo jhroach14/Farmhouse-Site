@@ -9,5 +9,8 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                 item: 3
             });
         });
+        const mySiema = new Siema();
+        document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
+        document.querySelector('.next').addEventListener('click', () => mySiema.next());
     }
 ]);

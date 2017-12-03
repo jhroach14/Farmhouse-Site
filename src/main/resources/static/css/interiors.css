@@ -37,3 +37,8 @@
 .int-title{
     text-align: center;
 }
+.dropdown{
+    position: absolute;
+    right:3%;
+    top:35%;
+}

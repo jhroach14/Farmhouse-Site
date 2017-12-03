@@ -2,7 +2,6 @@
     <div class="row">
         <div id = "content-col" class = "col-md-12">
             <script src="/js/siema.min.js"></script>
-
             <span id="left-arrow" class="arrow prev glyphicon glyphicon-chevron-left"></span>
             <div class="siema">
                 <div th:each="interior :  ${page.interiors}">
@@ -21,6 +20,17 @@
                 document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
                 document.querySelector('.next').addEventListener('click', () => mySiema.next());
             </script>
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Addresses<span class="caret"></span> </button>
+                <ul class="dropdown-menu">
+                    <li th:each="interior,iter : ${page.interiors}">
+                        <p th:classappend="|dropdown${iter.index}|" th:text="${interior.address}"></p>
+                        <script th:utext='|document.querySelector(".dropdown${iter.index}").addEventListener("click", () => mySiema.goTo(${iter.index}));|'>  </script>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
