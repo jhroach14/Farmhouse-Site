@@ -3,6 +3,12 @@
     padding-left: 0;
     margin-bottom:0;
 }
+
+.lightSlider-interior {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
 .ls-li {
     display: block;
     float: left;
