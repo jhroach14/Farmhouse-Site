@@ -15,16 +15,30 @@
 
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"> INSERT EVENT TITLE</h4>
-                    </div>
                     <div class="modal-body">
-                        <!-- internal carousel needs to go here-->
-                        <p>
-                            This should be a carousel of the selected event with the option to exit
-                            and pick another one, or hit next event like the interiors carousel.
-                        </p>
+                        <div class="row">
+                            <div id = "content-col-inner" class = "col-md-12">
+                                <script src="/js/siema.min.js"></script>
+                                <span id="left-arrow" class="arrow prev glyphicon glyphicon-chevron-left"></span>
+                                <div class="siema">
+                                    <div th:each="event :  ${page.events}">
+                                        <h3 class="int-title" th:text="${event.name}"></h3>
+                                        <ul class="lightSlider">
+                                            <li class="ls-li" th:each="photo : ${event.photos}" th:attr="data-thumb=${photo.thumb_path}">
+                                                <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <span id="right-arrow" class="arrow next glyphicon glyphicon-chevron-right"></span>
+                                <script>
+                                    const mySiema = new Siema();
+                                    document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
+                                    document.querySelector('.next').addEventListener('click', () => mySiema.next());
+                                </script>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
