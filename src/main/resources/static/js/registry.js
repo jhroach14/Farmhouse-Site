@@ -9,6 +9,42 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
         $scope.entry = null;
         $scope.cartItems = [];
 
+        $scope.photos = null;
+
+        $scope.registryInfo = null;
+
+        $scope.loadEditData = function () {
+            var url = "http://localhost:8080/admin/photoList";
+            $http.get(url).success(
+                function (response) {
+                    $scope.photos = response;
+                }
+            );
+            url = "http://localhost:8080/admin/registryInfo";
+            $http.get(url).success(
+                function (response) {
+                    $scope.registryInfo = response;
+                }
+            );
+        };
+
+        $scope.selectPhoto = function (photo) {
+            $scope.registryInfo.main_photo = photo;
+        };
+
+        $scope.registryEdit = function () {
+            var url = "http://localhost:8080/admin/registryEdit";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url,$scope.registryInfo).success(
+                    function () {
+                        alert("Your changes to about page have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
+        }
+
         $(function () {
             $('.registry-request').submit(function(e) {
                 e.preventDefault();

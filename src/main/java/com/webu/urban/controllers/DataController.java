@@ -89,6 +89,24 @@ public class DataController {
         return aboutInfo;
     }
 
+    @RequestMapping(value = "/admin/registryInfo", method = RequestMethod.GET)
+    public RegistryInfo registryInfo(){
+
+        log.debug("Received new registryInfo Request");
+        RegistryInfo registryInfo = registryPageRepository.findOne(1);
+        log.debug("Returning registryInfo");
+        return registryInfo;
+    }
+
+    @RequestMapping(value = "/admin/registryEdit", method = RequestMethod.POST)
+    public RegistryInfo registryEdit(@RequestBody RegistryInfo registryInfo){
+
+        log.debug("Received new regInfo to save");
+        registryPageRepository.save(registryInfo);
+        log.debug("Returning saved regInfo");
+        return registryInfo;
+    }
+
     @RequestMapping(value = "/admin/homePhotos", method = RequestMethod.GET)
     public Iterable<HomePhoto> homePhotos(){
 
