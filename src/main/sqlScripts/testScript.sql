@@ -122,4 +122,17 @@ insert into event_photos (event_id, photo_id) values (3,4);
 insert into event_photos (event_id, photo_id) values (3,5);
 insert into event_photos (event_id, photo_id) values (3,6);
 insert into event_photos (event_id, photo_id) values (3,7);
-
+insert into event_photos (event_id, photo_id) values (4,1);
+insert into event_photos (event_id, photo_id) values (4,2);
+insert into event_photos (event_id, photo_id) values (4,3);
+insert into event_photos (event_id, photo_id) values (4,4);
+insert into event_photos (event_id, photo_id) values (4,5);
+insert into event_photos (event_id, photo_id) values (4,6);
+insert into event_photos (event_id, photo_id) values (4,7);
+insert into event_photos (event_id, photo_id) values (5,1);
+insert into event_photos (event_id, photo_id) values (5,2);
+insert into event_photos (event_id, photo_id) values (5,3);
+insert into event_photos (event_id, photo_id) values (5,4);
+insert into event_photos (event_id, photo_id) values (5,5);
+insert into event_photos (event_id, photo_id) values (5,6);
+insert into event_photos (event_id, photo_id) values (5,7);

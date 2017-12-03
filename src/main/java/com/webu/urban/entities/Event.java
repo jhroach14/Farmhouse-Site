@@ -42,11 +42,11 @@ public class Event extends AbstractEntity{
         this.description = description;
     }
 
-    public List<Photo> getPhoto() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhoto(List<Photo> photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 }
