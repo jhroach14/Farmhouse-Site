@@ -4,7 +4,6 @@
     color: darkgray;
 }
 .container-fluid{
-    z-index: 0;
     padding: 0;
     height: 100%;
 }

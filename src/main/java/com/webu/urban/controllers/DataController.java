@@ -1,9 +1,6 @@
 package com.webu.urban.controllers;
 
-import com.webu.urban.entities.AboutInfo;
-import com.webu.urban.entities.Photo;
-import com.webu.urban.entities.RegistryEntry;
-import com.webu.urban.entities.User;
+import com.webu.urban.entities.*;
 import com.webu.urban.entities.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.groups.ConvertGroup;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -39,6 +37,8 @@ public class DataController {
     private UserRepository userRepository;
     @Autowired
     private RegistryEntryRepository entryRepository;
+    @Autowired
+    private HomePhotoRepository homePhotoRepository;
 
 
     //only users are admins
@@ -87,6 +87,28 @@ public class DataController {
         aboutPageRepository.save(aboutInfo);
         log.debug("Returning saved aboutInfo");
         return aboutInfo;
+    }
+
+    @RequestMapping(value = "/admin/homePhotos", method = RequestMethod.GET)
+    public Iterable<HomePhoto> homePhotos(){
+
+        log.debug("Received new homePhotos request");
+        Iterable<HomePhoto> photoLinks = homePhotoRepository.findAll();
+        ArrayList<HomePhoto> photos = new ArrayList<HomePhoto>();
+        for( HomePhoto hp : photoLinks){
+            photos.add(hp);
+        }
+        log.debug("Returning homePhotos");
+        return photos;
+    }
+
+    @RequestMapping(value = "/admin/homeEdit", method = RequestMethod.POST)
+    public Iterable<HomePhoto> homePhotos(@RequestBody Iterable<HomePhoto> homePhotos){
+
+        log.debug("Received new homePhotos edit submission to save");
+        homePhotoRepository.save(homePhotos);
+        log.debug("Returning saved homePhotos");
+        return homePhotos;
     }
 
     @RequestMapping(value = "/validateCode", method = RequestMethod.GET)
