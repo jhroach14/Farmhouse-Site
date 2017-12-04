@@ -4,7 +4,7 @@
     margin-bottom:0;
 }
 
-.lightSlider-interior {
+.lightSlider-internal{
     list-style: none outside none;
     padding-left: 0;
     margin-bottom:0;
@@ -19,6 +19,14 @@
     padding-bottom: 10px;
     min-height: 300px;
     border-radius: 5px;
+    border: solid lightgrey;
+}
+.ls-li-internal {
+    display: block;
+    float: left;
+    cursor:pointer;
+    background-color: lavender;
+    min-height: 300px;
     border: solid lightgrey;
 }
 .ls-img {
@@ -36,10 +44,6 @@
     opacity: 1 !important;
 }
 
-.internal-carousel{
-    position: absolute;
-}
-
 .lSPrev {
     background:grey;
     border-radius: 20px;
@@ -49,4 +53,29 @@
     background:grey;
     border-radius: 20px;
 
+}
+.arrow{
+    font-size: 60px;
+    position:absolute;
+}
+#left-arrow{
+    left:30%;
+    top:-10px;
+    z-index: 100;
+}
+#right-arrow{
+    right: 30%;
+    top:-10px;
+    z-index: 100;
+}
+.int-title{
+    text-align: center;
+}
+.close-modal{
+    right: 0;
+    bottom: 0;
+    position: static;
+}
+.modal-footer{
+    border: transparent;
 }

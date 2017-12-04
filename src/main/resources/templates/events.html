@@ -1,4 +1,4 @@
-<div class="content-container" ng-controller="eventsCtrl">
+<div class="content-container" ng-controller="eventsCtrl" >
     <div class="row main events">
         <div id="content-col" class="col-md-12">
             <ul class="lightSlider">
@@ -12,19 +12,18 @@
     <div class="internal-carousel container">
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="row">
-                            <div id = "content-col-inner" class = "col-md-12">
+                            <div class = "col-md-12">
                                 <script src="/js/siema.min.js"></script>
                                 <span id="left-arrow" class="arrow prev glyphicon glyphicon-chevron-left"></span>
                                 <div class="siema">
-                                    <div th:each="event :  ${page.events}">
+                                    <div th:each="event : ${page.events}">
                                         <h3 class="int-title" th:text="${event.name}"></h3>
-                                        <ul class="lightSlider-interior">
-                                            <li class="ls-li" th:each="photo : ${event.photos}" th:attr="data-thumb=${photo.thumb_path}">
+                                        <ul class="lightSlider-internal">
+                                            <li class="ls-li-internal" th:each="photo : ${event.photos}" th:attr="data-thumb=${photo.thumb_path}">
                                                 <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
                                             </li>
                                         </ul>
@@ -33,9 +32,9 @@
 
                                 <span id="right-arrow" class="arrow next glyphicon glyphicon-chevron-right"></span>
                                 <script>
-                                    const mySiema = new Siema();
-                                    document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
-                                    document.querySelector('.next').addEventListener('click', () => mySiema.next());
+                                    const mySiema2 = new Siema();
+                                    document.querySelector('.prev').addEventListener('click', () => mySiema2.prev());
+                                    document.querySelector('.next').addEventListener('click', () => mySiema2.next());
                                 </script>
                             </div>
                         </div>
@@ -47,6 +46,5 @@
 
             </div>
         </div>
-
     </div>
 </div>

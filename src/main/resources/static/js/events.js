@@ -4,11 +4,20 @@
 app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
     function($scope, $http) {
         $(document).ready(function() {
+            var mq = window.matchMedia('(min-width: 800px)');
+            if( mq.matches){
+                $('.lightSlider').lightSlider({
+                    item: 3
 
-            $('.lightSlider').lightSlider({
-                item: 3
-            });
-            $('.lightSlider-interior').lightSlider({
+                });
+            }
+            else{
+                $('.lightSlider').lightSlider({
+                    item: 1
+
+                });
+            }
+            $('.lightSlider-internal').lightSlider({
                 gallery: true,
                 item: 1,
                 loop: true,

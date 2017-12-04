@@ -9,7 +9,7 @@ public class Event extends AbstractEntity{
     private String name;
     private String description;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "event_photos", joinColumns = @JoinColumn(name = "interior_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id"))
+    @JoinTable(name = "event_photos", joinColumns = @JoinColumn(name = "event_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id"))
     private List<Photo> photos;
 
     @Override
