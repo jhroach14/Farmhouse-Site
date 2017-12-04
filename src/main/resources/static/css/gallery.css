@@ -87,6 +87,8 @@
     top: 0;
     left: 0;
     border-radius: 5px;
+    padding: 10px;
+    pointer-events: auto !important;
 }
 .close-internal{
     color: white;
@@ -96,8 +98,36 @@
     bottom: 0;
     right: 0;
     pointer-events: auto !important;
+    z-index: 100;
 }
 
 .expandable.active{
     pointer-events: none;
+}
+.lightSlider {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+.ls-li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+.ls-img {
+    display: block;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+.lSSlideOuter{
+    position: relative;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.int-title{
+    position: absolute;
+    z-index: 1000;
 }

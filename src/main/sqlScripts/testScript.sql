@@ -43,7 +43,13 @@ insert into gallery_sections (section_title, section_text) values ("Section 2", 
 insert into gallery_sections (section_title, section_text) values ("Section 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
 
 insert into gallery_section_photos (section_id, photo_id) values (1,6);
+insert into gallery_section_photos (section_id, photo_id) values (1,7);
+insert into gallery_section_photos (section_id, photo_id) values (1,8);
+insert into gallery_section_photos (section_id, photo_id) values (2,6);
 insert into gallery_section_photos (section_id, photo_id) values (2,7);
+insert into gallery_section_photos (section_id, photo_id) values (2,8);
+insert into gallery_section_photos (section_id, photo_id) values (3,6);
+insert into gallery_section_photos (section_id, photo_id) values (3,7);
 insert into gallery_section_photos (section_id, photo_id) values (3,8);
 
 insert into services (service_title, service_text) values ("Event 1", "Quisque vitae ullamcorper velit. Aliquam eros dui, sagittis at cursus id, faucibus ut odio. Nullam blandit mi a nisi facilisis, sed venenatis nunc efficitur. Pellentesque id sapien id magna vehicula placerat. Vestibulum accumsan fringilla metus sed euismod");
