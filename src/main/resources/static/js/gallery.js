@@ -8,13 +8,23 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             item: 1,
             loop: true,
             slideMargin: 0,
-            thumbItem: 7
+            thumbItem: 5
         });
         $(document).ready(function () {
             $(".internal-gallery").hide();
             $(".close-internal").hide();
             $('.expandable').on('click', function () {
                 if (!$(this).hasClass('active')) {
+                    $("h1").fadeOut().hide();
+                    $this = $(this);
+                    $this.addClass('active');
+                    if ($this.hasClass('left')) {
+                        $("#right-container").fadeOut(1000, "swing").hide();
+                    }
+                }
+
+                /*
+                 if (!$(this).hasClass('active')) {
                     $("h1").fadeOut().hide();
                     $this = $(this);
                     $this.addClass('active');
@@ -99,8 +109,12 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                             }
 
                         });
-                    }
-                }
+                          }
+                           }
+                 */
+
+
+
 
             });
             $(".close-internal").on('click', function () {
@@ -122,7 +136,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                 }, 1000, function () {
                                     $("#left-container").stop().animate({
                                         height: "100%"
-                                    }, function () {
+                                    }, 1000, function () {
                                         $("h1").hide().fadeIn();
                                     });
                                     $(".expandable").removeClass('active');
@@ -131,7 +145,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                             else {
                                 $("#left-container").stop().animate({
                                     height: "100%"
-                                }, function () {
+                                }, 1000, function () {
                                     $("h1").hide().fadeIn();
                                 });
                                 $(".expandable").removeClass('active');
@@ -154,7 +168,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                 }, 1000, function () {
                                     $("#right-container").stop().animate({
                                         height: "100%"
-                                    }, function () {
+                                    }, 1000, function () {
                                         $("h1").hide().fadeIn();
                                     });
                                     $(".expandable").removeClass('active');
@@ -163,7 +177,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                             else {
                                 $("#right-container").stop().animate({
                                     height: "100%"
-                                }, function () {
+                                }, 1000, function () {
                                     $("h1").hide().fadeIn();
                                 });
                                 $(".expandable").removeClass('active');

@@ -7,13 +7,15 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
             var mq = window.matchMedia('(min-width: 800px)');
             if( mq.matches){
                 $('.lightSlider').lightSlider({
-                    item: 3
+                    item: 3,
+                    thumbItem: 7
 
                 });
             }
             else{
                 $('.lightSlider').lightSlider({
-                    item: 1
+                    item: 1,
+                    thumbItem: 7
 
                 });
             }

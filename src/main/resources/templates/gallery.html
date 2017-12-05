@@ -1,6 +1,6 @@
 <div class="container-fluid gallery-container" ng-controller="galleryCtrl">
 
-    <div id="left-container">
+    <div id="left-container" class="gallery-container">
 
         <div class="left-img-holder left expandable"
              th:style="|background-image: url(${page.sections[0].photos[0].photo_path})|">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div id="right-container">
+    <div id="right-container" class="gallery-container">
         <div class="right-img-holder expandable right"
              th:style="|background-image: url(${page.sections[2].photos[0].photo_path})|">
             <div class="title-shader"></div>
