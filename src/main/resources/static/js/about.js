@@ -8,13 +8,13 @@ app.controller('aboutCtrl', ['$scope', '$http', //scope = model for angular, htt
         $scope.aboutInfo = null;
 
         $scope.loadEditData = function () {
-                var url = "http://localhost:8080/admin/photoList";
+                var url = "http://"+window.location.hostname+":8080/admin/photoList";
                 $http.get(url).success(
                     function (response) {
                         $scope.photos = response;
                     }
                 );
-                url = "http://localhost:8080/admin/aboutInfo";
+                url = "http://"+window.location.hostname+":8080/admin/aboutInfo";
                 $http.get(url).success(
                     function (response) {
                         $scope.aboutInfo = response;
@@ -30,7 +30,7 @@ app.controller('aboutCtrl', ['$scope', '$http', //scope = model for angular, htt
         };
 
         $scope.aboutEdit = function () {
-            var url = "http://localhost:8080/admin/aboutEdit";
+            var url = "http://"+window.location.hostname+":8080/admin/aboutEdit";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
                 $http.post(url,$scope.aboutInfo).success(
