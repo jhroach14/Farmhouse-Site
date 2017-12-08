@@ -4,7 +4,6 @@
 app.controller('aboutCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
     function($scope, $http) {
         $scope.photos = null;
-
         $scope.aboutInfo = null;
 
         $scope.loadEditData = function () {
