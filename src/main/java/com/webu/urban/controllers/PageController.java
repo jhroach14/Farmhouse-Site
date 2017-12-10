@@ -44,6 +44,11 @@ public class PageController {
     @Autowired
     private EventRepository eventRepository;
 
+    @RequestMapping(value = {"/","/home","/index"})
+    public String indexRedirect(){
+        return "redirect:/public/";
+    }
+
     @RequestMapping(value ={"/public/","/public/home"})//root handled by this controller
     public String index(Model model, @RequestParam(value = "flag", required = false) String flag){ //model is spring data object accessible from thymeleaf
                                                                                                 // flag used to indicate angularJS made request
