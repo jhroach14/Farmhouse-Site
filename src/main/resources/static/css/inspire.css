@@ -23,3 +23,10 @@
 .main{
     padding-top: 25px;
 }
+#post-title{
+    display: inline-block;
+    padding-right: 15px;
+}
+#modify-post,#delete-post{
+    float: right;
+}

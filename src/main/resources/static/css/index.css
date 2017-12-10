@@ -174,7 +174,16 @@ object.logo-mobile{
     z-index: 15;
 }
 
+#manage-photo{
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    font-size: larger;
+    z-index: 15;
+}
+
 #admin-login{
     color: blue;
 }
+
 

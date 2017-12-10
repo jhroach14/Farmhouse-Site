@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.groups.ConvertGroup;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,6 +40,8 @@ public class DataController {
     private RegistryEntryRepository entryRepository;
     @Autowired
     private HomePhotoRepository homePhotoRepository;
+    @Autowired
+    private InspireRepository inspireRepository;
 
 
     //only users are admins
@@ -142,6 +145,64 @@ public class DataController {
             return null;
         }
     }
+
+    @RequestMapping(value = "/admin/inspireInfo", method = RequestMethod.GET)
+    public InspireInfo inspireInfo(){
+
+        log.debug("Received new inspireInfo Request");
+        InspireInfo inspireInfo = inspireRepository.findOne(1);
+        log.debug("Returning inspireInfo");
+        return inspireInfo;
+    }
+
+    @RequestMapping(value = "/admin/getPost", method = RequestMethod.GET)
+    public BlogPost getPost(@RequestParam(value = "post") int id){
+
+        log.debug("received request for post with id "+id);
+        BlogPost post = blogPostRepository.findOne(id);
+        log.debug("sent back post with id "+ id);
+        return post;
+    }
+
+    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.GET)
+    public void deletePost(@RequestParam(value = "post") int id){
+
+        log.debug("received delete request for post with id "+id);
+        blogPostRepository.delete(id);
+        log.debug("deleted post with id "+ id);
+    }
+
+    @RequestMapping(value = "/admin/inspireEdit", method = RequestMethod.POST)
+    public InspireInfo inspireEdit(@RequestBody InspireInfo inspireInfo){
+
+        log.debug("Received new inspireInfo to save");
+        inspireRepository.save(inspireInfo);
+        log.debug("Returning saved inspire info");
+        return inspireInfo;
+    }
+
+    @RequestMapping(value = "/admin/postEdit", method = RequestMethod.POST)
+    public BlogPost postEdit(@RequestBody BlogPost blogPost){
+
+        log.debug("Received edited post to save");
+        blogPostRepository.save(blogPost);
+        log.debug("Returning saved post");
+        return blogPost;
+    }
+
+    @RequestMapping(value = "/admin/newPost", method = RequestMethod.POST)
+    public BlogPost newPost(@RequestBody BlogPost blogPost){
+
+        log.debug("Received new post to save");
+        blogPost.setPost_date(new Date());
+        blogPostRepository.save(blogPost);
+        log.debug("Returning saved post");
+        return blogPost;
+    }
+
+
+
+
 
     //TODO: Implment rest of crud API when more of frontend is finished
 

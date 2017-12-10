@@ -79,6 +79,29 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- Reactor -->
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-net</artifactId>
+			<version>LATEST</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.projectreactor.spring</groupId>
+			<artifactId>reactor-spring-context</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
+		</dependency>
 	</dependencies>
 
 	<build>

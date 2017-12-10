@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         String[] whiteList = {"/img/**","/css/**","/fonts/**","/js/**","/public/about", "/public/gallery","/public/",
-                            "/public/home", "/public/registry", "/public/inspire", "/validateCode", "/public/interiors", "/public/events"};
+                            "/public/home", "/public/registry", "/public/inspire", "/validateCode", "/public/interiors", "/public/events","/"};
         http
             .authorizeRequests() //order important, match has access to any urls below it
                 .antMatchers("/admin/**").hasRole("ADMIN")     //must have proper authority for anything past these urls

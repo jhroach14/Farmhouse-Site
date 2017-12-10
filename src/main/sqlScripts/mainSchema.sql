@@ -49,9 +49,11 @@ create table blog_posts(
     post_date datetime not null,
     post_type int not null, /*0=text only, 1=Photo, 2=video*/
     post_text varchar(16384), /*text post = main content, Photo or video = subtext*/
-    data_path varchar(1028), /*Photo or video data path*/
+    photo int,
 
-    primary key (id)
+    primary key (id),
+
+    constraint pht_pst_fk foreign key (photo) references photos(id)
 );
 
 create table inspire_pages(
