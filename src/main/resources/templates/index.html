@@ -108,7 +108,7 @@ Html templates are inserted via thymeleaf/angularJS-->
                         <h4 class="modal-title">Upload Photos</h4>
                     </div>
                     <div class="modal-body">
-                        <form id ="photo-form" method="post" enctype="multipart/form-data" action="/admin/img/" class="form-horizontal">
+                        <form id ="photo-form" method="post" enctype="multipart/form-data" action="/admin/img/" target="_self" class="form-horizontal">
                             <table>
                                 <tr><td>Photo to upload:</td><td><input required="true" type="file" name="file" /></td></tr>
                                 <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
