@@ -28,21 +28,7 @@
     height: 17px;
     background-color: #000000;
 }
-
-@media screen and (max-width: 500px) {
-    .container-fluid {
-        position: relative;
-    }
-    footer{
-        background: transparent;
-        position: absolute;
-        bottom: 8%;
-    }
-    body{
-        overflow: hidden;
-    }
-}
-@media screen and (min-width: 501px) {
+@media screen and (min-width: 579px) {
     .navbar-fixed-top{
         position: fixed;
         background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(30,30,30,0.4) 100%);
@@ -67,6 +53,20 @@
 .arrow{
     color: #000000;
 }
+@media screen and (max-width: 578px) {
+    .container-fluid {
+        position: relative;
+    }
+    footer{
+        background: transparent;
+        position: absolute;
+        bottom: 8%;
+    }
+    body{
+        overflow: hidden;
+    }
+}
+
 body{
     background: white; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
