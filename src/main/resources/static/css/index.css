@@ -94,7 +94,27 @@ object.logo-mobile{
 
 }
 
-@media screen and (max-width: 500px){
+
+@media screen and (min-width: 579px){
+    #company-descriptors-mobile{
+        display: none;
+    }
+    #company-descriptors{
+        font-size: large ;
+    }
+    div.w3-sidebar{
+        display:none;
+    }
+    button.w3-button{
+        display: none;
+
+    }
+    object.logo-mobile{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 578px){
     #company-descriptors-mobile{
         display: inline-block;
         position: static;
@@ -123,26 +143,6 @@ object.logo-mobile{
     }
 
 }
-@media screen and (min-width: 501px){
-    #company-descriptors-mobile{
-        display: none;
-    }
-    #company-descriptors{
-        font-size: large ;
-    }
-    div.w3-sidebar{
-        display:none;
-    }
-    button.w3-button{
-        display: none;
-
-    }
-    object.logo-mobile{
-        display: none;
-    }
-
-}
-
 .row{
     width: 90%;
     margin-left: 5%;
