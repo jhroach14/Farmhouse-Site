@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 
-@Controller
+@RestController
 public class FileUploadController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -54,6 +54,25 @@ public class FileUploadController {
         log.debug(" thumb img "+filename+" successfully retrieved. sending to client");
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "inline").body(file);
+    }
+
+    @GetMapping("/admin/delete/img/")
+    public String deleteImage(@RequestBody Photo photo){
+
+        log.debug("removing photo "+photo.getId()+" with path" +photo.getPhoto_path()+" from DB");
+        photoRepository.delete(photo.getId());
+
+        String photoPath = photo.getPhoto_path();
+        String thumbPath = photo.getThumb_path();
+        String filename = photoPath.substring(photoPath.indexOf("/img/")+5);
+        String thumbFilename = thumbPath.substring(thumbPath.indexOf("/img/")+5);
+
+        log.debug("Deleting "+filename+" from File System");
+        storageService.deletePhoto(filename);
+        log.debug("Deleting "+thumbFilename+" from File System");
+        storageService.deletePhoto(thumbFilename);
+
+        return filename;
     }
 
 

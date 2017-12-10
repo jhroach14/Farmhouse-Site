@@ -11,5 +11,6 @@ public interface StorageService {
     Path store(MultipartFile file);
     Path load(String filename);
     Resource loadAsResource(String filename);
+    boolean deletePhoto(String filename);
 
 }

@@ -6,18 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import sun.management.FileSystem;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 @Service
 public class FSStorageService implements StorageService {
@@ -106,6 +101,24 @@ public class FSStorageService implements StorageService {
             throw new StorageFileNotFoundException("Could not read file "+ filename, e);
         }
 
+    }
+
+    @Override
+    public boolean deletePhoto(String filename) {
+
+        filename = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
+        Path file = load(filename);
+        boolean deleted = false;
+        try {
+            log.debug("Attempting to delete file at path "+file.toString());
+            Files.delete(file);
+            log.debug("File named  "+filename+" deleted");
+            deleted = true;
+        } catch (IOException e) {
+            log.error("Error deleting file "+ filename+"\n"+e.getMessage());
+        }
+
+        return deleted;
     }
 
 }
