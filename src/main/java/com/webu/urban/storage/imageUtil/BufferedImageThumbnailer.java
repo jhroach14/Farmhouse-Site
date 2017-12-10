@@ -31,6 +31,7 @@ public class BufferedImageThumbnailer {
 
     public Path thumbify(Path srcPath) {
 
+
         try{
             String thumbStr = srcPath.toString();
             log.debug("attempting to thumbify img at path "+thumbStr);

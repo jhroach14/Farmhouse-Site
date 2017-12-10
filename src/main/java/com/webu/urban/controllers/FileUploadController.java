@@ -58,19 +58,32 @@ public class FileUploadController {
 
 
     @PostMapping("/admin/img/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
         log.debug("Recieved new image to upload to filesystem "+file.getName());
+
         Path imgPath = storageService.store(file);
         String imgStr = imgPath.toString().substring(imgPath.toString().indexOf("/img/"));
         log.debug("New image stored to path "+imgStr);
+
         Path thumbPath = thumbnailer.thumbify(imgPath);
         String thumbStr = thumbPath.toString().substring(thumbPath.toString().indexOf("/img/"));
         log.debug("New Image thumbnail stored to path "+thumbStr);
 
         Photo photo = new Photo(imgStr,"",thumbStr);
-        photo = photoRepository.save(photo);
-        log.debug("Photo saved to data base with id "+ photo.getId());
+        boolean exists = false;
+        for (Photo photo1: photoRepository.findAll()) {
+            if (photo1.getPhoto_path().equals(imgStr)){
+                exists = true;
+            }
+        }
+        if(!exists){
+
+            photo = photoRepository.save(photo);
+            log.debug("Photo saved to data base with id "+ photo.getId());
+        }else {
+            log.debug("Name match in photo database. Not modifying photo table to avoid duplicate db entries");
+        }
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");

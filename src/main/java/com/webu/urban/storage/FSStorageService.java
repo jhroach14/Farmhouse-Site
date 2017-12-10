@@ -47,41 +47,46 @@ public class FSStorageService implements StorageService {
     @Override
     public Path store(MultipartFile file) {
 
-        String filename = StringUtils.cleanPath(file.getOriginalFilename());
-        log.debug("attempting to store image with filename "+filename);
+        String sanitized = file.getOriginalFilename().replaceAll("[^a-zA-Z0-9\\._]+", "_");
+        log.debug("attempting to store image with filename "+sanitized);
         try{
 
             if(file.isEmpty()){
-                throw new StorageException("Failed to store empty file "+ filename);
+                throw new StorageException("Failed to store empty file "+ sanitized);
             }
-            if(filename.contains("..")){
-                throw new StorageException("relative path not allowed in filename +"+filename);
+            if(sanitized.contains("..")){
+                throw new StorageException("relative path not allowed in filename +"+sanitized);
             }
 
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(URI.create(this.rootLocation + file.getOriginalFilename()));
+
+            Path path = Paths.get(URI.create(this.rootLocation + sanitized));
             log.debug("attempting to store image to "+path.toString());
             Files.write(path,bytes);
 
             //Files.copy(file.getInputStream(), this.rootLocation.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
 
         }catch (IOException e){
-            log.error("Failed to store file "+filename+"\n"+e.getMessage());
-            throw new StorageException("Failed to store file "+filename, e);
+            log.error("Failed to store file "+sanitized+"\n"+e.getMessage());
+            throw new StorageException("Failed to store file "+sanitized, e);
         }
-        log.debug("Successfully stored image at " +this.rootLocation +filename);
-        return Paths.get(URI.create(this.rootLocation + file.getOriginalFilename()));
+        log.debug("Successfully stored image at " +this.rootLocation +sanitized);
+        return Paths.get(URI.create(this.rootLocation + sanitized));
 
     }
 
     @Override
     public Path load(String filename) {
-        log.debug("loading image with name "+filename+" from location "+rootLocation +filename);
-        return Paths.get(rootLocation+filename);
+        String sanitized = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
+
+        log.debug("loading image with name "+sanitized+" from location "+rootLocation +sanitized);
+        return Paths.get(rootLocation+sanitized);
     }
 
     @Override
     public Resource loadAsResource(String filename) {
+
+        filename = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
 
         try{
             log.debug("attmpting to load img as resource "+filename);
