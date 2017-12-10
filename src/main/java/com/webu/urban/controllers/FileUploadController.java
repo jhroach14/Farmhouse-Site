@@ -33,6 +33,7 @@ public class FileUploadController {
     @Autowired
     public FileUploadController(StorageService storageService) {
         this.storageService = storageService;
+        storageService.init();
         this.thumbnailer = new BufferedImageThumbnailer(150);
         log.debug("Initialized storage and thumbnail service");
     }
@@ -77,7 +78,7 @@ public class FileUploadController {
 
 
     @PostMapping("/admin/img/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public void handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
         log.debug("Recieved new image to upload to filesystem "+file.getName());
 
@@ -107,7 +108,7 @@ public class FileUploadController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/admin/";
+        //return "redirect:/admin/";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

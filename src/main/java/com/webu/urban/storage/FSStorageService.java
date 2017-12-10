@@ -31,12 +31,12 @@ public class FSStorageService implements StorageService {
 
     @Override
     public void init() {
-       /* try{
-            //Files.createDirectories(rootLocation);
+        try{
+            Files.createDirectories(Paths.get(URI.create(rootLocation)));
         }catch (IOException e){
             log.error("could not initialize storage");
             throw new StorageException("could not initialize storage",e);
-        }*/
+        }
     }
 
     @Override
@@ -72,16 +72,25 @@ public class FSStorageService implements StorageService {
 
     @Override
     public Path load(String filename) {
-        String sanitized = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
+        if(filename.contains("thumb/")){
+            filename = "thumb/"+(filename.substring(6).replaceAll("[^a-zA-Z0-9\\._]+", "_"));
+        }else {
+            filename=filename.replaceAll("[^a-zA-Z0-9\\._]+","_");
+        }
 
-        log.debug("loading image with name "+sanitized+" from location "+rootLocation +sanitized);
-        return Paths.get(rootLocation+sanitized);
+        log.debug("loading image with name "+filename+" from location "+rootLocation +filename);
+        return Paths.get(rootLocation+filename);
     }
 
     @Override
     public Resource loadAsResource(String filename) {
 
-        filename = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
+        if(filename.contains("thumb/")){
+            filename = "thumb/"+(filename.substring(6).replaceAll("[^a-zA-Z0-9\\._]+", "_"));
+        }else {
+            filename=filename.replaceAll("[^a-zA-Z0-9\\._]+","_");
+        }
+
 
         try{
             log.debug("attmpting to load img as resource "+filename);
