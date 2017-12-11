@@ -29,7 +29,7 @@ Html templates are inserted via thymeleaf/angularJS-->
 
 
     </head>
-    <body >
+    <body ng-controller="indexCtrl">
         <nav class="navbar navbar-fixed-top">
             <ul class="nav logo-nav">
                 <li>
@@ -95,19 +95,36 @@ Html templates are inserted via thymeleaf/angularJS-->
         <!--thymleaf inserts correct html template based on spring data model in controller-->
         <div th:replace="${page.template}"></div>
         <footer>
-            <button data-target="#photo-modal" data-toggle="modal"  title="Manage Photos" id="manage-photo" th:if="${page.permissions == '/admin'}" class="btn btn-default">
+            <button ng-click="loadPhotoData()" data-target="#photo-modal" data-toggle="modal"  title="Manage Photos" id="manage-photo" th:if="${page.permissions == '/admin'}" class="btn btn-default">
                 <span class="glyphicon glyphicon-upload">Manage Photos</span>
             </button>
             Urban Farmhouse - Milton, GA  | <a id="admin-login" href="/login">Admin Login</a>
         </footer>
         <div class="modal fade" id="photo-modal" th:if="${page.permissions == '/admin'}">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">Close</button>
-                        <h4 class="modal-title">Upload Photos</h4>
+                        <h2 class="modal-title">Manage Photos</h2>
                     </div>
                     <div class="modal-body">
+                        <div>
+                            <h3>Uploaded Photos</h3>
+                            <div class="delete-row" ng-repeat="photo in allPhotos" >
+                                <label class="control-label col-sm-3" >
+                                    <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
+                                </label>
+                                <div class="col-sm-9" >
+                                    <span class="photo-path">{{photo.photo_path}}</span>
+                                    <button class="btn btn-danger" ng-click="deletePhoto(photo)" >
+                                        Delete <span id="delete-photo" title="delete" class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h3 id="new-photo-title">Upload New Photo</h3>
                         <form id ="photo-form" method="post" enctype="multipart/form-data" action="/admin/img/" target="_self" class="form-horizontal">
                             <table>
                                 <tr><td>Photo to upload:</td><td><input required="true" type="file" name="file" /></td></tr>

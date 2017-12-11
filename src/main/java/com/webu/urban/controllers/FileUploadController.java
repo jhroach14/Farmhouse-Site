@@ -58,11 +58,12 @@ public class FileUploadController {
                 "inline").body(file);
     }
 
-    @GetMapping("/admin/delete/img/")
-    public String deleteImage(@RequestBody Photo photo){
+    @PostMapping("/admin/delete/img/")
+    public String deleteImage(@RequestBody Photo photo, HttpServletRequest request){
 
         log.debug("removing photo "+photo.getId()+" with path" +photo.getPhoto_path()+" from DB");
         photoRepository.delete(photo.getId());
+
 
         String photoPath = photo.getPhoto_path();
         String thumbPath = photo.getThumb_path();
@@ -74,7 +75,9 @@ public class FileUploadController {
         log.debug("Deleting "+thumbFilename+" from File System");
         storageService.deletePhoto(thumbFilename);
 
-        return filename;
+        String referer = request.getHeader("Referer");
+        referer = referer.substring(referer.indexOf("/admin/")+7);
+        return "redirect:/admin/"+ referer;
     }
 
 

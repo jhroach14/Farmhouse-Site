@@ -115,8 +115,12 @@ public class FSStorageService implements StorageService {
     @Override
     public boolean deletePhoto(String filename) {
 
-        filename = filename.replaceAll("[^a-zA-Z0-9\\._]+", "_");
-        Path file = load(filename);
+        if(filename.contains("thumb/")){
+            filename = "thumb/"+(filename.substring(6).replaceAll("[^a-zA-Z0-9\\._]+", "_"));
+        }else {
+            filename=filename.replaceAll("[^a-zA-Z0-9\\._]+","_");
+        }
+        Path file = Paths.get(URI.create(this.rootLocation+filename));
         boolean deleted = false;
         try {
             log.debug("Attempting to delete file at path "+file.toString());

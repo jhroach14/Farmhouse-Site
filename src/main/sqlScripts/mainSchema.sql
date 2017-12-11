@@ -40,6 +40,7 @@ create table home_page_photos(
     primary key (id),
 
     constraint pht1_hmpg_fk foreign key (photo) references photos(id)
+    on delete cascade
 );
 
 /*Most recent blog posts pulled */
@@ -54,6 +55,7 @@ create table blog_posts(
     primary key (id),
 
     constraint pht_pst_fk foreign key (photo) references photos(id)
+    on delete set null
 );
 
 create table inspire_pages(
@@ -75,13 +77,15 @@ create table about_pages(
     phone_number varchar(32) not null,
     address varchar(256) not null,
     email varchar(64) not null,
-    primary_photo int not null,
-    secondary_photo int not null,
+    primary_photo int,
+    secondary_photo int,
 
     primary key (id),
 
-    constraint abtp_photo_fk foreign key (primary_photo) references photos(id),
+    constraint abtp_photo_fk foreign key (primary_photo) references photos(id)
+    on delete set null,
     constraint abtp_photo2_fk foreign key (secondary_photo) references photos(id)
+    on delete set null
 );
 
 /*service page entities*/
@@ -118,19 +122,23 @@ create table interior_photos(
 
     primary key (interior_id, photo_id),
 
-    constraint intr_pht_fk foreign key (interior_id) references interiors(id),
+    constraint intr_pht_fk foreign key (interior_id) references interiors(id)
+    on delete cascade,
     constraint pht_intr_fk foreign key (photo_id) references photos(id)
+    on delete cascade
 );
 
 /*registry page entities*/
 create table registry_pages(
     id int auto_increment not null,
     intro_text varchar(1028) not null,
-    main_photo int not null,
+    main_photo int,
 
     primary key (id),
 
     constraint reg_photo_fk foreign key (main_photo) references photos(id)
+    on delete set null
+
 );
 /*each wedding registered gets an entry with a code*/
 create table registry_entry(
@@ -149,11 +157,12 @@ create table registry_item(
     price double not null,
     title varchar(128) not null,
     description varchar(4096),
-    photo int not null,
+    photo int,
 
     primary key (id),
 
     constraint reg_it_pht_fk foreign key (photo) references photos(id)
+    on delete set null
 );
 /*entries are linked to items via link table*/
 create table entry_items(
@@ -162,8 +171,10 @@ create table entry_items(
 
     primary key (entry_id, item_id),
 
-    constraint entry_it_fk foreign key (entry_id) references registry_entry(id),
+    constraint entry_it_fk foreign key (entry_id) references registry_entry(id)
+    on delete cascade,
     constraint it_entry_fk foreign key (item_id) references registry_item(id)
+    on delete cascade
 );
 
 /*gallery page entities*/
@@ -181,8 +192,10 @@ create table gallery_section_photos(
 
     primary key (section_id, photo_id),
 
-    constraint sect_pht_fk foreign key (section_id) references gallery_sections(id),
+    constraint sect_pht_fk foreign key (section_id) references gallery_sections(id)
+    on delete cascade,
     constraint pht_sect_fk foreign key (photo_id) references photos(id)
+    on delete cascade
 );
 
 create table events(
@@ -194,6 +207,7 @@ create table events(
     primary key (id),
 
     constraint evnt_pht_fk foreign key (photo) references photos(id)
+    on delete set null
 );
 
 /*many photos for many events requries link table*/
@@ -203,8 +217,10 @@ create table event_photos(
 
     primary key (event_id, photo_id),
 
-    constraint evnt_phts_fk foreign key (event_id) references events(id),
+    constraint evnt_phts_fk foreign key (event_id) references events(id)
+    on delete cascade,
     constraint phts_evnt_fk foreign key (photo_id) references photos(id)
+    on delete cascade
 );
 
 

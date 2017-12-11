@@ -186,4 +186,16 @@ object.logo-mobile{
     color: blue;
 }
 
+.delete-row{
+    height: 150px;
+}
+.photo-path{
+    text-align: center;
+    padding-left: 9%;
+    padding-right: 5%;
+}
+#new-photo-title{
+    text-align: left;
+}
+
 
