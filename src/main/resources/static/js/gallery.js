@@ -29,8 +29,13 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                     $this.stop().animate({
                                         height: "100%"
                                     }, 1000, function () {
-                                        $this.find("ul").hide().fadeIn(1000);
-                                        $this.find(".close-internal").hide().fadeIn();
+                                        $this.find("ul").hide().fadeIn(1000, function () {
+                                            $(window).trigger('resize');
+                                        });
+                                        $this.find(".close-internal").hide().fadeIn(function () {
+                                            $(window).trigger('resize');
+                                        });
+
                                     });
                                 });
                             });
@@ -45,6 +50,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                     }, 1000, function () {
                                         $this.find("ul").hide().fadeIn(1000);
                                         $this.find(".close-internal").hide().fadeIn();
+                                        $(window).trigger('resize');
                                     });
                                 });
                             });
@@ -64,6 +70,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                         }, 1000, function () {
                                             $this.find("ul").hide().fadeIn(1000);
                                             $this.find(".close-internal").hide().fadeIn(1000);
+                                            $(window).trigger('resize');
                                         });
                                     });
 
@@ -79,6 +86,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                     }, 1000, function () {
                                         $this.find("ul").hide().fadeIn(1000);
                                         $this.find(".close-internal").hide().fadeIn(1000);
+                                        $(window).trigger('resize');
                                     });
                                 });
 
@@ -87,6 +95,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
 
                     }
                 }
+
             });
             $(".close-internal").on('click', function () {
                 $this.find(".close-internal").fadeOut();

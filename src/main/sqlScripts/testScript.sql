@@ -42,6 +42,8 @@ insert into gallery_sections (section_title, section_text) values ("Section 1", 
 insert into gallery_sections (section_title, section_text) values ("Section 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
 insert into gallery_sections (section_title, section_text) values ("Section 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
 
+insert into gallery_section_group(section1, section2, section3) values (1,2,3);
+
 insert into gallery_section_photos (section_id, photo_id) values (1,6);
 insert into gallery_section_photos (section_id, photo_id) values (1,7);
 insert into gallery_section_photos (section_id, photo_id) values (1,8);

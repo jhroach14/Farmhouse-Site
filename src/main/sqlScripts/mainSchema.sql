@@ -198,6 +198,22 @@ create table gallery_section_photos(
     on delete cascade
 );
 
+create table gallery_section_group(
+    id int auto_increment not null,
+    section1 int,
+    section2 int,
+    section3 int,
+
+    primary key (id),
+
+    constraint gall_sect1_fk foreign key (section1) references gallery_sections(id)
+    on delete set null,
+    constraint gall_sect2_fk foreign key (section2) references gallery_sections(id)
+    on delete set null,
+    constraint gall_sect3_fk foreign key (section3) references gallery_sections(id)
+    on delete set null
+);
+
 create table events(
     id int auto_increment not null,
     name varchar(256) not null,

@@ -43,6 +43,8 @@ public class PageController {
     private InspireRepository inspireRepository;
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private GallerySectionGroupRepository gallerySectionGroupRepository;
 
     @RequestMapping(value = {"/","/home","/index"})
     public String indexRedirect(){
@@ -107,8 +109,8 @@ public class PageController {
     @RequestMapping("/public/gallery")
     public String gallery(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
-        Iterable<GallerySection> gallerySections = sectionRepository.findAll();
-        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySections,"/public");
+        Iterable<GallerySectionGroup> gallerySectionGroups = gallerySectionGroupRepository.findAll();
+        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySectionGroups,"/public");
 
         model.addAttribute("page", galleryPage);
         log.debug("Serving gallery page...");

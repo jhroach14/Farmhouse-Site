@@ -1,48 +1,48 @@
 <div class="container-fluid gallery-container" ng-controller="galleryCtrl">
+    <div class="group-container" th:each="group : ${page.groups}">
+        <div id="left-container" class="gallery-container">
+            <div class="left-img-holder left expandable"
+                 th:style="|background-image: url(${group.section1.photos[0].photo_path})|">
+                <!-- <button type="button" class="edit-btn btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>-->
 
-    <div id="left-container" class="gallery-container">
-
-        <div class="left-img-holder left expandable"
-             th:style="|background-image: url(${page.sections[0].photos[0].photo_path})|">
-            <!-- <button type="button" class="edit-btn btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>-->
-
-            <div class="title-shader"></div>
-            <h1 class="cover-title" th:text="${page.sections[0].section_title}"></h1>
-            <div class="internal-gallery">
-                <button type="button" class="btn btn-default close-internal left">Close</button>
-                <h3 class="int-title" th:text="${page.sections[0].section_title}"></h3>
-                <ul class="lightSlider">
-                    <li class="ls-li" th:each="photo : ${page.sections[0].photos}"
-                        th:attr="data-thumb=${photo.thumb_path}">
-                        <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
-                    </li>
-                </ul>
+                <div class="title-shader"></div>
+                <h1 class="cover-title" th:text="${group.section1.section_title}"></h1>
+                <div class="internal-gallery">
+                    <button type="button" class="btn btn-default close-internal left">Close</button>
+                    <h3 class="int-title" th:text="${group.section1.section_title}"></h3>
+                    <ul class="lightSlider">
+                        <li class="ls-li" th:each="photo : ${group.section1.photos}"
+                            th:attr="data-thumb=${photo.thumb_path}">
+                            <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="second-left" class="left-img-holder expandable left"
+                 th:style="|background-image: url(${group.section2.photos[0].photo_path})|">
+                <div class="title-shader"></div>
+                <h1 class="cover-title" th:text="${group.section2.section_title}"></h1>
+                <div class="internal-gallery">
+                    <button type="button" class="btn btn-default close-internal left">Close</button>
+                </div>
             </div>
         </div>
-        <div id="second-left" class="left-img-holder expandable left"
-             th:style="|background-image: url(${page.sections[1].photos[0].photo_path})|">
-            <div class="title-shader"></div>
-            <h1 class="cover-title" th:text="${page.sections[1].section_title}"></h1>
-            <div class="internal-gallery">
-                <button type="button" class="btn btn-default close-internal left">Close</button>
-            </div>
-        </div>
-    </div>
 
-    <div id="right-container" class="gallery-container">
-        <div class="right-img-holder expandable right"
-             th:style="|background-image: url(${page.sections[2].photos[0].photo_path})|">
-            <div class="title-shader"></div>
-            <h1 class="cover-title" th:text="${page.sections[2].section_title}"></h1>
-            <div class="internal-gallery">
-                <button type="button" class="btn btn-default close-internal right">Close</button>
+        <div id="right-container" class="gallery-container">
+            <div class="right-img-holder expandable right"
+                 th:style="|background-image: url(${group.section3.photos[0].photo_path})|">
+                <div class="title-shader"></div>
+                <h1 class="cover-title" th:text="${group.section3.section_title}"></h1>
+                <div class="internal-gallery">
+                    <button type="button" class="btn btn-default close-internal right">Close</button>
+                </div>
             </div>
+            <!--
+                    <img class="gallery-header header-right" th:src="${page.sections[2].photos[0].photo_path}"/>
+            -->
         </div>
-        <!--
-                <img class="gallery-header header-right" th:src="${page.sections[2].photos[0].photo_path}"/>
-        -->
     </div>
     <div class="edit-modal container">
         <div class="modal fade" id="myModal" role="dialog">
