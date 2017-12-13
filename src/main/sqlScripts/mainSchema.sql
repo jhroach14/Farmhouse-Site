@@ -39,8 +39,8 @@ create table home_page_photos(
 
     primary key (id),
 
-    constraint pht1_hmpg_fk foreign key (photo) references photos(id)
-    on delete cascade
+    foreign key (photo) references photos(id)
+    on delete no action 
 );
 
 /*Most recent blog posts pulled */
