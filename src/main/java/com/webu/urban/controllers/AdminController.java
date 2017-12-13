@@ -36,8 +36,6 @@ public class AdminController {
     @Autowired
     private RegistryPageRepository registryPageRepository;
     @Autowired
-    private ServiceRepository serviceRepository;
-    @Autowired
     private InspireRepository inspireRepository;
     @Autowired
     private EventRepository eventRepository;

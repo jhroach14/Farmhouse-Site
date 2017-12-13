@@ -32,4 +32,8 @@
             </div>
         </div>
     </div>
+    <button ng-click="loadEditData()" data-target="#edit-page-modal" data-toggle="modal" title="modify page"
+            id="modify-page" th:if="${page.permissions == '/admin'}" class="btn btn-default">
+        <span class="glyphicon glyphicon-pencil"> Edit Page</span>
+    </button>
 </div>

@@ -40,7 +40,7 @@ create table home_page_photos(
     primary key (id),
 
     foreign key (photo) references photos(id)
-    on delete no action 
+    on delete no action
 );
 
 /*Most recent blog posts pulled */
