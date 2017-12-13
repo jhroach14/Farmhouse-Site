@@ -161,7 +161,7 @@ object.logo-mobile{
 
 }
 .glyphicon.glyphicon-one-fine-full-dot {
-    overflow: hidden;
+    align-content: center;
 }
 .glyphicon.glyphicon-one-fine-full-dot:before {
     content:"\25cf";

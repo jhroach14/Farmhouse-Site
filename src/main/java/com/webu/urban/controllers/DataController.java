@@ -123,6 +123,7 @@ public class DataController {
         return photos;
     }
 
+
     @RequestMapping(value = "/admin/homeEdit", method = RequestMethod.POST)
     public Iterable<HomePhoto> homePhotos(@RequestBody Iterable<HomePhoto> homePhotos){
 
@@ -130,6 +131,24 @@ public class DataController {
         homePhotoRepository.save(homePhotos);
         log.debug("Returning saved homePhotos");
         return homePhotos;
+    }
+
+    @RequestMapping(value = "/admin/addNewHomePhoto", method = RequestMethod.POST)
+    public HomePhoto homePhoto(@RequestBody Photo photo){
+
+        log.debug("Received new homePhoto add");
+        HomePhoto newPhoto = new HomePhoto(photo);
+        homePhotoRepository.save(newPhoto);
+        log.debug("Returning saved homePhotos");
+        return newPhoto;
+    }
+
+    @RequestMapping(value = "/admin/deletePhoto", method = RequestMethod.GET)
+    public void deletePhoto(@RequestBody HomePhoto photo){
+
+        log.debug("received delete request for a homePhoto");
+        homePhotoRepository.delete(photo);
+        log.debug("deleted a homePhoto");
     }
 
     @RequestMapping(value = "/validateCode", method = RequestMethod.GET)
