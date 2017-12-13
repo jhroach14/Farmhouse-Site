@@ -38,8 +38,6 @@ public class PageController {
     @Autowired
     private RegistryPageRepository registryPageRepository;
     @Autowired
-    private ServiceRepository serviceRepository;
-    @Autowired
     private InspireRepository inspireRepository;
     @Autowired
     private EventRepository eventRepository;
@@ -189,7 +187,7 @@ public class PageController {
         log.debug("Serving events page...");
 
         if(flag != null && flag.equals("js")){
-            return "interior";
+            return "event";
         }else{
             return "index";
         }

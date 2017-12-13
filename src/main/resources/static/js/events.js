@@ -3,6 +3,28 @@
  */
 app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
     function($scope, $http) {
+        $scope.photoList = null;
+        $scope.events = null;
+        $scope.loadEditData = function () {
+            var url = "http://"+window.location.hostname+":8080/admin/photoList";
+            $http.get(url).success(
+                function (response) {
+                    $scope.photoList = response;
+                }
+            );
+            url = "http://"+window.location.hostname+":8080/admin/Events";
+            $http.get(url).success(
+                function (response) {
+                    $scope.events = response;
+                }
+            );
+        };
+        //add event
+        //delete event
+        //add photo to event
+        //delete photo from event
+
+
         var mq = window.matchMedia('(min-width: 800px)');
         var currentSlider;
         var newSlider;

@@ -52,7 +52,7 @@ app.controller('inspireCtrl', ['$scope', '$http', //scope = model for angular, h
             if(result){
                 $http.post(url,$scope.inspireInfo).success(
                     function () {
-                        alert("Your changes to home page have gone live");
+                        alert("Your changes to Inspire page have gone live");
                         window.location.reload();
                     }
                 );
@@ -93,7 +93,7 @@ app.controller('inspireCtrl', ['$scope', '$http', //scope = model for angular, h
                     }
                 );
             }
-        }
+        };
 
     }
 ]);

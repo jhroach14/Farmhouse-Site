@@ -33,7 +33,7 @@ public class DataController {
     @Autowired
     private RegistryPageRepository registryPageRepository;
     @Autowired
-    private ServiceRepository serviceRepository;
+    private EventRepository eventRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -123,6 +123,7 @@ public class DataController {
         return photos;
     }
 
+
     @RequestMapping(value = "/admin/homeEdit", method = RequestMethod.POST)
     public Iterable<HomePhoto> homePhotos(@RequestBody Iterable<HomePhoto> homePhotos){
 
@@ -130,6 +131,24 @@ public class DataController {
         homePhotoRepository.save(homePhotos);
         log.debug("Returning saved homePhotos");
         return homePhotos;
+    }
+
+    @RequestMapping(value = "/admin/addNewHomePhoto", method = RequestMethod.POST)
+    public HomePhoto homePhoto(@RequestBody Photo photo){
+
+        log.debug("Received new homePhoto add");
+        HomePhoto newPhoto = new HomePhoto(photo);
+        homePhotoRepository.save(newPhoto);
+        log.debug("Returning saved homePhotos");
+        return newPhoto;
+    }
+
+    @RequestMapping(value = "/admin/deletePhoto", method = RequestMethod.GET)
+    public void deletePhoto(@RequestBody HomePhoto photo){
+
+        log.debug("received delete request for a homePhoto");
+        homePhotoRepository.delete(photo);
+        log.debug("deleted a homePhoto");
     }
 
     @RequestMapping(value = "/validateCode", method = RequestMethod.GET)
@@ -200,6 +219,30 @@ public class DataController {
         return blogPost;
     }
 
+    @RequestMapping(value = "/admin/Interiors", method = RequestMethod.GET)
+    public Iterable<Interior> Interiors(){
+
+        log.debug("Received new interiors request");
+        Iterable<Interior> intLinks = interiorRepository.findAll();
+        ArrayList<Interior> interiors = new ArrayList<Interior>();
+        for( Interior i : intLinks){
+            interiors.add(i);
+        }
+        log.debug("Returning Interiors");
+        return interiors;
+    }
+    @RequestMapping(value = "/admin/Events", method = RequestMethod.GET)
+    public Iterable<Event> Events(){
+
+        log.debug("Received new interiors request");
+        Iterable<Event> evLinks = eventRepository.findAll();
+        ArrayList<Event> events = new ArrayList<Event>();
+        for( Event e : evLinks){
+            events.add(e);
+        }
+        log.debug("Returning Events");
+        return events;
+    }
 
 
 
