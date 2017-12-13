@@ -135,3 +135,6 @@
     height: inherit;
     width: inherit;
 }
+.group-delete{
+    float: right;
+}

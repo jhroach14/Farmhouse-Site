@@ -8,9 +8,80 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             item: 1,
             loop: true,
             slideMargin: 0,
-            thumbItem: 5
+            thumbItem: 5,
         });
-        $(document).ready(function () {
+
+        $scope.groups = null;
+        $scope.sections = null;
+
+        $scope.loadEditData = function () {
+            var url = "http://"+window.location.hostname+":8080/admin/galleryGroups";
+            $http.get(url).success(
+                function (response) {
+                    $scope.groups = response;
+                }
+            );
+            url = "http://"+window.location.hostname+":8080/admin/gallerySections";
+            $http.get(url).success(
+                function (response) {
+                    $scope.sections = response;
+                }
+            );
+        };
+
+        $scope.deleteGroup = function (id) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteGroup?group="+id;
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.get(url).success(
+                    function () {
+                        alert("Your changes to gallery page have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
+        };
+
+        $scope.deleteSection = function (id) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteSection?section="+id;
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.get(url).success(
+                    function () {
+                        alert("Your changes to gallery page have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
+        };
+
+        $scope.selectGroupSection1 = function (section ,group) {
+            group.section1 = section;
+        };
+        $scope.selectGroupSection2 = function (section ,group) {
+            group.section2 = section;
+        };
+        $scope.selectGroupSection3 = function (section ,group) {
+            group.section3 = section;
+        };
+
+        $scope.newGroup = function () {
+            var url = "http://"+window.location.hostname+":8080/admin/newGroup";
+            $http.get(url).success(
+                function () {
+                    window.location.reload();
+                }
+            );
+        };
+        
+        $scope.removePhoto = function (photo, section) {
+            var index = section.photos.indexOf(photo);
+            if(index>-1){
+                section.photos.splice(index,1);
+            }
+        }
+
+        $(document).ready(function () {  //this is a monster of a method @jackson
             $(".internal-gallery").hide();
             $(".close-internal").hide();
             $('.expandable').on('click', function () {
@@ -49,8 +120,9 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                         height: "100%"
                                     }, 1000, function () {
                                         $this.find("ul").hide().fadeIn(1000);
-                                        $this.find(".close-internal").hide().fadeIn();
-                                        $(window).trigger('resize');
+                                        $this.find(".close-internal").hide().fadeIn(function () {
+                                            $(window).trigger('resize');
+                                        });
                                     });
                                 });
                             });
@@ -69,8 +141,9 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                             height: "100%"
                                         }, 1000, function () {
                                             $this.find("ul").hide().fadeIn(1000);
-                                            $this.find(".close-internal").hide().fadeIn(1000);
-                                            $(window).trigger('resize');
+                                            $this.find(".close-internal").hide().fadeIn(1000,function () {
+                                                $(window).trigger('resize');
+                                            });
                                         });
                                     });
 
@@ -85,8 +158,10 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                         height: "100%"
                                     }, 1000, function () {
                                         $this.find("ul").hide().fadeIn(1000);
-                                        $this.find(".close-internal").hide().fadeIn(1000);
-                                        $(window).trigger('resize');
+                                        $this.find(".close-internal").hide().fadeIn(1000,function () {
+                                            $(window).trigger('resize');
+                                        });
+
                                     });
                                 });
 
@@ -97,6 +172,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                 }
 
             });
+
             $(".close-internal").on('click', function () {
                 $this.find(".close-internal").fadeOut();
                 $this.find("ul").hide();

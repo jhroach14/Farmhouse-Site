@@ -177,7 +177,7 @@ object.logo-mobile{
 #manage-photo{
     position: absolute;
     top: 20px;
-    right: 200px;
+    right: 20%;
     font-size: larger;
     z-index: 15;
 }

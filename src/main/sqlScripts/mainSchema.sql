@@ -35,12 +35,12 @@ create table photos(
 /*home page entity. jpa repo no entity*/
 create table home_page_photos(
     id int auto_increment not null,
-    photo int not null,
+    photo int,
 
     primary key (id),
 
-    constraint pht1_hmpg_fk foreign key (photo) references photos(id)
-    on delete cascade
+    foreign key (photo) references photos(id)
+    on delete set null
 );
 
 /*Most recent blog posts pulled */
@@ -54,7 +54,7 @@ create table blog_posts(
 
     primary key (id),
 
-    constraint pht_pst_fk foreign key (photo) references photos(id)
+    foreign key (photo) references photos(id)
     on delete set null
 );
 
@@ -82,9 +82,9 @@ create table about_pages(
 
     primary key (id),
 
-    constraint abtp_photo_fk foreign key (primary_photo) references photos(id)
+    foreign key (primary_photo) references photos(id)
     on delete set null,
-    constraint abtp_photo2_fk foreign key (secondary_photo) references photos(id)
+    foreign key (secondary_photo) references photos(id)
     on delete set null
 );
 
@@ -104,8 +104,10 @@ create table service_photos(
 
     primary key (service_id, photo_id),
 
-    constraint srvc_pht_fk foreign key (service_id) references services(id),
-    constraint pht_srvc_fk foreign key (photo_id) references photos(id)
+    foreign key (service_id) references services(id)
+    on delete cascade,
+    foreign key (photo_id) references photos(id)
+    on delete cascade
 );
 
 create table interiors (
@@ -122,9 +124,9 @@ create table interior_photos(
 
     primary key (interior_id, photo_id),
 
-    constraint intr_pht_fk foreign key (interior_id) references interiors(id)
+    foreign key (interior_id) references interiors(id)
     on delete cascade,
-    constraint pht_intr_fk foreign key (photo_id) references photos(id)
+    foreign key (photo_id) references photos(id)
     on delete cascade
 );
 
@@ -136,8 +138,8 @@ create table registry_pages(
 
     primary key (id),
 
-    constraint reg_photo_fk foreign key (main_photo) references photos(id)
-    on delete set null
+    foreign key (main_photo) references photos(id)
+    on delete cascade
 
 );
 /*each wedding registered gets an entry with a code*/
@@ -161,8 +163,8 @@ create table registry_item(
 
     primary key (id),
 
-    constraint reg_it_pht_fk foreign key (photo) references photos(id)
-    on delete set null
+    foreign key (photo) references photos(id)
+    on delete cascade
 );
 /*entries are linked to items via link table*/
 create table entry_items(
@@ -171,9 +173,9 @@ create table entry_items(
 
     primary key (entry_id, item_id),
 
-    constraint entry_it_fk foreign key (entry_id) references registry_entry(id)
+    foreign key (entry_id) references registry_entry(id)
     on delete cascade,
-    constraint it_entry_fk foreign key (item_id) references registry_item(id)
+    foreign key (item_id) references registry_item(id)
     on delete cascade
 );
 
@@ -192,9 +194,9 @@ create table gallery_section_photos(
 
     primary key (section_id, photo_id),
 
-    constraint sect_pht_fk foreign key (section_id) references gallery_sections(id)
+    foreign key (section_id) references gallery_sections(id)
     on delete cascade,
-    constraint pht_sect_fk foreign key (photo_id) references photos(id)
+    foreign key (photo_id) references photos(id)
     on delete cascade
 );
 
@@ -206,11 +208,11 @@ create table gallery_section_group(
 
     primary key (id),
 
-    constraint gall_sect1_fk foreign key (section1) references gallery_sections(id)
+    foreign key (section1) references gallery_sections(id)
     on delete set null,
-    constraint gall_sect2_fk foreign key (section2) references gallery_sections(id)
+    foreign key (section2) references gallery_sections(id)
     on delete set null,
-    constraint gall_sect3_fk foreign key (section3) references gallery_sections(id)
+    foreign key (section3) references gallery_sections(id)
     on delete set null
 );
 
@@ -222,7 +224,7 @@ create table events(
 
     primary key (id),
 
-    constraint evnt_pht_fk foreign key (photo) references photos(id)
+    foreign key (photo) references photos(id)
     on delete set null
 );
 
@@ -233,9 +235,9 @@ create table event_photos(
 
     primary key (event_id, photo_id),
 
-    constraint evnt_phts_fk foreign key (event_id) references events(id)
+    foreign key (event_id) references events(id)
     on delete cascade,
-    constraint phts_evnt_fk foreign key (photo_id) references photos(id)
+    foreign key (photo_id) references photos(id)
     on delete cascade
 );
 

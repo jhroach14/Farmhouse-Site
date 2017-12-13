@@ -26,6 +26,13 @@
                 <h1 class="cover-title" th:text="${group.section2.section_title}"></h1>
                 <div class="internal-gallery">
                     <button type="button" class="btn btn-default close-internal left">Close</button>
+                    <h3 class="int-title" th:text="${group.section2.section_title}"></h3>
+                    <ul class="lightSlider">
+                        <li class="ls-li" th:each="photo : ${group.section2.photos}"
+                            th:attr="data-thumb=${photo.thumb_path}">
+                            <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -37,6 +44,13 @@
                 <h1 class="cover-title" th:text="${group.section3.section_title}"></h1>
                 <div class="internal-gallery">
                     <button type="button" class="btn btn-default close-internal right">Close</button>
+                    <h3 class="int-title" th:text="${group.section3.section_title}"></h3>
+                    <ul class="lightSlider">
+                        <li class="ls-li" th:each="photo : ${group.section3.photos}"
+                            th:attr="data-thumb=${photo.thumb_path}">
+                            <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}"/>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <!--
@@ -44,18 +58,148 @@
             -->
         </div>
     </div>
-    <div class="edit-modal container">
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
+    <button ng-click="loadEditData()" data-target="#edit-modal" data-toggle="modal"  title="modify page" id="modify-page" th:if="${page.permissions == '/admin'}" class="btn btn-default">
+        <span class="glyphicon glyphicon-pencil"> Manage Gallery</span>
+    </button>
+    <div th:if="${page.permissions == '/admin'}"  class="edit-modal container">
+        <div class="modal fade" id ="edit-modal" role="dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h1 class="modal-title">Manage Gallery</h1>
+                        <p>Each pane in the gallery is a gallery section. Gallery sections are places to store similar
+                            photos for viewing. 3 panes form a gallery section group. NOTE: deletes don't trickle down
+                            so photos from a deleted section will exist and sections from a deleted group will still exist.</p>
                     </div>
                     <div class="modal-body">
-
+                        <div>
+                            <h2>Manage Gallery Section Groups</h2>
+                            <div class="panel-group" >
+                                <div ng-each="group in groups track by $index" class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3>
+                                            Group {{$index}}
+                                            <button class="btn btn-danger group-delete" ng-click="deleteGroup(group.id)" >
+                                                Delete <span id="delete-group" title="delete" class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div>
+                                            <label class="control-label col-sm-2" for="section-drop">
+                                                <p>Section 1</p>
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <select class="form-control" id="section-drop">
+                                                    <option ng-repeat="section in sections" ng-selected="group.section1.id==section.id" ng-value="section.id" ng-click="selectGroupSection1(section,group)">
+                                                        <p>{{section.section_title}}</p>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2" for="section-drop2">
+                                                <p>Section 2</p>
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <select class="form-control" id="section-drop2">
+                                                    <option ng-repeat="section in sections" ng-selected="group.section2.id==section.id" ng-value="section.id" ng-click="selectGroupSection2(section,group)">
+                                                        <p>{{section.section_title}}</p>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2" for="section-drop3">
+                                                <p>Section 3</p>
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <select class="form-control" id="section-drop3">
+                                                    <option ng-repeat="section in sections" ng-selected="group.section3.id==section.id" ng-value="section.id" ng-click="selectGroupSection3(section,group)">
+                                                        <p>{{section.section_title}}</p>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button ng-click="newGroup()" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                New Group
+                            </button>
+                        </div>
+                        <div>
+                            <h2>Manage Gallery Sections</h2>
+                            <div class="panel-group" >
+                                <div ng-each="section in sections track by $index" class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3>
+                                            {{section.id}}-{{section.section_title}}
+                                            <button class="btn btn-danger" ng-click="deleteSection(section.id)" >
+                                                Delete <span id="delete-section" title="delete" class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div ng-each="photo in section.photos track by $index">
+                                            <label class="control-label col-sm-2" for="pic-drop">
+                                                <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
+                                                <button class="btn btn-danger" ng-click="removePhoto(photo, section)" >
+                                                    Remove <span id="remove-photo" title="remove" class="glyphicon glyphicon-remove"></span>
+                                                </button>
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <select class="form-control" id="pic-drop">
+                                                    <option ng-repeat="photo1 in photoList" ng-selected="photo.id==photo1.id" ng-value="photo1.id" ng-click="selectSectionPic(photo1,section,$parent.$index)">
+                                                        <p>{{photo1.photo_path}}</p>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2" for="pic-drop3">
+                                                <p>Add Photo to section</p>
+                                                <button class="btn btn-primary" ng-click="addPhoto()" >
+                                                    Add <span id="add-photo" title="add" class="glyphicon glyphicon-plus"></span>
+                                                </button>                                            </label>
+                                            <div class="col-sm-10" >
+                                                <select class="form-control" id="pic-drop3">
+                                                    <option ng-repeat="photo1 in photoList" ng-value="photo1.id" ng-click="addSectionPic(photo1,section)">
+                                                        <p>{{photo1.photo_path}}</p>
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2" for="section-title">
+                                                Section Title
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <input type="text" class="form-control" id="section-title">
+                                                   {{section.section_title}}
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2" for="section-text">
+                                                Section Text
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <textarea type="text" class="form-control" id="section-text">
+                                                {{section.section_title}}
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button ng-click="newSection()" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                New Section
+                            </button>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
