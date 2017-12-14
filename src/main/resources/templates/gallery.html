@@ -1,7 +1,7 @@
 <div class="container-fluid gallery-container" ng-controller="galleryCtrl">
     <div class="group-container" th:each="group : ${page.groups}">
-        <div id="left-container" class="gallery-container">
-            <div class="left-img-holder left expandable"
+        <div id="left-container" class="gallery-container" >
+            <div class="left-img-holder left expandable" th:if="${group.section1?.photos}"
                  th:style="|background-image: url(${group.section1.photos[0].photo_path})|">
                 <!-- <button type="button" class="edit-btn btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-pencil"></span>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
             </div>
-            <div id="second-left" class="left-img-holder expandable left"
+            <div id="second-left" class="left-img-holder expandable left" th:if="${group.section2?.photos}"
                  th:style="|background-image: url(${group.section2.photos[0].photo_path})|">
                 <div class="title-shader"></div>
                 <h1 class="cover-title" th:text="${group.section2.section_title}"></h1>
@@ -38,7 +38,7 @@
         </div>
 
         <div id="right-container" class="gallery-container">
-            <div class="right-img-holder expandable right"
+            <div class="right-img-holder expandable right" th:if="${group.section3?.photos}"
                  th:style="|background-image: url(${group.section3.photos[0].photo_path})|">
                 <div class="title-shader"></div>
                 <h1 class="cover-title" th:text="${group.section3.section_title}"></h1>
@@ -76,7 +76,7 @@
                         <div>
                             <h2>Manage Gallery Section Groups</h2>
                             <div class="panel-group" >
-                                <div ng-each="group in groups track by $index" class="panel panel-default">
+                                <div ng-repeat="group in groups track by $index" class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3>
                                             Group {{$index}}
@@ -86,7 +86,7 @@
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div>
+                                        <div class="group-section-container">
                                             <label class="control-label col-sm-2" for="section-drop">
                                                 <p>Section 1</p>
                                             </label>
@@ -98,7 +98,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div class="group-section-container">
                                             <label class="control-label col-sm-2" for="section-drop2">
                                                 <p>Section 2</p>
                                             </label>
@@ -110,7 +110,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div class="group-section-container">
                                             <label class="control-label col-sm-2" for="section-drop3">
                                                 <p>Section 3</p>
                                             </label>
@@ -123,6 +123,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="panel-footer">
+                                        <button ng-click="saveGroup(group)" class="btn btn-primary">
+                                            Save Group
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <button ng-click="newGroup()" class="btn btn-primary">
@@ -133,7 +138,7 @@
                         <div>
                             <h2>Manage Gallery Sections</h2>
                             <div class="panel-group" >
-                                <div ng-each="section in sections track by $index" class="panel panel-default">
+                                <div ng-repeat="section in sections track by $index" class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3>
                                             {{section.id}}-{{section.section_title}}
@@ -143,7 +148,7 @@
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div ng-each="photo in section.photos track by $index">
+                                        <div ng-repeat="photo in section.photos track by $index">
                                             <label class="control-label col-sm-2" for="pic-drop">
                                                 <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
                                                 <button class="btn btn-danger" ng-click="removePhoto(photo, section)" >

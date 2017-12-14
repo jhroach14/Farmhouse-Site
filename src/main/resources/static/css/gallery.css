@@ -138,3 +138,7 @@
 .group-delete{
     float: right;
 }
+.group-section-container{
+    width: 100%;
+    height: 45px;
+}

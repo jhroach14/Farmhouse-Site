@@ -42,6 +42,10 @@ public class DataController {
     private HomePhotoRepository homePhotoRepository;
     @Autowired
     private InspireRepository inspireRepository;
+    @Autowired
+    private GallerySectionGroupRepository gallerySectionGroupRepository;
+    @Autowired
+    private GallerySectionRepository gallerySectionRepository;
 
 
     //only users are admins
@@ -242,6 +246,59 @@ public class DataController {
         }
         log.debug("Returning Events");
         return events;
+    }
+
+    @RequestMapping(value = "/admin/galleryGroups", method = RequestMethod.GET)
+    public Iterable<GallerySectionGroup> getGalleryGroups(){
+
+        log.debug("Received new gallery groups request");
+        Iterable<GallerySectionGroup> sectionGroups = gallerySectionGroupRepository.findAll();
+        log.debug("Returning gallery groups");
+        return sectionGroups;
+    }
+
+    @RequestMapping(value = "/admin/gallerySections", method = RequestMethod.GET)
+    public Iterable<GallerySection> getGallerySection(){
+
+        log.debug("Received new gallery sections request");
+        Iterable<GallerySection> sectionGroups = gallerySectionRepository.findAll();
+        log.debug("Returning gallery sections");
+        return sectionGroups;
+    }
+
+    @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.GET)
+    public void deleteGroup(@RequestParam(value = "group") int id){
+
+        log.debug("received delete request for group with id "+id);
+        gallerySectionGroupRepository.delete(id);
+        log.debug("deleted post with id "+ id);
+    }
+
+    @RequestMapping(value = "/admin/newGroup", method = RequestMethod.GET)
+    public GallerySectionGroup newGroup(){
+
+        log.debug("Received new group to create");
+        GallerySectionGroup newGroup = new GallerySectionGroup();
+        gallerySectionGroupRepository.save(newGroup);
+        log.debug("Returning saved group with id "+newGroup.getId());
+        return newGroup;
+    }
+
+    @RequestMapping(value = "/admin/saveGroup", method = RequestMethod.POST)
+    public GallerySectionGroup saveGroup(@RequestBody GallerySectionGroup gallerySectionGroup){
+
+        log.debug("Received group to save");
+        gallerySectionGroup =gallerySectionGroupRepository.save(gallerySectionGroup);
+        log.debug("Returning saved group with id "+gallerySectionGroup.getId());
+        return gallerySectionGroup;
+    }
+
+    @RequestMapping(value = "/admin/deleteSection", method = RequestMethod.GET)
+    public void deleteSection(@RequestParam(value = "section") int id){
+
+        log.debug("received delete request for group with id "+id);
+        gallerySectionRepository.delete(id);
+        log.debug("deleted post with id "+ id);
     }
 
 

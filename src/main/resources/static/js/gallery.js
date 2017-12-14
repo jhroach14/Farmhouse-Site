@@ -73,6 +73,15 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                 }
             );
         };
+
+        $scope.saveGroup = function (group) {
+            var url = "http://"+window.location.hostname+":8080/admin/saveGroup";
+            $http.post(url,group).success(
+                function () {
+                    window.location.reload();
+                }
+            );
+        };
         
         $scope.removePhoto = function (photo, section) {
             var index = section.photos.indexOf(photo);
