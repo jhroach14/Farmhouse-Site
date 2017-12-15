@@ -1,3 +1,7 @@
+html, body{
+    min-height: 100%;
+    min-width: 100%;
+}
 
 #control-container{
     text-align: center;
@@ -6,11 +10,17 @@
 .container-fluid{
     padding: 0;
     height: 100%;
+    width: 100%
 }
 #carousel{
     text-align: center;
     height: 100%;
+    width: 100%;
 }
+.carousel-inner > .item > img{
+    width: 100% !important;
+}
+
 .carousel-indicators{
     position: relative;
     display: inline;
@@ -64,22 +74,21 @@
     }
     body{
         overflow: hidden;
+        background: white; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(bottom right, gray, white); /* Standard syntax */
+    }
+    html{
+        background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(bottom right, gray, white); /* Standard syntax */
     }
 }
 
-body{
-    background: white; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(bottom right, gray, white); /* Standard syntax */
-}
-html{
-    background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(bottom right, gray, white); /* Standard syntax */
-}
+
 
 #playButton{
     z-index: 100;
@@ -97,10 +106,10 @@ html{
     border: transparent;
 }
 footer{
-    padding-top: 66%;
+    padding-top: 67%;
+    position: static;
 }
 #modify-page{
-    position: fixed;
     right: 20px;
 }
 #delete-photo{

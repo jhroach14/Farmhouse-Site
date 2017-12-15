@@ -27,8 +27,31 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
 
         var mq = window.matchMedia('(min-width: 800px)');
         var currentSlider;
-        var newSlider;
+        var internalLightSliderInitiated = false;
+
+        resizeCallBack = function () {
+            $(window).delay(1000).trigger('resize');
+        };
         $(document).ready(function() {
+            $("#myModal").on('shown.bs.modal',function () {
+                if(!internalLightSliderInitiated){
+                    $('.lightSlider-internal').lightSlider({
+                        gallery: true,
+                        item: 1,
+                        loop: true,
+                        slideMargin: 0,
+                        thumbItem: 7
+                    });
+
+                }
+                const mySiema = new Siema({onInit: () => resizeCallBack()});
+                document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
+                document.querySelector('.next').addEventListener('click', () => mySiema.next());
+
+                //need some sort of call back to prevent the behavior you see
+                //when the carousel first opens
+                internalLightSliderInitiated = true;
+            });
             if( mq.matches){
                 currentSlider =
                     $('.lightSlider').lightSlider({
@@ -44,19 +67,10 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
 
                 });
             }
-            $('.lightSlider-internal').lightSlider({
-                gallery: true,
-                item: 1,
-                loop: true,
-                slideMargin: 0,
-                thumbItem: 7
-            });
         });
         //reinstantiating lightSlider on resize is very buggy
         //user will have to reload page if they want the look to
         //be appropriate once they change the screen
-        const mySiema = new Siema();
-        document.querySelector('.prev').addEventListener('click', () => mySiema.prev());
-        document.querySelector('.next').addEventListener('click', () => mySiema.next());
+
     }
 ]);

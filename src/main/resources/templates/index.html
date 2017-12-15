@@ -94,12 +94,9 @@ Html templates are inserted via thymeleaf/angularJS-->
         </div>
         <!--thymleaf inserts correct html template based on spring data model in controller-->
         <div th:replace="${page.template}"></div>
-        <footer>
-            <button ng-click="loadPhotoData()" data-target="#photo-modal" data-toggle="modal"  title="Manage Photos" id="manage-photo" th:if="${page.permissions == '/admin'}" class="btn btn-default">
-                <span class="glyphicon glyphicon-upload">Manage Photos</span>
-            </button>
-            Urban Farmhouse - Milton, GA  | <a id="admin-login" href="/login">Admin Login</a>
-        </footer>
+        <button ng-click="loadPhotoData()" data-target="#photo-modal" data-toggle="modal"  title="Manage Photos" id="manage-photo" th:if="${page.permissions == '/admin'}" class="btn btn-default">
+            <span class="glyphicon glyphicon-upload">Manage Photos</span>
+        </button>
         <div class="modal fade" id="photo-modal" th:if="${page.permissions == '/admin'}">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -136,4 +133,7 @@ Html templates are inserted via thymeleaf/angularJS-->
             </div>
         </div>
     </body>
+    <footer>
+        Urban Farmhouse - Milton, GA  | <a id="admin-login" href="/login">Admin Login</a>
+    </footer>
 </html>

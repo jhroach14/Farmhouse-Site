@@ -2,7 +2,7 @@
     <div class="row main events">
         <div id="content-col" class="col-md-12">
             <ul class="lightSlider">
-                <button type="button" data-toggle="modal" data-target="#myModal" class="ls-li" th:each="event : ${page.events}">
+                <button type="button" data-toggle="modal" data-target="#myModal" class="ls-li event-btn" th:each="event : ${page.events}">
                     <h3 th:text="${event.name}"></h3>
                     <div th:text="${event.description}"></div>
                 </button>
@@ -29,13 +29,7 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <span id="right-arrow" class="arrow next glyphicon glyphicon-chevron-right"></span>
-                                <script>
-                                    const mySiema2 = new Siema();
-                                    document.querySelector('.prev').addEventListener('click', () => mySiema2.prev());
-                                    document.querySelector('.next').addEventListener('click', () => mySiema2.next());
-                                </script>
                             </div>
                         </div>
                     </div>
