@@ -24,6 +24,24 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
         //add photo to event
         //delete photo from event
 
+        $scope.addEvent = function () {
+
+        };
+        $scope.deleteEvent = function () {
+
+        };
+        $scope.addPhoto = function () {
+
+        };
+        $scope.deletePhoto = function () {
+
+        };
+        $scope.editName = function () {
+
+        };
+        $scope.editDescriptions = function () {
+
+        };
 
         var mq = window.matchMedia('(min-width: 800px)');
         var currentSlider;

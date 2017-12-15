@@ -20,6 +20,21 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
         //delete interior
         //add photo to interior
         //delete photo from interior
+        $scope.addInterior = function () {
+
+        };
+        $scope.deleteInterior = function () {
+
+        };
+        $scope.addPhoto = function () {
+
+        };
+        $scope.deletePhoto = function () {
+
+        };
+        $scope.editAddress = function () {
+
+        };
 
         $(document).ready(function() {
 

@@ -45,4 +45,16 @@
             id="modify-page" th:if="${page.permissions == '/admin'}" class="btn btn-default">
         <span class="glyphicon glyphicon-pencil"> Edit Page</span>
     </button>
+    <div class="modal fade" id="edit-page-modal" th:if="${page.permissions == '/admin'}">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
