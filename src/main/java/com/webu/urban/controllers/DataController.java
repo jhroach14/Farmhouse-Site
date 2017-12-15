@@ -245,10 +245,11 @@ public class DataController {
         return toDelete;
     }
     @RequestMapping(value = "/admin/addInterior", method = RequestMethod.GET)
-    public Interior addInterior(@RequestBody Interior toAdd){
+    public Interior addInterior(@RequestBody String address){
 
+        Interior toAdd = new Interior(address, new ArrayList<Photo>());
         log.debug("Received new interior add request");
-        interiorRepository.delete(toAdd);
+        interiorRepository.save(toAdd);
         log.debug("Returning added Interior");
         return toAdd;
     }
@@ -306,8 +307,9 @@ public class DataController {
         return toDelete;
     }
     @RequestMapping(value = "/admin/addEvent", method = RequestMethod.GET)
-    public Event addEvent(@RequestBody Event toAdd){
+    public Event addEvent(@RequestBody String name, String description){
 
+        Event toAdd = new Event(name, description, new ArrayList<Photo>());
         log.debug("Received new event add request");
         eventRepository.delete(toAdd);
         log.debug("Returning added event");
