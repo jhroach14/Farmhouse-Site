@@ -142,3 +142,26 @@
     width: 100%;
     height: 45px;
 }
+.section-delete{
+    float: right;
+}
+.photo-container{
+    width:100%;
+    height: 145px;
+    overflow: hidden;
+}
+.text-container{
+    width:100%;
+    height: 67px;
+    overflow: hidden;
+}
+.section-pic-delete{
+    float: right;
+    margin-top: 9px;
+    margin-right: 12px;
+}
+#photo-add{
+    margin-top: 30px;
+    height: 100px;
+    width: 100%;
+}

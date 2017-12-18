@@ -141,29 +141,48 @@
                                 <div ng-repeat="section in sections track by $index" class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3>
-                                            {{section.id}}-{{section.section_title}}
-                                            <button class="btn btn-danger" ng-click="deleteSection(section.id)" >
+                                            {{section.id}} - {{section.section_title}}
+                                            <button  class="section-delete btn btn-danger" ng-click="deleteSection(section.id)" >
                                                 Delete <span id="delete-section" title="delete" class="glyphicon glyphicon-remove"></span>
                                             </button>
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div ng-repeat="photo in section.photos track by $index">
-                                            <label class="control-label col-sm-2" for="pic-drop">
-                                                <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
-                                                <button class="btn btn-danger" ng-click="removePhoto(photo, section)" >
-                                                    Remove <span id="remove-photo" title="remove" class="glyphicon glyphicon-remove"></span>
-                                                </button>
+                                        <div class="text-container">
+                                            <label class="control-label col-sm-2" for="section-title">
+                                                Section Title
                                             </label>
                                             <div class="col-sm-10" >
+                                                <input type="text" class="form-control" id="section-title" ng-model="sections[$index].section_title">
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div class="text-container">
+                                            <label class="control-label col-sm-2" for="section-text">
+                                                Section Text
+                                            </label>
+                                            <div class="col-sm-10" >
+                                                <textarea type="text" class="form-control" id="section-text" ng-model="sections[$index].section_text">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <h3>Section Pictures</h3>
+                                        <div class="photo-container" ng-repeat="photo in section.photos track by $index">
+                                            <label class="control-label col-sm-3" for="pic-drop">
+                                                <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
+                                            </label>
+                                            <div class="col-sm-9" >
                                                 <select class="form-control" id="pic-drop">
                                                     <option ng-repeat="photo1 in photoList" ng-selected="photo.id==photo1.id" ng-value="photo1.id" ng-click="selectSectionPic(photo1,section,$parent.$index)">
                                                         <p>{{photo1.photo_path}}</p>
                                                     </option>
                                                 </select>
+                                                <button class="section-pic-delete btn btn-danger" ng-click="removePhoto(photo, section)" >
+                                                    Remove <span id="remove-photo" title="remove" class="glyphicon glyphicon-remove"></span>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div id="photo-add">
                                             <label class="control-label col-sm-2" for="pic-drop3">
                                                 <p>Add Photo to section</p>
                                                 <button class="btn btn-primary" ng-click="addPhoto()" >
@@ -177,26 +196,11 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div>
-                                            <label class="control-label col-sm-2" for="section-title">
-                                                Section Title
-                                            </label>
-                                            <div class="col-sm-10" >
-                                                <input type="text" class="form-control" id="section-title">
-                                                   {{section.section_title}}
-                                                </input>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label class="control-label col-sm-2" for="section-text">
-                                                Section Text
-                                            </label>
-                                            <div class="col-sm-10" >
-                                                <textarea type="text" class="form-control" id="section-text">
-                                                {{section.section_title}}
-                                                </textarea>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <button ng-click="saveSection(section)" class="btn btn-primary">
+                                            Save Section
+                                        </button>
                                     </div>
                                 </div>
                             </div>

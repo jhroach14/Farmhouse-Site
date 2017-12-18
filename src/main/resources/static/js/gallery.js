@@ -11,6 +11,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             thumbItem: 5,
         });
 
+        $scope.photoList =null;
         $scope.groups = null;
         $scope.sections = null;
 
@@ -25,6 +26,12 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             $http.get(url).success(
                 function (response) {
                     $scope.sections = response;
+                }
+            );
+            url = "http://"+window.location.hostname+":8080/admin/photoList";
+            $http.get(url).success(
+                function (response) {
+                    $scope.photoList = response;
                 }
             );
         };
