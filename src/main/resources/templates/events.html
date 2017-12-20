@@ -76,12 +76,12 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="photo{{$index}}">
-                                            <option ng-repeat="photoOpt in photoList" ng-selected="photo.photo.id==photoOpt.id"
-                                                    ng-value="photoOpt.id" ng-click="selectPhoto(event.name, photoOpt,$parent.$index)">
+                                            <option ng-repeat="photoOpt in photoList" ng-selected="photo.id==photoOpt.id"
+                                                    ng-value="photoOpt.id" ng-click="selectPhoto(event, photoOpt,$parent.$index)">
                                                 <p>{{photoOpt.photo_path}}</p>
                                             </option>
                                         </select>
-                                        <button ng-click="deletePhoto(event, event.photos[$index].photo)" id="delete-photo" title="delete">DELETE</button>
+                                        <button ng-click="deletePhoto(event, photo.id)" id="delete-photo" title="delete">DELETE</button>
                                     </div>
                                 </div>
                                 <hr/>
@@ -90,8 +90,8 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select class="form-control">
-                                        <option ng-repeat="photoOpt in photoList track by $index" ng-value="photoOpt.id"
-                                                ng-click="selectNewPhoto(event, photoOpt)">
+                                        <option ng-repeat="photoOpt in photoList" ng-value="photoOpt.id"
+                                                ng-click="selectNewPhoto(photoOpt)">
                                             <p>{{photoOpt.photo_path}}</p>
                                         </option>
                                     </select>

@@ -3,7 +3,6 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
         $scope.photoList = null;
         $scope.interiors = null;
         $scope.newPhoto = null;
-        $scope.currentInterior = null;
         $scope.loadEditData = function () {
             var url = "http://"+window.location.hostname+":8080/admin/photoList";
             $http.get(url).success(
@@ -26,7 +25,7 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
             var url = "http://"+window.location.hostname+":8080/admin/addInterior";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.post(url).success(
+                $http.get(url).success(
                     function () {
                         alert("Your changes to interiors page have gone live");
                         window.location.reload();
@@ -46,24 +45,17 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
                 );
             }
         };
-        $scope.selectPhoto = function (interiorAddress, photo, index) {
-            for(var i in $scope.interiors){
-                if(interiorAddress == i.address){
-                    i.photos[index] = photo;
-                    break;
-                }
-            }
+        $scope.selectPhoto = function (interior, photo, index) {
+            interior.photos[index] = photo;
         };
-        $scope.selectNewPhoto = function (interior, photo) {
+        $scope.selectNewPhoto = function (photo) {
             $scope.newPhoto = photo;
-            $scope.currentInterior = interior;
-
         };
-        $scope.addPhoto = function () {
-            var url = "http://"+window.location.hostname+":8080/admin/addInteriorPhoto";
+        $scope.addPhoto = function (interior) {
+            var url = "http://"+window.location.hostname+":8080/admin/addInteriorPhoto?photo=" + $scope.newPhoto.id + "&interior=" + interior.id;
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.post(url,$scope.currentInterior, $scope.newPhoto).success(
+                $http.post(url).success(
                     function () {
                         alert("Your changes to interiors page have gone live");
                         window.location.reload();
@@ -71,11 +63,11 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
                 );
             }
         };
-        $scope.deletePhoto = function (interior, photo) {
-            var url = "http://"+window.location.hostname+":8080/admin/deleteInteriorPhoto";
+        $scope.deletePhoto = function (interior, id) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteInteriorPhoto?photo=" + id + "&interior=" + interior.id;
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.post(url,interior, photo).success(
+                $http.post(url).success(
                     function () {
                         alert("Your changes to interiors page have gone live");
                         window.location.reload();

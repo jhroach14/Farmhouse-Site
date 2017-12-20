@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.groups.ConvertGroup;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -244,45 +245,43 @@ public class DataController {
         log.debug("Returning deleted Interior");
         return toDelete;
     }
-    @RequestMapping(value = "/admin/addInterior", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/addInterior", method = RequestMethod.GET)
     public Interior addInterior(){
-        ArrayList<Photo> photosPlaceHolder = new ArrayList<>();
-        String addressPlaceHolder = " ";
-        Interior toAdd = new Interior(addressPlaceHolder, photosPlaceHolder);
+        Interior toAdd = new Interior();
         log.debug("Received new interior add request");
         interiorRepository.save(toAdd);
         log.debug("Returning added Interior");
         return toAdd;
     }
     @RequestMapping(value = "/admin/deleteInteriorPhoto", method = RequestMethod.POST)
-    public Interior deleteInteriorPhoto(@RequestBody Interior toUpdate, Photo toDelete) {
+    public void deleteInteriorPhoto(@RequestParam(value = "photo") int photoId, @RequestParam(value = "interior") int iId) {
 
         log.debug("Received new interior photo delete request");
-        Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> nonDeletedPhotos = new ArrayList<Photo>();
-        for (Photo p : currentPhotos) {
-            if (p.equals(toDelete)) {
-                continue;
+        Interior currentInterior = interiorRepository.findOne(iId);
+        Iterable<Photo> currentPhotos = currentInterior.getPhotos();
+        ArrayList<Photo> updatedPhotos = new ArrayList<>();
+        for(Photo p : currentPhotos){
+            if(p.getId() != photoId){
+                updatedPhotos.add(p);
             }
-            nonDeletedPhotos.add(p);
         }
-        toUpdate.setPhotos(nonDeletedPhotos);
-        log.debug("Returning updated Interior");
-        return toUpdate;
+        currentInterior.setPhotos(updatedPhotos);
+        interiorRepository.save(currentInterior);
     }
     @RequestMapping(value = "/admin/addInteriorPhoto", method = RequestMethod.POST)
-    public Interior addInteriorPhoto(@RequestBody Interior toUpdate, Photo toAdd){
+    public void addInteriorPhoto(@RequestParam(value = "photo") int photoId, @RequestParam(value = "interior") int iId){
 
         log.debug("Received new interior photo add request");
-        Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> appendedPhotos = new ArrayList<Photo>();
+        Interior currentInterior = interiorRepository.findOne(iId);
+        Photo toAdd = photoRepository.findOne(photoId);
+        Iterable<Photo> currentPhotos = currentInterior.getPhotos();
+        ArrayList<Photo> updatedPhotos = new ArrayList<>();
         for(Photo p : currentPhotos){
-            appendedPhotos.add(p);
+            updatedPhotos.add(p);
         }
-        appendedPhotos.add(toAdd);
-        toUpdate.setPhotos(appendedPhotos);
-        log.debug("Returning updated Interior");
-        return toUpdate;
+        updatedPhotos.add(toAdd);
+        currentInterior.setPhotos(updatedPhotos);
+        interiorRepository.save(currentInterior);
     }
     @RequestMapping(value = "/admin/interiorsEdit", method = RequestMethod.POST)
     public Iterable<Interior> interiors(@RequestBody Iterable<Interior> interiors){
@@ -300,7 +299,7 @@ public class DataController {
 
         log.debug("Received new Events request");
         Iterable<Event> evLinks = eventRepository.findAll();
-        ArrayList<Event> events = new ArrayList<Event>();
+        ArrayList<Event> events = new ArrayList<>();
         for( Event e : evLinks){
             events.add(e);
         }
@@ -315,44 +314,44 @@ public class DataController {
         log.debug("Returning deleted event");
         return toDelete;
     }
-    @RequestMapping(value = "/admin/addEvent", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/addEvent", method = RequestMethod.GET)
     public Event addEvent(){
 
-        Event toAdd = new Event("", "", new ArrayList<>());
+        Event toAdd = new Event();
         log.debug("Received new event add request");
         eventRepository.save(toAdd);
         log.debug("Returning added event");
         return toAdd;
     }
     @RequestMapping(value = "/admin/deleteEventPhoto", method = RequestMethod.POST)
-    public Event deleteEventPhoto(@RequestBody Event toUpdate, Photo toDelete) {
+    public void deleteEventPhoto(@RequestParam(value = "photo") int photoId, @RequestParam(value = "event") int eId) {
 
         log.debug("Received new event photo delete request");
-        Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> nonDeletedPhotos = new ArrayList<>();
-        for (Photo p : currentPhotos) {
-            if (p.equals(toDelete)) {
-                continue;
+        Event currentEvent = eventRepository.findOne(eId);
+        Iterable<Photo> currentPhotos = currentEvent.getPhotos();
+        ArrayList<Photo> updatedPhotos = new ArrayList<>();
+        for(Photo p : currentPhotos){
+            if(p.getId() != photoId){
+                updatedPhotos.add(p);
             }
-            nonDeletedPhotos.add(p);
         }
-        toUpdate.setPhotos(nonDeletedPhotos);
-        log.debug("Returning updated event");
-        return toUpdate;
+        currentEvent.setPhotos(updatedPhotos);
+        eventRepository.save(currentEvent);
     }
     @RequestMapping(value = "/admin/addEventPhoto", method = RequestMethod.POST)
-    public Event addEventPhoto(@RequestBody Event toUpdate, Photo toAdd){
+    public void addEventPhoto(@RequestParam(value = "photo") int photoId, @RequestParam(value = "event") int eId){
 
         log.debug("Received new event photo add request");
-        Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> appendedPhotos = new ArrayList<>();
+        Event currentEvent = eventRepository.findOne(eId);
+        Photo toAdd = photoRepository.findOne(photoId);
+        Iterable<Photo> currentPhotos = currentEvent.getPhotos();
+        ArrayList<Photo> updatedPhotos = new ArrayList<>();
         for(Photo p : currentPhotos){
-            appendedPhotos.add(p);
+            updatedPhotos.add(p);
         }
-        appendedPhotos.add(toAdd);
-        toUpdate.setPhotos(appendedPhotos);
-        log.debug("Returning updated event");
-        return toUpdate;
+        updatedPhotos.add(toAdd);
+        currentEvent.setPhotos(updatedPhotos);
+        eventRepository.save(currentEvent);
     }
     @RequestMapping(value = "/admin/eventsEdit", method = RequestMethod.POST)
     public Iterable<Event> events(@RequestBody Iterable<Event> events){
@@ -382,7 +381,7 @@ public class DataController {
         return sectionGroups;
     }
 
-    @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.GET)
     public void deleteGroup(@RequestParam(value = "group") int id){
 
         log.debug("received delete request for group with id "+id);
@@ -390,7 +389,7 @@ public class DataController {
         log.debug("deleted post with id "+ id);
     }
 
-    @RequestMapping(value = "/admin/newGroup", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/newGroup", method = RequestMethod.GET)
     public GallerySectionGroup newGroup(){
 
         log.debug("Received new group to create");
@@ -409,7 +408,7 @@ public class DataController {
         return gallerySectionGroup;
     }
 
-    @RequestMapping(value = "/admin/deleteSection", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deleteSection", method = RequestMethod.GET)
     public void deleteSection(@RequestParam(value = "section") int id){
 
         log.debug("received delete request for group with id "+id);

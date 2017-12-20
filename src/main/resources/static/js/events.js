@@ -6,7 +6,6 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
         $scope.photoList = null;
         $scope.events = null;
         $scope.newPhoto = null;
-        $scope.currentEvent = null;
         $scope.loadEditData = function () {
             var url = "http://"+window.location.hostname+":8080/admin/photoList";
             $http.get(url).success(
@@ -30,7 +29,7 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
             var url = "http://"+window.location.hostname+":8080/admin/addEvent";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.post(url).success(
+                $http.get(url).success(
                     function () {
                         alert("Your changes to events have gone live");
                         window.location.reload();
@@ -51,23 +50,17 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                 );
             }
         };
-        $scope.selectPhoto = function (eventName, photo, index) {
-            for(var e in $scope.events){
-                if(eventName == e.name){
-                    e.photos[index] = photo;
-                    break;
-                }
-            }
+        $scope.selectPhoto = function (event, photo, index) {
+            event.photos[index] = photo;
         };
-        $scope.selectNewPhoto = function (event, photo) {
+        $scope.selectNewPhoto = function (photo) {
             $scope.newPhoto = photo;
-            $scope.currentEvent = event;
         };
-        $scope.addPhoto = function () {
-            var url = "http://"+window.location.hostname+":8080/admin/addEventPhoto";
+        $scope.addPhoto = function (event) {
+            var url = "http://"+window.location.hostname+":8080/admin/addEventPhoto?photo=" + $scope.newPhoto.id + "&event=" + event.id;
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.post(url,$scope.currentEvent,$scope.newPhoto).success(
+                $http.post(url).success(
                     function () {
                         alert("Your changes to the event have gone live");
                         window.location.reload();
@@ -75,11 +68,11 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                 );
             }
         };
-        $scope.deletePhoto = function (event, photo) {
-            var url = "http://"+window.location.hostname+":8080/admin/deleteEventPhoto";
+        $scope.deletePhoto = function (event, id) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteEventPhoto?photo=" + id + "&event=" + event.id;
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.get(url, event, photo).success(
+                $http.post(url).success(
                     function () {
                         alert("Your changes to home page have gone live");
                         window.location.reload();

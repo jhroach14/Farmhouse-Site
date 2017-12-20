@@ -54,7 +54,7 @@ app.controller('homeCtrl', ['$scope', '$http', //scope = model for angular, http
             var url = "http://"+window.location.hostname+":8080/admin/deletePhoto";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
-                $http.get(url, photo).success(
+                $http.post(url, photo).success(
                     function () {
                         alert("Your changes to home page have gone live");
                         window.location.reload();

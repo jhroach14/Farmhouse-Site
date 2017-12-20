@@ -53,7 +53,7 @@
                                         <p>{{photoOpt.photo_path}}</p>
                                     </option>
                                 </select>
-                                <button ng-click="deletePhoto(photos[$index].photo)" id="delete-photo" title="delete">DELETE</button>
+                                <button ng-click="deletePhoto(photos[$index])" id="delete-photo" title="delete">DELETE</button>
                             </div>
                         </div>
                         <hr/>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-sm-12">
                             <select class="form-control">
-                                <option ng-repeat="photoOpt in photoList track by $index" ng-value="photoOpt.id"
+                                <option ng-repeat="photoOpt in photoList" ng-value="photoOpt.id"
                                         ng-click="selectNewPhoto(photoOpt)">
                                     <p>{{photoOpt.photo_path}}</p>
                                 </option>
