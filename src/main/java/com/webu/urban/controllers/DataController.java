@@ -245,9 +245,9 @@ public class DataController {
         return toDelete;
     }
     @RequestMapping(value = "/admin/addInterior", method = RequestMethod.GET)
-    public Interior addInterior(@RequestBody String address){
+    public Interior addInterior(){
 
-        Interior toAdd = new Interior(address, new ArrayList<Photo>());
+        Interior toAdd = new Interior("", new ArrayList<Photo>());
         log.debug("Received new interior add request");
         interiorRepository.save(toAdd);
         log.debug("Returning added Interior");
@@ -283,6 +283,14 @@ public class DataController {
         log.debug("Returning updated Interior");
         return toUpdate;
     }
+    @RequestMapping(value = "/admin/interiorsEdit", method = RequestMethod.POST)
+    public Iterable<Interior> interiors(@RequestBody Iterable<Interior> interiors){
+
+        log.debug("Received new interiors edit submission to save");
+        interiorRepository.save(interiors);
+        log.debug("Returning saved interiors");
+        return interiors;
+    }
 
 
     //start of events crud
@@ -307,11 +315,11 @@ public class DataController {
         return toDelete;
     }
     @RequestMapping(value = "/admin/addEvent", method = RequestMethod.GET)
-    public Event addEvent(@RequestBody String name, String description){
+    public Event addEvent(){
 
-        Event toAdd = new Event(name, description, new ArrayList<Photo>());
+        Event toAdd = new Event("", "", new ArrayList<Photo>());
         log.debug("Received new event add request");
-        eventRepository.delete(toAdd);
+        eventRepository.save(toAdd);
         log.debug("Returning added event");
         return toAdd;
     }
@@ -344,6 +352,14 @@ public class DataController {
         toUpdate.setPhotos(appendedPhotos);
         log.debug("Returning updated event");
         return toUpdate;
+    }
+    @RequestMapping(value = "/admin/eventsEdit", method = RequestMethod.POST)
+    public Iterable<Event> events(@RequestBody Iterable<Event> events){
+
+        log.debug("Received new interiors edit submission to save");
+        eventRepository.save(events);
+        log.debug("Returning saved interiors");
+        return events;
     }
 
 

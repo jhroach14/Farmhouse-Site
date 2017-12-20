@@ -42,3 +42,26 @@
     right:3%;
     top:5%;
 }
+
+
+#modify-page{
+    right: 20px;
+}
+#delete-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+.form-control{
+    width: 70%;
+    float: left;
+}
+.add-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+hr{
+    color:gray;
+    background-color: gray;
+}

@@ -5,6 +5,8 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
     function($scope, $http) {
         $scope.photoList = null;
         $scope.events = null;
+        $scope.newPhoto = null;
+        $scope.currentEvent = null;
         $scope.loadEditData = function () {
             var url = "http://"+window.location.hostname+":8080/admin/photoList";
             $http.get(url).success(
@@ -25,22 +27,77 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
         //delete photo from event
 
         $scope.addEvent = function () {
+            var url = "http://"+window.location.hostname+":8080/admin/addEvent";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url).success(
+                    function () {
+                        alert("Your changes to events have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
 
         };
-        $scope.deleteEvent = function () {
-
+        $scope.deleteEvent = function (event) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteEvent";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url, event).success(
+                    function () {
+                        alert("Your changes to the event have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
+        };
+        $scope.selectPhoto = function (eventName, photo, index) {
+            for(var e in $scope.events){
+                if(eventName == e.name){
+                    e.photos[index] = photo;
+                    break;
+                }
+            }
+        };
+        $scope.selectNewPhoto = function (event, photo) {
+            $scope.newPhoto = photo;
+            $scope.currentEvent = event;
         };
         $scope.addPhoto = function () {
-
+            var url = "http://"+window.location.hostname+":8080/admin/addEventPhoto";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url,$scope.currentEvent,$scope.newPhoto).success(
+                    function () {
+                        alert("Your changes to the event have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
         };
-        $scope.deletePhoto = function () {
-
+        $scope.deletePhoto = function (event, photo) {
+            var url = "http://"+window.location.hostname+":8080/admin/deleteEventPhoto";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.get(url, event, photo).success(
+                    function () {
+                        alert("Your changes to home page have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
         };
-        $scope.editName = function () {
-
-        };
-        $scope.editDescriptions = function () {
-
+        $scope.eventsEdit = function () {
+            var url = "http://"+window.location.hostname+":8080/admin/eventsEdit";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url,$scope.events).success(
+                    function () {
+                        alert("Your changes to events page have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
         };
 
         var mq = window.matchMedia('(min-width: 800px)');
@@ -86,9 +143,5 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                 });
             }
         });
-        //reinstantiating lightSlider on resize is very buggy
-        //user will have to reload page if they want the look to
-        //be appropriate once they change the screen
-
     }
 ]);

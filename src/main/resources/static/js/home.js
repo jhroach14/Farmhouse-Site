@@ -50,7 +50,7 @@ app.controller('homeCtrl', ['$scope', '$http', //scope = model for angular, http
             }
         };
 
-        deletePhoto = function (photo) {
+        $scope.deletePhoto = function (photo) {
             var url = "http://"+window.location.hostname+":8080/admin/deletePhoto";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
