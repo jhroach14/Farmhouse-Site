@@ -147,7 +147,7 @@ public class DataController {
         return newPhoto;
     }
 
-    @RequestMapping(value = "/admin/deletePhoto", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deletePhoto", method = RequestMethod.POST)
     public void deletePhoto(@RequestBody HomePhoto photo){
 
         log.debug("received delete request for a homePhoto");
@@ -187,7 +187,7 @@ public class DataController {
         return post;
     }
 
-    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.POST)
     public void deletePost(@RequestParam(value = "post") int id){
 
         log.debug("received delete request for post with id "+id);
@@ -236,7 +236,7 @@ public class DataController {
         log.debug("Returning Interiors");
         return interiors;
     }
-    @RequestMapping(value = "/admin/deleteInterior", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteInterior", method = RequestMethod.POST)
     public Interior deleteInterior(@RequestBody Interior toDelete){
 
         log.debug("Received new interior delete request");
@@ -244,16 +244,17 @@ public class DataController {
         log.debug("Returning deleted Interior");
         return toDelete;
     }
-    @RequestMapping(value = "/admin/addInterior", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addInterior", method = RequestMethod.POST)
     public Interior addInterior(){
-
-        Interior toAdd = new Interior("", new ArrayList<Photo>());
+        ArrayList<Photo> photosPlaceHolder = new ArrayList<>();
+        String addressPlaceHolder = " ";
+        Interior toAdd = new Interior(addressPlaceHolder, photosPlaceHolder);
         log.debug("Received new interior add request");
         interiorRepository.save(toAdd);
         log.debug("Returning added Interior");
         return toAdd;
     }
-    @RequestMapping(value = "/admin/deleteInteriorPhoto", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteInteriorPhoto", method = RequestMethod.POST)
     public Interior deleteInteriorPhoto(@RequestBody Interior toUpdate, Photo toDelete) {
 
         log.debug("Received new interior photo delete request");
@@ -269,7 +270,7 @@ public class DataController {
         log.debug("Returning updated Interior");
         return toUpdate;
     }
-    @RequestMapping(value = "/admin/addInteriorPhoto", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addInteriorPhoto", method = RequestMethod.POST)
     public Interior addInteriorPhoto(@RequestBody Interior toUpdate, Photo toAdd){
 
         log.debug("Received new interior photo add request");
@@ -306,7 +307,7 @@ public class DataController {
         log.debug("Returning Events");
         return events;
     }
-    @RequestMapping(value = "/admin/deleteEvent", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteEvent", method = RequestMethod.POST)
     public Event deleteEvent(@RequestBody Event toDelete){
 
         log.debug("Received new event delete request");
@@ -314,21 +315,21 @@ public class DataController {
         log.debug("Returning deleted event");
         return toDelete;
     }
-    @RequestMapping(value = "/admin/addEvent", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addEvent", method = RequestMethod.POST)
     public Event addEvent(){
 
-        Event toAdd = new Event("", "", new ArrayList<Photo>());
+        Event toAdd = new Event("", "", new ArrayList<>());
         log.debug("Received new event add request");
         eventRepository.save(toAdd);
         log.debug("Returning added event");
         return toAdd;
     }
-    @RequestMapping(value = "/admin/deleteEventPhoto", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteEventPhoto", method = RequestMethod.POST)
     public Event deleteEventPhoto(@RequestBody Event toUpdate, Photo toDelete) {
 
         log.debug("Received new event photo delete request");
         Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> nonDeletedPhotos = new ArrayList<Photo>();
+        ArrayList<Photo> nonDeletedPhotos = new ArrayList<>();
         for (Photo p : currentPhotos) {
             if (p.equals(toDelete)) {
                 continue;
@@ -339,12 +340,12 @@ public class DataController {
         log.debug("Returning updated event");
         return toUpdate;
     }
-    @RequestMapping(value = "/admin/addEventPhoto", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addEventPhoto", method = RequestMethod.POST)
     public Event addEventPhoto(@RequestBody Event toUpdate, Photo toAdd){
 
         log.debug("Received new event photo add request");
         Iterable<Photo> currentPhotos = toUpdate.getPhotos();
-        ArrayList<Photo> appendedPhotos = new ArrayList<Photo>();
+        ArrayList<Photo> appendedPhotos = new ArrayList<>();
         for(Photo p : currentPhotos){
             appendedPhotos.add(p);
         }
@@ -381,7 +382,7 @@ public class DataController {
         return sectionGroups;
     }
 
-    @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.POST)
     public void deleteGroup(@RequestParam(value = "group") int id){
 
         log.debug("received delete request for group with id "+id);
@@ -389,7 +390,7 @@ public class DataController {
         log.debug("deleted post with id "+ id);
     }
 
-    @RequestMapping(value = "/admin/newGroup", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/newGroup", method = RequestMethod.POST)
     public GallerySectionGroup newGroup(){
 
         log.debug("Received new group to create");
@@ -408,7 +409,7 @@ public class DataController {
         return gallerySectionGroup;
     }
 
-    @RequestMapping(value = "/admin/deleteSection", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteSection", method = RequestMethod.POST)
     public void deleteSection(@RequestParam(value = "section") int id){
 
         log.debug("received delete request for group with id "+id);
