@@ -120,21 +120,28 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                 //when the carousel first opens
                 internalLightSliderInitiated = true;
             });
-            if( mq.matches){
-                currentSlider =
-                    $('.lightSlider').lightSlider({
-                    item: 3,
-                    thumbItem: 7
+            $('.lightSlider').lightSlider({
+                item: 4,
+                loop: false,
+                slideMove: 2,
+                responsive : [
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            item: 3,
+                            slideMove: 1
+                        }
+                    },
+                    {
+                        breakpoint: 540,
+                        settings:{
+                            item: 1,
+                            slideMove: 1
+                        }
+                    }
+                ]
+            });
 
-                });
-            }
-            else{
-                currentSlider = $('.lightSlider').lightSlider({
-                    item: 1,
-                    thumbItem: 7
-
-                });
-            }
         });
     }
 ]);
