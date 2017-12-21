@@ -4,6 +4,35 @@
 
 var app = angular.module("indexApp",[]); //declare angular app
 
+app.controller('indexCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
+    function($scope, $http) {
+
+        $scope.allPhotos = null;
+
+        $scope.loadPhotoData = function () {
+            var url = "http://"+window.location.hostname+"/admin/photoList";
+            $http.get(url).success(
+                function (response) {
+                    $scope.allPhotos = response;
+                }
+            );
+        };
+
+        $scope.deletePhoto= function (photo) {
+            var url = "http://"+window.location.hostname+"/admin/delete/img/";
+            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
+            if(result){
+                $http.post(url,photo).success(
+                    function () {
+                        alert("Your changes to photos have gone live");
+                        window.location.reload();
+                    }
+                );
+            }
+        };
+
+    }
+]);
 //sidebar js
 function w3_open() {
     document.getElementById("mySidebar").style.display = "table";

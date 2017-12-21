@@ -1,6 +1,7 @@
 package com.webu.urban.pages;
 
 import com.webu.urban.entities.GallerySection;
+import com.webu.urban.entities.GallerySectionGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,23 +12,24 @@ public class GalleryPage extends Page {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    private Iterable<GallerySection> sections;
+    private Iterable<GallerySectionGroup> groups;
 
     public GalleryPage(){
         super("Gallery", "/gallery", "");
     }
 
-    public GalleryPage(String title,  Iterable<GallerySection> sections,String permissions) {
+    public GalleryPage(String title,  Iterable<GallerySectionGroup> groups,String permissions) {
         super(title, "/gallery",permissions);
-        this.sections = sections;
+        this.groups = groups;
+
         log.debug("creating gallery page data model...");
     }
 
-    public Iterable<GallerySection> getSections() {
-        return sections;
+    public Iterable<GallerySectionGroup> getGroups() {
+        return groups;
     }
 
-    public void setSections(Iterable<GallerySection> sections) {
-        this.sections = sections;
+    public void setGroups(Iterable<GallerySectionGroup> groups) {
+        this.groups = groups;
     }
 }

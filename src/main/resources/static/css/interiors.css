@@ -21,17 +21,17 @@
     padding-right: 22%;
 }
 .arrow{
-    font-size: 60px;
+    font-size: 30px;
     position:absolute;
 }
 #left-arrow{
-    left:15%;
-    top:37%;
+    left:25%;
+    top:20px;
     z-index: 100;
 }
 #right-arrow{
-    right:15%;
-    top:37%;
+    right: 25%;
+    top:20px;
     z-index: 100;
 }
 .int-title{
@@ -40,5 +40,24 @@
 .dropdown{
     position: absolute;
     right:3%;
-    top:35%;
+    top:5%;
+}
+
+#delete-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+.form-control{
+    width: 70%;
+    float: left;
+}
+.add-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+hr{
+    color:gray;
+    background-color: gray;
 }

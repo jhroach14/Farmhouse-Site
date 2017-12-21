@@ -1,6 +1,7 @@
 package com.webu.urban.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="events")
@@ -18,6 +19,10 @@ public class Event extends AbstractEntity{
     }
 
     public Event() {
+        this.name = "";
+        this.description = "";
+        ArrayList<Photo> photosEmpty = new ArrayList<>();
+        this.photos = photosEmpty;
     }
 
     public Event(String name, String description, List<Photo> photos) {

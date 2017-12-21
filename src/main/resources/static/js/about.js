@@ -4,7 +4,6 @@
 app.controller('aboutCtrl', ['$scope', '$http', //scope = model for angular, http = object used for http transactions
     function($scope, $http) {
         $scope.photos = null;
-
         $scope.aboutInfo = null;
 
         $scope.loadEditData = function () {
@@ -14,6 +13,7 @@ app.controller('aboutCtrl', ['$scope', '$http', //scope = model for angular, htt
                         $scope.photos = response;
                     }
                 );
+
                 url = "http://"+window.location.hostname+"/admin/aboutInfo";
                 $http.get(url).success(
                     function (response) {

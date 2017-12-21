@@ -2,6 +2,9 @@
 * https://github.com/sachinchoolur/lightslider
 * Copyright (c) 2015 Sachin N; Licensed MIT */
 /** /!!! core css Should not edit !!!/**/ 
+.siema{
+    max-width: 99% !important;
+}
 
 .lSSlideOuter {
     overflow: hidden;
@@ -21,7 +24,7 @@
     margin: 0;
 }
 .lSSlideWrapper {
-    max-width: 100%;
+    max-width: 99.5% !important;
     overflow: hidden;
     position: relative;
 }

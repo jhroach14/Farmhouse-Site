@@ -1,3 +1,7 @@
+html, body{
+    min-height: 100%;
+    min-width: 100%;
+}
 
 #control-container{
     text-align: center;
@@ -6,11 +10,17 @@
 .container-fluid{
     padding: 0;
     height: 100%;
+    width: 100%
 }
 #carousel{
     text-align: center;
     height: 100%;
+    width: 100%;
 }
+.carousel-inner > .item > img{
+    width: 100% !important;
+}
+
 .carousel-indicators{
     position: relative;
     display: inline;
@@ -28,21 +38,7 @@
     height: 17px;
     background-color: #000000;
 }
-
-@media (max-width: 480px) {
-    .container-fluid {
-        position: relative;
-    }
-    footer{
-        background: transparent;
-        position: absolute;
-        bottom: 8%;
-    }
-    body{
-        overflow: hidden;
-    }
-}
-@media (min-width: 481px) {
+@media screen and (min-width: 579px) {
     .navbar-fixed-top{
         position: fixed;
         background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(30,30,30,0.4) 100%);
@@ -56,7 +52,7 @@
         left: 0;
     }
     #control-container{
-        margin-top: -2.75%;
+        margin-top: -4%;
     }
 }
 
@@ -67,13 +63,32 @@
 .arrow{
     color: #000000;
 }
-body{
-    background: white; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(bottom right, gray, white); /* Standard syntax */
+@media screen and (max-width: 578px) {
+    .container-fluid {
+        position: relative;
+    }
+    footer{
+        background: transparent;
+        position: absolute;
+        bottom: 8%;
+    }
+    body{
+        overflow: hidden;
+        background: white; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(bottom right, gray, white); /* Standard syntax */
+    }
+    html{
+        background: -webkit-linear-gradient(left top, gray, white); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, gray, white); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, gray, white); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(bottom right, gray, white); /* Standard syntax */
+    }
 }
+
+
 
 #playButton{
     z-index: 100;
@@ -89,4 +104,23 @@ body{
     color: whitesmoke;
     margin-bottom: 5px;
     border: transparent;
+}
+footer{
+    padding-top: 67%;
+    position: static;
+}
+
+#delete-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+.form-control{
+    width: 70%;
+    float: left;
+}
+.add-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
 }

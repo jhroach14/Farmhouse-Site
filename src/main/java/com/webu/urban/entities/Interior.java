@@ -1,6 +1,7 @@
 package com.webu.urban.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "interiors")
@@ -22,6 +23,9 @@ public class Interior extends AbstractEntity{
     }
 
     public Interior() {
+        this.address = "";
+        ArrayList<Photo> photosEmpty = new ArrayList<>();
+        this.photos = photosEmpty;
     }
 
     public String getAddress() {

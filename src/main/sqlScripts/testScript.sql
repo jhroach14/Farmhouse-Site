@@ -3,15 +3,15 @@
 insert into users (username, password, enabled, email) values ('user', '1234', true, 'jhroach14@gmail.com');
 insert into authorities (username, authority) values ('user', 'ROLE_ADMIN');
 
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/main-gallery1.jpg", "/img/thumb/main-gallery1.jpg", "mouseover text 1");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/main-gallery2.jpg","/img/thumb/main-gallery2.jpg", "mouseover text 2");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/main-gallery3.jpg", "/img/thumb/main-gallery3.jpg","mouseover text 3");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/about-main.jpg", "/img/thumb/about-main.jpg","mouseover text 4");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/about-minor.jpg", "/img/thumb/about-minor.jpg", "mouseover text 5");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/section0-pic0.jpg","/img/thumb/section0-pic0.jpg","mouseover text 6");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/section1-pic0.jpg", "/img/thumb/section1-pic0.jpg","mouseover text 7");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/section2-pic0.jpg", "/img/thumb/section2-pic0.jpg","mouseover text 8");
-insert into photos (photo_path, thumb_path, photo_text) values ("/img/registry-get-started.jpg","/img/thumb/registry-get-started.jpg", "Get Started");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/main_gallery1.jpg", "/img/thumb/main_gallery1.jpg", "mouseover text 1");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/main_gallery2.jpg","/img/thumb/main_gallery2.jpg", "mouseover text 2");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/main_gallery3.jpg", "/img/thumb/main_gallery3.jpg","mouseover text 3");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/about_main.jpg", "/img/thumb/about_main.jpg","mouseover text 4");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/about_minor.jpg", "/img/thumb/about_minor.jpg", "mouseover text 5");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/section0_pic0.jpg","/img/thumb/section0_pic0.jpg","mouseover text 6");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/section1_pic0.jpg", "/img/thumb/section1_pic0.jpg","mouseover text 7");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/section2_pic0.jpg", "/img/thumb/section2_pic0.jpg","mouseover text 8");
+insert into photos (photo_path, thumb_path, photo_text) values ("/img/registry_get_started.jpg","/img/thumb/registry_get_started.jpg", "Get Started");
 insert into photos (photo_path, thumb_path, photo_text) values ("/img/chair.jpg", "/img/thumb/chair.jpg", "chair");
 
 
@@ -41,6 +41,8 @@ insert into about_pages (store_season, store_days, store_hours, company_bio, pho
 insert into gallery_sections (section_title, section_text) values ("Section 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
 insert into gallery_sections (section_title, section_text) values ("Section 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
 insert into gallery_sections (section_title, section_text) values ("Section 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in tristique turpis, sed pretium lacus. Suspendisse potenti. Pellentesque molestie tempus eros. Vivamus dapibus quis leo nec hendrerit.");
+
+insert into gallery_section_group(section1, section2, section3) values (1,2,3);
 
 insert into gallery_section_photos (section_id, photo_id) values (1,6);
 insert into gallery_section_photos (section_id, photo_id) values (1,7);

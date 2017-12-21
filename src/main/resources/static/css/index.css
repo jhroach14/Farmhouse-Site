@@ -26,12 +26,11 @@ footer{
     position: static;
     z-index: 10;
     font-family: cursive;
-    height: 8%;
+    height: 5vh;
     background-color: whitesmoke;
     width: 90%;
     margin: 0 5%;
     text-align: center;
-    padding-top: 1%;
 }
 .nav{
     position: relative;
@@ -94,7 +93,27 @@ object.logo-mobile{
 
 }
 
-@media (max-width: 500px){
+
+@media screen and (min-width: 579px){
+    #company-descriptors-mobile{
+        display: none;
+    }
+    #company-descriptors{
+        font-size: large ;
+    }
+    div.w3-sidebar{
+        display:none;
+    }
+    button.w3-button{
+        display: none;
+
+    }
+    object.logo-mobile{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 578px){
     #company-descriptors-mobile{
         display: inline-block;
         position: static;
@@ -123,26 +142,6 @@ object.logo-mobile{
     }
 
 }
-@media (min-width: 501px){
-    #company-descriptors-mobile{
-        display: none;
-    }
-    #company-descriptors{
-        font-size: large ;
-    }
-    div.w3-sidebar{
-        display:none;
-    }
-    button.w3-button{
-        display: none;
-
-    }
-    object.logo-mobile{
-        display: none;
-    }
-
-}
-
 .row{
     width: 90%;
     margin-left: 5%;
@@ -161,15 +160,23 @@ object.logo-mobile{
 
 }
 .glyphicon.glyphicon-one-fine-full-dot {
-    overflow: hidden;
+    align-content: center;
 }
 .glyphicon.glyphicon-one-fine-full-dot:before {
     content:"\25cf";
 }
 #modify-page{
-    position: absolute;
+    position: fixed;
     top:20px;
-    right:20px;
+    right:10%;
+    font-size: larger;
+    z-index: 15;
+}
+
+#manage-photo{
+    position: fixed;
+    top: 20px;
+    left: 10%;
     font-size: larger;
     z-index: 15;
 }
@@ -177,4 +184,17 @@ object.logo-mobile{
 #admin-login{
     color: blue;
 }
+
+.delete-row{
+    height: 150px;
+}
+.photo-path{
+    text-align: center;
+    padding-left: 9%;
+    padding-right: 5%;
+}
+#new-photo-title{
+    text-align: left;
+}
+
 

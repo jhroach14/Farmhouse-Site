@@ -2,7 +2,7 @@
     <div class="row main events">
         <div id="content-col" class="col-md-12">
             <ul class="lightSlider">
-                <button type="button" data-toggle="modal" data-target="#myModal" class="ls-li" th:each="event : ${page.events}">
+                <button type="button" data-toggle="modal" data-target="#myModal" class="ls-li event-btn" th:each="event : ${page.events}">
                     <h3 th:text="${event.name}"></h3>
                     <div th:text="${event.description}"></div>
                 </button>
@@ -29,13 +29,7 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <span id="right-arrow" class="arrow next glyphicon glyphicon-chevron-right"></span>
-                                <script>
-                                    const mySiema2 = new Siema();
-                                    document.querySelector('.prev').addEventListener('click', () => mySiema2.prev());
-                                    document.querySelector('.next').addEventListener('click', () => mySiema2.next());
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -44,6 +38,86 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    <button ng-click="loadEditData()" data-target="#edit-page-modal" data-toggle="modal" title="modify page"
+            id="modify-page" th:if="${page.permissions == '/admin'}" class="btn btn-default">
+        <span class="glyphicon glyphicon-pencil"> Edit Page</span>
+    </button>
+    <div class="modal fade" id="edit-page-modal" th:if="${page.permissions == '/admin'}">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Close</button>
+                    <h4 class="modal-title">Modify Events Page</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="events-form" class="form-horizontal">
+                        <div ng-repeat="event in events" class="form-group"> <!--for each event-->
+                            <div class="col-sm-12">
+                                <button ng-click="deleteEvent(event)" id="delete-event" title="delete">DELETE {{event.name}}</button>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="name">Name</label>
+                                    <div class="col-sm-10" >
+                                        <input id="name" type="text" class="form-control" ng-model="event.name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="description">Description</label>
+                                    <div class="col-sm-10" >
+                                        <textarea id="description" type="text" class="form-control" ng-model="event.description"/>
+                                    </div>
+                                </div>
+                                <div ng-repeat="photo in event.photos track by $index" class="form-group">
+                                    <label class="control-label col-sm-2" for="photo{{$index}}">
+                                        <p>Photo {{$index}}</p>
+                                        <img id="thumb1" ng-src="http://localhost:8080{{event.photos[$index].thumb_path}}"/>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="photo{{$index}}">
+                                            <option ng-repeat="photoOpt in photoList" ng-selected="photo.id==photoOpt.id"
+                                                    ng-value="photoOpt.id" ng-click="selectPhoto(event, photoOpt,$parent.$index)">
+                                                <p>{{photoOpt.photo_path}}</p>
+                                            </option>
+                                        </select>
+                                        <button ng-click="deletePhoto(event, photo.id)" id="delete-photo" title="delete">DELETE</button>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div>
+                                    <p style="font-weight: bold; padding-left: 5px">Add Photo?</p>
+                                </div>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option ng-repeat="photoOpt in photoList" ng-value="photoOpt.id"
+                                                ng-click="selectNewPhoto(photoOpt)">
+                                            <p>{{photoOpt.photo_path}}</p>
+                                        </option>
+                                    </select>
+                                    <div class="form-group">
+                                        <input ng-click="addPhoto(event)" type="submit" class="btn btn-default add-photo" value="Add" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div>
+                            <p style="font-weight: bold; padding-left: 5px">Add Event?</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input ng-click="addEvent()" type="submit" class="btn btn-default add-event" value="Add" data-dismiss="modal" />
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <input ng-click="eventsEdit()" type="submit" class="btn btn-default" style="position: absolute;bottom:0;left:0;" value="Save"
+                                   data-dismiss="modal"/>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

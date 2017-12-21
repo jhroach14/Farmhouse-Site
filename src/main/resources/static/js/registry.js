@@ -14,13 +14,13 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
         $scope.registryInfo = null;
 
         $scope.loadEditData = function () {
-            var url = "http://localhost:8080/admin/photoList";
+            var url = "http://"+window.location.hostname+"/admin/photoList";
             $http.get(url).success(
                 function (response) {
                     $scope.photos = response;
                 }
             );
-            url = "http://localhost:8080/admin/registryInfo";
+            url = "http://"+window.location.hostname+"/admin/registryInfo";
             $http.get(url).success(
                 function (response) {
                     $scope.registryInfo = response;
@@ -33,7 +33,7 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
         };
 
         $scope.registryEdit = function () {
-            var url = "http://localhost:8080/admin/registryEdit";
+            var url = "http://"+window.location.hostname+"/admin/registryEdit";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
             if(result){
                 $http.post(url,$scope.registryInfo).success(
@@ -79,7 +79,7 @@ app.controller('registryCtrl', ['$scope', '$http', //scope = model for angular, 
         }
 
         $scope.submitRegCode = function () {
-            var url = "http://localhost:8080/validateCode?code="+$scope.regCode;
+            var url = "http://"+window.location.hostname+"/validateCode?code="+$scope.regCode;
             $http.get(url).success(
                 function (response) {
                     if(response != null){

@@ -40,32 +40,33 @@
     padding-top: 15px;
 }
 
-.lsAction > a{
-    opacity: 1 !important;
+.lSAction > a{
+    border-radius: 5px;
 }
 
-.lSPrev {
-    background:grey;
-    border-radius: 20px;
-
+.lSAction > .lSPrev {
+    left: 5% !important;
+    background: grey;
+    background-image: url('../img/controls.png');
 }
-.lSNext {
-    background:grey;
-    border-radius: 20px;
-
+.lSAction > .lSNext {
+    right: 5% !important;
+    background: grey;
+    background-image: url('../img/controls.png');
+    background-position: -32px 0;
 }
 .arrow{
-    font-size: 60px;
+    font-size: 30px;
     position:absolute;
 }
 #left-arrow{
     left:30%;
-    top:-10px;
+    top:10px;
     z-index: 100;
 }
 #right-arrow{
     right: 30%;
-    top:-10px;
+    top:10px;
     z-index: 100;
 }
 .int-title{
@@ -78,4 +79,23 @@
 }
 .modal-footer{
     border: transparent;
+}
+
+#delete-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+.form-control{
+    width: 70%;
+    float: left;
+}
+.add-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+hr{
+    color: gray;
+    background-color: gray;
 }
