@@ -1,5 +1,10 @@
-
-#left-container{
+.gallery-container{
+    height: 93%;
+    padding-top: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.left-container{
     width:58.5%;
     margin-left: 1%;
     height:100%;
@@ -7,7 +12,7 @@
     padding: 5px;
     float: left;
 }
-#right-container{
+.right-container{
     width: 38.5%;
     margin-right: .5%;
     height: 100%;
@@ -15,12 +20,7 @@
     padding: 5px;
     float: right;
 }
-.gallery-container{
-    height: 93%;
-    padding-top: 5px;
-    padding-left: 5%;
-    padding-right: 5%;
-}
+
 .left-img-holder{
     width: 100%;
     height:46%;
@@ -32,14 +32,14 @@
 }
 .right-img-holder{
     width:100%;
-    height:92%;
+    height:94%;
     background-color: lightgray;
     background-position: center ;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
-#second-left{
+.second-left{
     margin-top: 2%;
 }
 
@@ -129,8 +129,8 @@
     z-index: 1000;
 }
 .group-container{
-    height: inherit;
-    width: inherit;
+    height: 100%;
+    width: 100%;
 }
 .group-delete{
     float: right;
