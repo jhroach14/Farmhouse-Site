@@ -381,6 +381,15 @@ public class DataController {
         return sectionGroups;
     }
 
+    @RequestMapping(value = "/admin/saveSection", method = RequestMethod.POST)
+    public GallerySection saveGallerySection(@RequestBody GallerySection section){
+
+        log.debug("Received new save gallery sections request");
+        section = gallerySectionRepository.save(section);
+        log.debug("Returning gallery sections");
+        return section;
+    }
+
     @RequestMapping(value = "/admin/deleteGroup", method = RequestMethod.GET)
     public void deleteGroup(@RequestParam(value = "group") int id){
 
@@ -397,6 +406,15 @@ public class DataController {
         gallerySectionGroupRepository.save(newGroup);
         log.debug("Returning saved group with id "+newGroup.getId());
         return newGroup;
+    }
+    @RequestMapping(value = "/admin/newSection", method = RequestMethod.GET)
+    public GallerySection newSection(){
+
+        log.debug("Received new section to create");
+        GallerySection newSection = new GallerySection();
+        gallerySectionRepository.save(newSection);
+        log.debug("Returning saved group with id "+newSection.getId());
+        return newSection;
     }
 
     @RequestMapping(value = "/admin/saveGroup", method = RequestMethod.POST)

@@ -6,6 +6,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
         $scope.photoList = null;
         $scope.groups = null;
         $scope.sections = null;
+        var newSectionPic = null;
 
         $scope.loadEditData = function () {
             var url = "http://" + window.location.hostname + ":8080/admin/galleryGroups";
@@ -73,9 +74,27 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             );
         };
 
+        $scope.newSection = function () {
+            var url = "http://" + window.location.hostname + ":8080/admin/newSection";
+            $http.get(url).success(
+                function () {
+                    window.location.reload();
+                }
+            );
+        };
+
         $scope.saveGroup = function (group) {
             var url = "http://" + window.location.hostname + ":8080/admin/saveGroup";
             $http.post(url, group).success(
+                function () {
+                    window.location.reload();
+                }
+            );
+        };
+
+        $scope.saveSection = function (section) {
+            var url = "http://" + window.location.hostname + ":8080/admin/saveSection";
+            $http.post(url, section).success(
                 function () {
                     window.location.reload();
                 }
@@ -87,6 +106,17 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
             if (index > -1) {
                 section.photos.splice(index, 1);
             }
+        };
+
+        $scope.selectSectionPic = function (photo,section,index){
+            section.photos[index] = photo;
+        };
+        $scope.selectNewSectionPic = function (photo) {
+            newSectionPic = photo;
+        };
+
+        $scope.addSectionPic = function (section) {
+            section.photos.push(newSectionPic);
         };
 
         $(document).ready(function () {  //this is a monster of a method @jackson
