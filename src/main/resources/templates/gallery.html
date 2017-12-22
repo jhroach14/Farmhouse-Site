@@ -185,12 +185,12 @@
                                         <div id="photo-add">
                                             <label class="control-label col-sm-2" for="pic-drop3">
                                                 <p>Add Photo to section</p>
-                                                <button class="btn btn-primary" ng-click="addPhoto()" >
+                                                <button class="btn btn-primary" ng-click="addSectionPic(section)" >
                                                     Add <span id="add-photo" title="add" class="glyphicon glyphicon-plus"></span>
                                                 </button>                                            </label>
                                             <div class="col-sm-10" >
                                                 <select class="form-control" id="pic-drop3">
-                                                    <option ng-repeat="photo1 in photoList" ng-value="photo1.id" ng-click="addSectionPic(photo1,section)">
+                                                    <option ng-repeat="photo1 in photoList" ng-value="photo1.id" ng-click="selectNewSectionPic(photo1)" >
                                                         <p>{{photo1.photo_path}}</p>
                                                     </option>
                                                 </select>
