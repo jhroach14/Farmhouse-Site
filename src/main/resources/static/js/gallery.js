@@ -122,7 +122,22 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                                 item: 1,
                                                 loop: true,
                                                 slideMargin: 0,
-                                                thumbItem: 25
+                                                thumbItem: 25,
+                                                adaptiveHeight: true,
+                                                responsive : [
+                                                    {
+                                                        breakpoint: 800,
+                                                        settings: {
+                                                            thumbItem: 18
+                                                        }
+                                                    },
+                                                    {
+                                                        breakpoint: 540,
+                                                        settings:{
+                                                            thumbItem: 10
+                                                        }
+                                                    }
+                                                ]
                                             });
                                             $this.find(".lightSlider").addClass("created");
                                         }
@@ -150,7 +165,22 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                                 item: 1,
                                                 loop: true,
                                                 slideMargin: 0,
-                                                thumbItem: 25
+                                                thumbItem: 25,
+                                                adaptiveHeight: true,
+                                                responsive : [
+                                                    {
+                                                        breakpoint: 800,
+                                                        settings: {
+                                                            thumbItem: 18
+                                                        }
+                                                    },
+                                                    {
+                                                        breakpoint: 540,
+                                                        settings:{
+                                                            thumbItem: 10
+                                                        }
+                                                    }
+                                                ]
                                             });
                                             $this.find(".lightSlider").addClass("created");
                                         }
@@ -179,7 +209,22 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
                                             item: 1,
                                             loop: true,
                                             slideMargin: 0,
-                                            thumbItem: 25
+                                            thumbItem: 25,
+                                            adaptiveHeight: true,
+                                            responsive : [
+                                                {
+                                                    breakpoint: 800,
+                                                    settings: {
+                                                        thumbItem: 18
+                                                    }
+                                                },
+                                                {
+                                                    breakpoint: 540,
+                                                    settings:{
+                                                        thumbItem: 10
+                                                    }
+                                                }
+                                            ]
                                         });
                                         $this.find(".lightSlider").addClass("created");
                                     }

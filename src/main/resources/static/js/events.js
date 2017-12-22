@@ -108,7 +108,8 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
                         item: 1,
                         loop: true,
                         slideMargin: 0,
-                        thumbItem: 7
+                        thumbItem: 7,
+                        adaptiveHeight: true
                     });
 
                 }
