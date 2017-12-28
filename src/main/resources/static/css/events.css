@@ -60,12 +60,12 @@
     position:absolute;
 }
 #left-arrow{
-    left:30%;
+    left:25%;
     top:10px;
     z-index: 100;
 }
 #right-arrow{
-    right: 30%;
+    right: 25%;
     top:10px;
     z-index: 100;
 }

@@ -94,7 +94,7 @@ object.logo-mobile{
 }
 
 
-@media screen and (min-width: 579px){
+@media only screen and (min-width: 579px){
     #company-descriptors-mobile{
         display: none;
     }
@@ -113,7 +113,7 @@ object.logo-mobile{
     }
 
 }
-@media screen and (max-width: 578px){
+@media only screen and (max-width: 578px){
     #company-descriptors-mobile{
         display: inline-block;
         position: static;

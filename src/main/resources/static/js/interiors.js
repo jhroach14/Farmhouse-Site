@@ -95,7 +95,8 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
                 item: 1,
                 loop: true,
                 slideMargin: 0,
-                thumbItem: 7
+                thumbItem: 7,
+                adaptiveHeight: true
             });
 
         });
