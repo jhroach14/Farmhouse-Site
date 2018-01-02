@@ -4,7 +4,7 @@
     </button>
     <div class="row top main">
         <div class="col-md-12 zero-padding">
-            <img class="about about-main" th:src="${page.primary_photo.photo_path}"/>
+            <img class="about about-main" th:src="${page.primary_photo?.photo_path}"/>
         </div>
     </div>
     <div class="row">
@@ -38,7 +38,7 @@
     </div>
     <div id="bottom-row" class="row bottom main">
         <div class="col-md-4 zero-padding">
-            <img class="about about-minor" th:src="${page.secondary_photo.photo_path}"/>
+            <img class="about about-minor" th:src="${page.secondary_photo?.photo_path}"/>
         </div>
         <div class="col-md-8 description zero-padding">
             <div id="bio" th:text="${page.company_bio}">

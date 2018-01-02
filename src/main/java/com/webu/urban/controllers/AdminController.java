@@ -36,11 +36,11 @@ public class AdminController {
     @Autowired
     private RegistryPageRepository registryPageRepository;
     @Autowired
-    private ServiceRepository serviceRepository;
-    @Autowired
     private InspireRepository inspireRepository;
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private GallerySectionGroupRepository gallerySectionGroupRepository;
 
     @RequestMapping(value ={"/admin/","/admin/home"})//root handled by this controller
     public String index(Model model, @RequestParam(value = "flag", required = false) String flag){ //model is spring data object accessible from thymeleaf
@@ -94,8 +94,8 @@ public class AdminController {
     @RequestMapping("/admin/gallery")
     public String gallery(Model model, @RequestParam(value = "flag", required = false) String flag) {
 
-        Iterable<GallerySection> gallerySections = sectionRepository.findAll();
-        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySections,"/admin");
+        Iterable<GallerySectionGroup> gallerySectionGroups = gallerySectionGroupRepository.findAll();
+        GalleryPage galleryPage = new GalleryPage("Gallery", gallerySectionGroups,"/admin");
 
         model.addAttribute("page", galleryPage);
         log.debug("Serving gallery page...");

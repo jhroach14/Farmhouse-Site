@@ -16,29 +16,72 @@
     max-width: 100%;
 }
 #content-col{
-    padding-top: 10px;
-    padding-left: 22%;
-    padding-right: 22%;
+    padding-top: 5px;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 .arrow{
     font-size: 30px;
     position:absolute;
 }
-#left-arrow{
-    left:25%;
-    top:20px;
-    z-index: 100;
+@media only screen and (min-width: 579px) {
+    #left-arrow{
+        left:25%;
+        top:20px;
+        z-index: 100;
+    }
+    #right-arrow{
+        right: 25%;
+        top:20px;
+        z-index: 100;
+    }
+    .dropdown{
+        position: absolute;
+        right:0;
+        top:0;
+    }
 }
-#right-arrow{
-    right: 25%;
-    top:20px;
-    z-index: 100;
+@media only screen and (max-width: 578px) {
+    #left-arrow{
+        left:0;
+        top:0;
+        z-index: 100;
+    }
+    #right-arrow{
+        right: 0;
+        top:0;
+        z-index: 100;
+    }
+    .dropdown{
+        position: absolute;
+        right:0;
+        top:50%;
+    }
+    .siema{
+        margin-top: 10%;
+    }
 }
+
 .int-title{
     text-align: center;
 }
-.dropdown{
+
+
+#delete-photo{
     position: absolute;
-    right:3%;
-    top:5%;
+    top: 0;
+    right: 5px;
+}
+.form-control{
+    width: 70%;
+    float: left;
+}
+.add-photo{
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+hr{
+    color:gray;
+    background-color: gray;
 }

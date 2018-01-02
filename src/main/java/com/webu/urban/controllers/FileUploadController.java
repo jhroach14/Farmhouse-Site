@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 
-@RestController
+@Controller
 public class FileUploadController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -33,6 +34,7 @@ public class FileUploadController {
     @Autowired
     public FileUploadController(StorageService storageService) {
         this.storageService = storageService;
+        storageService.init();
         this.thumbnailer = new BufferedImageThumbnailer(150);
         log.debug("Initialized storage and thumbnail service");
     }
@@ -56,11 +58,12 @@ public class FileUploadController {
                 "inline").body(file);
     }
 
-    @GetMapping("/admin/delete/img/")
-    public String deleteImage(@RequestBody Photo photo){
+    @PostMapping("/admin/delete/img/")
+    public String deleteImage(@RequestBody Photo photo, HttpServletRequest request){
 
         log.debug("removing photo "+photo.getId()+" with path" +photo.getPhoto_path()+" from DB");
         photoRepository.delete(photo.getId());
+
 
         String photoPath = photo.getPhoto_path();
         String thumbPath = photo.getThumb_path();
@@ -72,12 +75,14 @@ public class FileUploadController {
         log.debug("Deleting "+thumbFilename+" from File System");
         storageService.deletePhoto(thumbFilename);
 
-        return filename;
+        String referer = request.getHeader("Referer");
+        referer = referer.substring(referer.indexOf("/admin/")+7);
+        return "redirect:/admin/"+ referer;
     }
 
 
     @PostMapping("/admin/img/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
         log.debug("Recieved new image to upload to filesystem "+file.getName());
 
@@ -107,7 +112,9 @@ public class FileUploadController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/admin/";
+        String referer = request.getHeader("Referer");
+        referer = referer.substring(referer.indexOf("/admin/")+7);
+        return "redirect:/admin/"+ referer;
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

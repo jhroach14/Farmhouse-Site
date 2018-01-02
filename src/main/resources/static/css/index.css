@@ -26,12 +26,11 @@ footer{
     position: static;
     z-index: 10;
     font-family: cursive;
-    height: 8%;
+    height: 5vh;
     background-color: whitesmoke;
     width: 90%;
     margin: 0 5%;
     text-align: center;
-    padding-top: 1%;
 }
 .nav{
     position: relative;
@@ -95,7 +94,7 @@ object.logo-mobile{
 }
 
 
-@media screen and (min-width: 579px){
+@media only screen and (min-width: 579px){
     #company-descriptors-mobile{
         display: none;
     }
@@ -114,7 +113,7 @@ object.logo-mobile{
     }
 
 }
-@media screen and (max-width: 578px){
+@media only screen and (max-width: 578px){
     #company-descriptors-mobile{
         display: inline-block;
         position: static;
@@ -161,29 +160,41 @@ object.logo-mobile{
 
 }
 .glyphicon.glyphicon-one-fine-full-dot {
-    overflow: hidden;
+    align-content: center;
 }
 .glyphicon.glyphicon-one-fine-full-dot:before {
     content:"\25cf";
 }
 #modify-page{
-    position: absolute;
+    position: fixed;
     top:20px;
-    right:20px;
+    right:10%;
     font-size: larger;
     z-index: 15;
 }
 
 #manage-photo{
-    position: absolute;
+    position: fixed;
     top: 20px;
-    right: 200px;
+    left: 10%;
     font-size: larger;
     z-index: 15;
 }
 
 #admin-login{
     color: blue;
+}
+
+.delete-row{
+    height: 150px;
+}
+.photo-path{
+    text-align: center;
+    padding-left: 9%;
+    padding-right: 5%;
+}
+#new-photo-title{
+    text-align: left;
 }
 
 
