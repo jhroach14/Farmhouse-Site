@@ -7,8 +7,8 @@
                 <div th:each="interior :  ${page.interiors}">
                     <h3 class="int-title" th:text="${interior.address}"></h3>
                     <ul class="lightSlider">
-                        <li class="ls-li" th:each="photo : ${interior.photos}" th:attr="data-thumb=${photo.thumb_path}">
-                            <img class="ls-img" th:src="${photo.photo_path}" th:alt="${photo.photo_text}" />
+                        <li class="ls-li" th:each="photo : ${interior.photos}" th:attr="data-thumb=${photo?.thumb_path}">
+                            <img class="ls-img" th:src="${photo?.photo_path}" th:alt="${photo?.photo_text}" />
                         </li>
                     </ul>
                 </div>
@@ -46,7 +46,7 @@
                     <form id="interiors-form" class="form-horizontal">
                         <div ng-repeat="interior in interiors" class="form-group"> <!--for each interior-->
                             <div class="col-sm-10">
-                                <button ng-click="deleteInterior(interior)" id="delete-interior" title="delete">DELETE {{interior.address}}</button>
+                                <button style="background-color: red; color: white;border: transparent" class="btn-danger" ng-click="deleteInterior(interior)" id="delete-interior" title="delete">DELETE {{interior.address}}</button>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="addr">Address</label>
                                     <div class="col-sm-10" >
@@ -65,7 +65,7 @@
                                                 <p>{{photoOpt.photo_path}}</p>
                                             </option>
                                         </select>
-                                        <button ng-click="deletePhoto(interior, photo.id)" id="delete-photo" title="delete">DELETE</button>
+                                        <button class="btn-danger" style="background-color: red; color: white;border: transparent" ng-click="deletePhoto(interior, photo)" id="delete-photo" title="delete">DELETE</button>
                                     </div>
                                 </div>
                                 <hr/>
@@ -80,7 +80,10 @@
                                         </option>
                                     </select>
                                     <div class="form-group">
-                                        <input ng-click="addPhoto(interior)" type="submit" class="btn btn-default add-photo" value="Add" data-dismiss="modal" />
+                                        <input ng-click="addPhoto(interior)" type="submit" class="btn btn-default add-photo" value="Add"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input ng-click="saveInterior(interior)" type="submit" class="btn btn-default" value="Save Interior" data-dismiss="modal" />
                                     </div>
                                 </div>
                                 <hr/>

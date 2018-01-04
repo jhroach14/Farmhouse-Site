@@ -3,6 +3,8 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
         $scope.photoList = null;
         $scope.interiors = null;
         $scope.newPhoto = null;
+        var newInteriorPhoto = null;
+
         $scope.loadEditData = function () {
             var url = "http://"+window.location.hostname+":8080/admin/photoList";
             $http.get(url).success(
@@ -45,36 +47,38 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
                 );
             }
         };
+
         $scope.selectPhoto = function (interior, photo, index) {
             interior.photos[index] = photo;
         };
         $scope.selectNewPhoto = function (photo) {
-            $scope.newPhoto = photo;
+            newInteriorPhoto = photo;
         };
         $scope.addPhoto = function (interior) {
-            var url = "http://"+window.location.hostname+":8080/admin/addInteriorPhoto?photo=" + $scope.newPhoto.id + "&interior=" + interior.id;
-            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
-            if(result){
-                $http.post(url).success(
-                    function () {
-                        alert("Your changes to interiors page have gone live");
-                        window.location.reload();
-                    }
-                );
+            interior.photos.push(newInteriorPhoto);
+
+        };
+        $scope.deletePhoto = function (interior, photo) {
+            var index = interior.photos.indexOf(photo);
+            if (index > -1) {
+                interior.photos.splice(index, 1);
             }
         };
-        $scope.deletePhoto = function (interior, id) {
-            var url = "http://"+window.location.hostname+":8080/admin/deleteInteriorPhoto?photo=" + id + "&interior=" + interior.id;
-            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
-            if(result){
-                $http.post(url).success(
-                    function () {
-                        alert("Your changes to interiors page have gone live");
-                        window.location.reload();
-                    }
-                );
-            }
+
+
+
+        $scope.saveInterior = function (interior) {
+            var url = "http://" + window.location.hostname + ":8080/admin/saveInterior";
+            $http.post(url, interior).success(
+                function () {
+                    window.location.reload();
+                }
+            );
         };
+
+
+
+
         $scope.interiorsEdit = function () {
             var url = "http://"+window.location.hostname+":8080/admin/interiorsEdit";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");
