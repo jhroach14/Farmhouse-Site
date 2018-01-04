@@ -188,7 +188,7 @@ public class DataController {
         return post;
     }
 
-    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.GET)
     public void deletePost(@RequestParam(value = "post") int id){
 
         log.debug("received delete request for post with id "+id);
