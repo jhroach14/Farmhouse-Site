@@ -408,10 +408,10 @@ public class DataController {
         return newGroup;
     }
     @RequestMapping(value = "/admin/newSection", method = RequestMethod.GET)
-    public GallerySection newSection(){
+    public GallerySection newSection(@RequestParam(value = "title") String title, @RequestParam(value="text") String text ){
 
         log.debug("Received new section to create");
-        GallerySection newSection = new GallerySection();
+        GallerySection newSection = new GallerySection(title,text,null);
         gallerySectionRepository.save(newSection);
         log.debug("Returning saved group with id "+newSection.getId());
         return newSection;
