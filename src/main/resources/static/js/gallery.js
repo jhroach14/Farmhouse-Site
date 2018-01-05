@@ -77,7 +77,7 @@ app.controller('galleryCtrl', ['$scope', '$http', //scope = model for angular, h
         };
 
         $scope.newSection = function () {
-            var url = "http://" + window.location.hostname + "/admin/newSection?title="+$scope.newSectionTitle+"&text="+$scope.newSection;
+            var url = "http://" + window.location.hostname + "/admin/newSection?title="+$scope.newSectionTitle+"&text="+$scope.newSectionText;
             $http.get(url).success(
                 function () {
                     window.location.reload();
