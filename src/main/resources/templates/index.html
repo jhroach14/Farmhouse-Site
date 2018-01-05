@@ -110,7 +110,7 @@ Html templates are inserted via thymeleaf/angularJS-->
                             <h3>Uploaded Photos</h3>
                             <div class="delete-row" ng-repeat="photo in allPhotos" >
                                 <label class="control-label col-sm-3" >
-                                    <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
+                                    <img id="thumb2" ng-src="{{photo.thumb_path}}" />
                                 </label>
                                 <div class="col-sm-9" >
                                     <span class="photo-path">{{photo.photo_path}}</span>
