@@ -79,7 +79,9 @@ object{
 div.w3-sidebar, button.w3-button{
     z-index: 5000;
     background-color: whitesmoke;
-
+    position: absolute;
+    top:0;
+    right: 0;
 }
 object.logo-mobile{
     display: none;
