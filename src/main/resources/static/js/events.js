@@ -5,7 +5,7 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
     function($scope, $http) {
         $scope.photoList = null;
         $scope.events = null;
-        $scope.newPhoto = null;
+        var newEventPhoto = null;
         $scope.loadEditData = function () {
             var url = "http://"+window.location.hostname+"/admin/photoList";
             $http.get(url).success(
@@ -54,31 +54,28 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
             event.photos[index] = photo;
         };
         $scope.selectNewPhoto = function (photo) {
-            $scope.newPhoto = photo;
+            newEventPhoto = photo;
         };
         $scope.addPhoto = function (event) {
-            var url = "http://"+window.location.hostname+"/admin/addEventPhoto?photo=" + $scope.newPhoto.id + "&event=" + event.id;
-            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
-            if(result){
-                $http.post(url).success(
-                    function () {
-                        alert("Your changes to the event have gone live");
-                        window.location.reload();
-                    }
-                );
+            event.photos.push(newEventPhoto);
+
+        };
+        $scope.deletePhoto = function (event, photo) {
+            var index = event.photos.indexOf(photo);
+            if (index > -1) {
+                event.photos.splice(index, 1);
             }
         };
-        $scope.deletePhoto = function (event, id) {
-            var url = "http://"+window.location.hostname+"/admin/deleteEventPhoto?photo=" + id + "&event=" + event.id;
-            var result = confirm("Are you sure? Any changes you have made will go live on the site.");
-            if(result){
-                $http.post(url).success(
-                    function () {
-                        alert("Your changes to home page have gone live");
-                        window.location.reload();
-                    }
-                );
-            }
+
+
+
+        $scope.saveEvent = function (event) {
+            var url = "http://" + window.location.hostname + ":8080/admin/saveEvent";
+            $http.post(url, event).success(
+                function () {
+                    window.location.reload();
+                }
+            );
         };
         $scope.eventsEdit = function () {
             var url = "http://"+window.location.hostname+"/admin/eventsEdit";

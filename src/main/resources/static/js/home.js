@@ -37,6 +37,7 @@ app.controller('homeCtrl', ['$scope', '$http', //scope = model for angular, http
 
         };
 
+
         $scope.addHomePhoto = function (){
             var url = "http://"+window.location.hostname+"/admin/addNewHomePhoto";
             var result = confirm("Are you sure? Any changes you have made will go live on the site.");

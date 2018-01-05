@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row registry-pic main">
-        <img class="get-started" th:src="${page.main_photo.photo_path}"/>
+        <img class="get-started" th:src="${page.main_photo?.photo_path}"/>
         <div class="get-started-text" th:text="${page.intro_text}"></div>
     </div>
     <div class="row sign-up main">
@@ -54,7 +54,9 @@
         </form>
 
     </div>
-    <div class="row registry-gallery subpage">
+    <h1 class="subpage" style="color: grey;position: absolute;top: 40%;right:40%;font-family: 'Goudy Old Style'">Under Construction</h1>
+
+    <div class="row registry-gallery">
         <div class="title section">
             <h2 >Recipient: {{entry.recipient}}</h2>
             <div>Description: {{entry.description}}"</div>

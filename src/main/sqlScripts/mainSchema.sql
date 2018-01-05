@@ -139,7 +139,7 @@ create table registry_pages(
     primary key (id),
 
     foreign key (main_photo) references photos(id)
-    on delete cascade
+    on delete set null
 
 );
 /*each wedding registered gets an entry with a code*/

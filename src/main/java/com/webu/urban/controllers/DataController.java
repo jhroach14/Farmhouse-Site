@@ -188,7 +188,7 @@ public class DataController {
         return post;
     }
 
-    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deletePost", method = RequestMethod.GET)
     public void deletePost(@RequestParam(value = "post") int id){
 
         log.debug("received delete request for post with id "+id);
@@ -283,6 +283,14 @@ public class DataController {
         currentInterior.setPhotos(updatedPhotos);
         interiorRepository.save(currentInterior);
     }
+    @RequestMapping(value = "/admin/saveInterior", method = RequestMethod.POST)
+    public Interior saveInterior(@RequestBody Interior interior){
+
+        log.debug("Received group to save");
+        interior =interiorRepository.save(interior);
+        log.debug("Returning saved group with id "+interior.getId());
+        return interior;
+    }
     @RequestMapping(value = "/admin/interiorsEdit", method = RequestMethod.POST)
     public Iterable<Interior> interiors(@RequestBody Iterable<Interior> interiors){
 
@@ -353,6 +361,14 @@ public class DataController {
         currentEvent.setPhotos(updatedPhotos);
         eventRepository.save(currentEvent);
     }
+    @RequestMapping(value = "/admin/saveEvent", method = RequestMethod.POST)
+    public Event saveEvent(@RequestBody Event event){
+
+        log.debug("Received group to save");
+        event = eventRepository.save(event);
+        log.debug("Returning saved event with id "+event.getId());
+        return event;
+    }
     @RequestMapping(value = "/admin/eventsEdit", method = RequestMethod.POST)
     public Iterable<Event> events(@RequestBody Iterable<Event> events){
 
@@ -361,7 +377,6 @@ public class DataController {
         log.debug("Returning saved interiors");
         return events;
     }
-
 
     @RequestMapping(value = "/admin/galleryGroups", method = RequestMethod.GET)
     public Iterable<GallerySectionGroup> getGalleryGroups(){
@@ -408,10 +423,10 @@ public class DataController {
         return newGroup;
     }
     @RequestMapping(value = "/admin/newSection", method = RequestMethod.GET)
-    public GallerySection newSection(){
+    public GallerySection newSection(@RequestParam(value = "title") String title, @RequestParam(value="text") String text ){
 
         log.debug("Received new section to create");
-        GallerySection newSection = new GallerySection();
+        GallerySection newSection = new GallerySection(title,text,null);
         gallerySectionRepository.save(newSection);
         log.debug("Returning saved group with id "+newSection.getId());
         return newSection;

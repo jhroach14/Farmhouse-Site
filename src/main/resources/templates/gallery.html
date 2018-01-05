@@ -20,6 +20,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="left-img-holder expandable left second-left" th:if="${group.section2?.photos}"
                  th:style="|background-image: url(${group.section2.photos[0].photo_path})|">
                 <div class="title-shader"></div>
@@ -34,6 +35,7 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
 
@@ -204,7 +206,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button ng-click="newSection()" class="btn btn-primary">
+                            <button class="btn btn-primary"  data-target="#new-section-modal" data-toggle="modal">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 New Section
                             </button>
@@ -213,10 +215,40 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
+
                 </div>
 
             </div>
         </div>
 
+    </div>
+    <div class="modal fade" id="new-section-modal" th:if="${page.permissions == '/admin'}">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">Close</button>
+                    <h4 class="modal-title">New Section</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="title">Section Title</label>
+                            <div class="col-sm-10" >
+                                <input id="title" type="text" class="form-control" ng-model="newSectionTitle"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="days">Section Text</label>
+                            <div class="col-sm-10" >
+                                <input id="days" type="text" class="form-control" ng-model="newSectionText"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input ng-click="newSection()" type="submit" class="btn btn-default" value="Save" data-dismiss="modal"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
