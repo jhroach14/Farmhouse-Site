@@ -72,7 +72,7 @@
                                 <div ng-repeat="photo in event.photos track by $index" class="form-group">
                                     <label class="control-label col-sm-2" for="photo{{$index}}">
                                         <p>Photo {{$index}}</p>
-                                        <img id="thumb1" ng-src="http://localhost:8080{{event.photos[$index].thumb_path}}"/>
+                                        <img id="thumb1" ng-src="{{event.photos[$index].thumb_path}}"/>
                                     </label>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="photo{{$index}}">

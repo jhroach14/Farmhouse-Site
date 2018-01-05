@@ -67,7 +67,7 @@ app.controller('interiorsCtrl', ['$scope', '$http', //scope = model for angular,
 	};
 
         $scope.saveInterior = function (interior) {
-            var url = "http://" + window.location.hostname + ":8080/admin/saveInterior";
+            var url = "http://" + window.location.hostname + "/admin/saveInterior";
             $http.post(url, interior).success(
                 function () {
                     window.location.reload();

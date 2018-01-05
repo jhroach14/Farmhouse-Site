@@ -58,7 +58,7 @@
 
                             <label class="control-label col-sm-2" for="pic-drop">
                                 <p>Primary Photo</p>
-                                <img id="thumb1" ng-src="http://localhost:8080{{aboutInfo.primary_photo.thumb_path}}" />
+                                <img id="thumb1" ng-src="{{aboutInfo.primary_photo.thumb_path}}" />
                             </label>
                             <div class="col-sm-10" >
                                 <select class="form-control" id="pic-drop">
@@ -71,7 +71,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="pic-drop2">
                                 <p>Secondary Photo</p>
-                                <img id="thumb2" ng-src="http://localhost:8080{{aboutInfo.secondary_photo.thumb_path}}" />
+                                <img id="thumb2" ng-src="{{aboutInfo.secondary_photo.thumb_path}}" />
                             </label>
                             <div class="col-sm-10" >
                                 <select class="form-control" id="pic-drop2">

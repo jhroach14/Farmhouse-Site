@@ -70,7 +70,7 @@ app.controller('eventsCtrl', ['$scope', '$http', //scope = model for angular, ht
 
 
         $scope.saveEvent = function (event) {
-            var url = "http://" + window.location.hostname + ":8080/admin/saveEvent";
+            var url = "http://" + window.location.hostname + "/admin/saveEvent";
             $http.post(url, event).success(
                 function () {
                     window.location.reload();

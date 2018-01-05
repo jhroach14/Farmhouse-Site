@@ -55,8 +55,8 @@
 
     </div>
     <h1 class="subpage" style="color: grey;position: absolute;top: 40%;right:40%;font-family: 'Goudy Old Style'">Under Construction</h1>
-
-    <div class="row registry-gallery">
+    <!--once completed just remove above element and put subpage into below elemen-->
+    <div class="row registry-gallery" style="display: none;" >
         <div class="title section">
             <h2 >Recipient: {{entry.recipient}}</h2>
             <div>Description: {{entry.description}}"</div>
@@ -107,7 +107,7 @@
 
                             <label class="control-label col-sm-2" for="pic-drop">
                                 <p>Main Photo</p>
-                                <img id="thumb1" ng-src="http://localhost:8080{{registryInfo.main_photo.thumb_path}}" />
+                                <img id="thumb1" ng-src="{{registryInfo.main_photo.thumb_path}}" />
                             </label>
                             <div class="col-sm-10" >
                                 <select class="form-control" id="pic-drop">

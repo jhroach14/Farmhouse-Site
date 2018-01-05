@@ -2,7 +2,7 @@
     <div class="group-container" th:each="group : ${page.groups}">
         <div class="gallery-container left-container" >
             <div class="left-img-holder left expandable first-left" th:if="${group.section1?.photos}"
-                 th:style="|background-image: url(${group.section1.photos[0].photo_path})|">
+                 th:style="|background-image: url(${group.section1.photos[0]?.photo_path})|">
                 <!-- <button type="button" class="edit-btn btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>-->
@@ -171,7 +171,7 @@
                                         <h3>Section Pictures</h3>
                                         <div class="photo-container" ng-repeat="photo in section.photos track by $index">
                                             <label class="control-label col-sm-3" for="pic-drop">
-                                                <img id="thumb2" ng-src="http://localhost:8080{{photo.thumb_path}}" />
+                                                <img id="thumb2" ng-src="{{photo.thumb_path}}" />
                                             </label>
                                             <div class="col-sm-9" >
                                                 <select class="form-control" id="pic-drop">

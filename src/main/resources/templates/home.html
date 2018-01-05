@@ -44,7 +44,7 @@
                         <div ng-repeat="photo in photos track by $index" class="form-group">
                             <label class="control-label col-sm-2" for="photo{{$index}}">
                                 <p>Photo {{$index}}</p>
-                                <img id="thumb1" ng-src="http://localhost:8080{{photos[$index].photo.thumb_path}}"/>
+                                <img id="thumb1" ng-src="{{photos[$index].photo.thumb_path}}"/>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="photo{{$index}}">
